@@ -1,27 +1,35 @@
-Fashion Store FASHION 
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Sline Vision</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<input type="text" id="search" placeholder="Search for products..." onkeyup="searchProducts()"
+<div class="header">
+  <h2>SLINE</h2>
+  <div>🛒 <span id="cart-count">0</span></div>
+</div>
 
-🛒 0
+<div class="products">
 
-Women Men New Sale 
+  <div class="product">
+    <img src="https://via.placeholder.com/300">
+    <h3>T-Shirt</h3>
+    <p>R199</p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
 
-Oversized T-Shirt 
+  <div class="product">
+    <img src="https://via.placeholder.com/300">
+    <h3>Hoodie</h3>
+    <p>R349</p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
 
-R199
+</div>
 
-Add to Cart 
+<script src="script.js"></script>
 
-Street Hoodie 
-
-R349
-
-Add to Cart 
-
-Denim Jeans 
-
-R499
-
-Add to Cart 
-
-     
+</body>
+</html>
