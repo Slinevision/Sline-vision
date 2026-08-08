@@ -122,15 +122,16 @@ input {
 <script>
 
 // LOAD CART
-let cart = parseInt(localStorage.getItem("cart")) || 0;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 document.getElementById("cart-count").innerText = cart;
 
 // ADD TO CART
-function addToCart() {
-  cart++;
-  localStorage.setItem("cart", cart);
-  document.getElementById("cart-count").innerText = cart;
+function addToCart(Name,Price) {
+ cart.push({name: name, price: price});
+  func   localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("cart-count").innerText = cart.length;
 }
+
 
 // PLACE ORDER
 function placeOrder() {
