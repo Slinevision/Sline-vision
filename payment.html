@@ -1,34 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slinevision</title>
+
+<style>
+body {
+  background: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  color: #111;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.cart {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.product {
+  background: #f9f9f9;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 12px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.checkout {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>SLINEVISION</h1>
+
+<input class="search" placeholder="Search products...">
+
+<div class="cart">
+🛒 Cart: <span id="cart-count">0</span>
+</div>
+
+<!-- PRODUCTS -->
+
+<div class="product">
+  <img src="https://via.placeholder.com/400">
+  <h3>Oversized T-Shirt</h3>
+  <p>R199</p>
+  <button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="https://via.placeholder.com/400">
+  <h3>Hoodie</h3>
+  <p>R349</p>
+  <button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="https://via.placeholder.com/400">
+  <h3>Jeans</h3>
+  <p>R399</p>
+  <button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- CHECKOUT -->
+
+<div class="checkout">
+
+<h2>Checkout</h2>
+
+<input type="text" placeholder="Full Name" id="name" required>
+<input type="text" placeholder="Phone Number" id="phone" required>
+<input type="text" placeholder="Address" id="address" required>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
 <script>
-function placeOrder(e) {
-  e.preventDefault();
 
-  let name = document.querySelector('input[placeholder="Full Name"]').value;
-  let phone = document.querySelector('input[placeholder="Phone Number"]').value;
-  let address = document.querySelector('input[placeholder="Address"]').value;
+// LOAD CART
+let cart = parseInt(localStorage.getItem("cart")) || 0;
+document.getElementById("cart-count").innerText = cart;
 
-  let cart = parseInt(localStorage.getItem("cart")) || 0;
+// ADD TO CART
+function addToCart() {
+  cart++;
+  localStorage.setItem("cart", cart);
+  document.getElementById("cart-count").innerText = cart;
+}
+
+// PLACE ORDER
+function placeOrder() {
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
   let total = (cart * 199.99).toFixed(2);
 
   let message = "Hello, I want to place an order.%0A%0A" +
-"Items: " + cart + "%0A" +
-"Total: R" + total + "%0A" +
-"Name: " + name + "%0A" +
-"Phone: " + phone + "%0A" +
-"Address: " + address;
-Items: ${cart}%0A
-Total: R${total}%0A
-Name: ${name}%0A
-Phone: ${phone}%0A
-Address: ${address}`;
+  "Items: " + cart + "%0A" +
+  "Total: R" + total + "%0A" +
+  "Name: " + name + "%0A" +
+  "Phone: " + phone + "%0A" +
+  "Address: " + address;
 
-  let whatsappNumber = "27691603308"; // 🔥 PUT YOUR NUMBER HERE
+  let whatsappNumber = "27691603308"; // 🔥 PUT YOUR REAL NUMBER
 
-  let url = `https://wa.me/${whatsappNumber}?text=${hey Sline Vision I want to place an order!}`;
+  let url = "https://wa.me/" + whatsappNumber + "?text=" + message;
 
   window.open(url, "_blank");
 
   localStorage.removeItem("cart");
 }
+
 </script>
+
 </body>
 </html>
