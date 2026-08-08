@@ -1,3 +1,7 @@
+body {
+  background: white !important;
+  margin: 0;
+}
 /* RESET */
 * {
   margin: 0;
