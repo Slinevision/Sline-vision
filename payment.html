@@ -1,118 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Payment</title>
-<style>
-body {
-  font-family: Arial;
-  text-align: center;
-  padding: 20px;
-}
-
-.payment-box {
-  max-width: 400px;
-  margin: auto;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  background: black;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: red;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-}
-</style>
-</head>
-
-<body>
-
-<h2>Select Payment Method</h2>
-
-<div class="payment-box">
-
-  <!-- PAYMENT OPTIONS -->
-  <button onclick="showCard()">💳 Pay with Card</button>
-  <button onclick="payCash()">🚚 Cash on Delivery</button>
-
-  <!-- CARD FORM -->
-  <div id="card-form" style="display:none;">
-    <h3>Enter Card Details</h3>
-    <input type="text" placeholder="Card Number" required>
-    <input type="text" placeholder="Expiry Date" required>
-    <input type="text" placeholder="CVV" required>
-
-    <button onclick="payNow()">Pay Now</button>
-  </div>
-
-</div>
-
 <script>
-function showCard() {
-  document.getElementById("card-form").style.display = "block";
-}
+function placeOrder(e) {
+  e.preventDefault();
 
-function payCash() {
-  alert("Order placed! Pay when item arrives 🚚");
-  window.location.href = "index.html";
-}
+  let name = document.querySelector('input[placeholder="Full Name"]').value;
+  let phone = document.querySelector('input[placeholder="Phone Number"]').value;
+  let address = document.querySelector('input[placeholder="Address"]').value;
 
-function payNow() {
-  alert("Payment Successful! ✅");
-  window.location.href = "index.html";
+  let cart = localStorage.getItem("cart") || 0;
+  let total = (cart * 199.99).toFixed(2);
+
+  let message = `🛍️ *New Order*%0A
+Items: ${cart}%0A
+Total: R${total}%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Address: ${address}`;
+
+  let whatsappNumber = "0691603308"; // 🔥 PUT YOUR NUMBER HERE
+
+  let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+  window.open(url, "_blank");
+
+  localStorage.removeItem("cart");
 }
 </script>
-
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body class="checkout-body">
-
-<div class="checkout-container">
-
-  <h2>Checkout</h2>
-
-  <div class="order-summary">
-    <p>Items: <span id="total-items">0</span></p>
-    <p>Total: R<span id="total-price">0.00</span></p>
-  </div>
-
-  <form class="checkout-form">
-
-    <input type="text" placeholder="Full Name" required>
-    <input type="text" placeholder="Phone Number" required>
-    <input type="text" placeholder="Address" required>
-
-    <select required>
-      <option value="">Payment Method</option>
-      <option>Cash on Delivery</option>
-      <option>Card Payment</option>
-    </select>
-
-    <button type="submit">Place Order</button>
-
-  </form>
-
-</div>
-
-</body>
-      </html>
