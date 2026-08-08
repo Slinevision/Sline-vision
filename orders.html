@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background:white; font-family:Arial;">
+
+<h2 style="text-align:center;">My Orders</h2>
+
+<div id="orders-list" style="padding:15px;"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let container = document.getElementById("orders-list");
+
+if (orders.length === 0) {
+  container.innerHTML = "<p>No orders yet.</p>";
+} else {
+  orders.forEach(order => {
+    container.innerHTML += `
+      <div style="background:#f5f5f5; padding:10px; margin-bottom:10px; border-radius:10px;">
+        <p><b>Items:</b> ${order.items}</p>
+        <p><b>Total:</b> R${order.total}</p>
+        <p><b>Date:</b> ${order.date}</p>
+      </div>
+    `;
+  });
+}
+</script>
+
+</body>
+</html>
