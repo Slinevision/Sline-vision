@@ -57,3 +57,46 @@
   transform: scale(0.97);
   background: #222;
 }
+
+body {
+  background: #ffffff;
+  color: #111;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.product {
+  background: #f9f9f9;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 12px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
