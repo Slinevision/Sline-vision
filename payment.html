@@ -21,6 +21,7 @@ button {
   border: none;
   background: black;
   color: white;
+  cursor: pointer;
 }
 
 button:hover {
@@ -41,14 +42,16 @@ input {
 
 <div class="payment-box">
 
+  <!-- PAYMENT OPTIONS -->
   <button onclick="showCard()">💳 Pay with Card</button>
   <button onclick="payCash()">🚚 Cash on Delivery</button>
 
+  <!-- CARD FORM -->
   <div id="card-form" style="display:none;">
     <h3>Enter Card Details</h3>
-    <input type="text" placeholder="Card Number">
-    <input type="text" placeholder="Expiry Date">
-    <input type="text" placeholder="CVV">
+    <input type="text" placeholder="Card Number" required>
+    <input type="text" placeholder="Expiry Date" required>
+    <input type="text" placeholder="CVV" required>
 
     <button onclick="payNow()">Pay Now</button>
   </div>
@@ -61,12 +64,12 @@ function showCard() {
 }
 
 function payCash() {
-  alert("Order placed! Pay on delivery 🚚");
+  alert("Order placed! Pay when item arrives 🚚");
   window.location.href = "index.html";
 }
 
 function payNow() {
-  alert("Payment successful ✅");
+  alert("Payment Successful! ✅");
   window.location.href = "index.html";
 }
 </script>
