@@ -6,17 +6,22 @@ function placeOrder(e) {
   let phone = document.querySelector('input[placeholder="Phone Number"]').value;
   let address = document.querySelector('input[placeholder="Address"]').value;
 
-  let cart = localStorage.getItem("cart") || 0;
+  let cart = parseInt(localStorage.getItem("cart")) || 0;
   let total = (cart * 199.99).toFixed(2);
 
-  let message = `🛍️ *New Order*%0A
+  let message = "Hello, I want to place an order.%0A%0A" +
+"Items: " + cart + "%0A" +
+"Total: R" + total + "%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + phone + "%0A" +
+"Address: " + address;
 Items: ${cart}%0A
 Total: R${total}%0A
 Name: ${name}%0A
 Phone: ${phone}%0A
 Address: ${address}`;
 
-  let whatsappNumber = "0691603308"; // 🔥 PUT YOUR NUMBER HERE
+  let whatsappNumber = "27691603308"; // 🔥 PUT YOUR NUMBER HERE
 
   let url = `https://wa.me/${whatsappNumber}?text=${hey Sline Vision I want to place an order!}`;
 
@@ -25,7 +30,5 @@ Address: ${address}`;
   localStorage.removeItem("cart");
 }
 </script>
-
 </body>
-
 </html>
