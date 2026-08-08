@@ -88,21 +88,20 @@ input {
   <img src="https://via.placeholder.com/400">
   <h3>Oversized T-Shirt</h3>
   <p>R199</p>
-  <button onclick="addToCart()">Add to Cart</button>
+ <button onclick="addToCart('Oversized T-Shirt', 199)">Add to Cart</button>
 </div>
 
 <div class="product">
   <img src="https://via.placeholder.com/400">
   <h3>Hoodie</h3>
   <p>R349</p>
-  <button onclick="addToCart()">Add to Cart</button>
+<button onclick="addToCart('Hoodie', 349)">Add to Cart</button>
 </div>
 
 <div class="product">
   <img src="https://via.placeholder.com/400">
   <h3>Jeans</h3>
-  <p>R399</p>
-  <button onclick="addToCart()">Add to Cart</button>
+  <p>R399</p><button onclick="addToCart('Jeans', 399)">Add to Cart</button>
 </div>
 
 <!-- CHECKOUT -->
@@ -123,7 +122,7 @@ input {
 
 // LOAD CART
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-document.getElementById("cart-count").innerText = cart;
+document.getElementById("cart-count").innerText = cart.length;
 
 // ADD TO CART
 function addToCart(Name,Price) {
