@@ -76,3 +76,43 @@ function payNow() {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="checkout-body">
+
+<div class="checkout-container">
+
+  <h2>Checkout</h2>
+
+  <div class="order-summary">
+    <p>Items: <span id="total-items">0</span></p>
+    <p>Total: R<span id="total-price">0.00</span></p>
+  </div>
+
+  <form class="checkout-form">
+
+    <input type="text" placeholder="Full Name" required>
+    <input type="text" placeholder="Phone Number" required>
+    <input type="text" placeholder="Address" required>
+
+    <select required>
+      <option value="">Payment Method</option>
+      <option>Cash on Delivery</option>
+      <option>Card Payment</option>
+    </select>
+
+    <button type="submit">Place Order</button>
+
+  </form>
+
+</div>
+
+</body>
+      </html>
