@@ -1,711 +1,1596 @@
-<!-- ================================
-     STEP 1 - PRODUCTS
-================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SLINEVISION | Fashion Store</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+/* TOP BAR */
+
+.top-bar {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+
+/* HEADER */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 18px;
+    font-size: 22px;
+}
+
+.icon-button {
+    cursor: pointer;
+}
+
+/* NAVIGATION */
+
+.nav {
+    display: flex;
+    gap: 25px;
+    padding: 0 20px 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #111;
+    font-size: 13px;
+}
+
+/* SEARCH */
+
+.search-area {
+    padding: 12px 15px;
+    background: #fafafa;
+}
+
+.search-box {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* HERO */
+
+.hero {
+    margin: 10px 12px;
+    background: #f2f2f2;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+.hero p {
+    font-size: 13px;
+}
+
+/* SECTION */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px 10px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.section-title span {
+    font-size: 12px;
+    color: #666;
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    padding: 0 7px;
+}
+
+.product {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.product-image {
+    position: relative;
+    background: #f5f5f5;
+}
+
+.product img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 0.78;
+    object-fit: cover;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #000;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.heart {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.product-info {
+    padding: 8px 7px 15px;
+}
+
+.product-name {
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.rating {
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.price {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.old-price {
+    font-size: 11px;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.add-button {
+    width: 100%;
+    margin-top: 9px;
+    padding: 11px;
+    border: 1px solid #111;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.add-button:hover {
+    background: #333;
+}
+
+/* CART */
+
+.cart-section {
+    margin-top: 35px;
+    padding: 20px 15px;
+    background: #f7f7f7;
+}
+
+.cart-section h2 {
+    font-size: 20px;
+}
+
+.cart-item {
+    background: #fff;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cart-item-price {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.remove-button {
+    margin-top: 8px;
+    background: none;
+    border: none;
+    color: #777;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* CHECKOUT */
+
+.checkout-section {
+    display: none;
+    margin-top: 20px;
+    padding: 20px 15px;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.payment-box {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.payment-label {
+    display: block;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.payment-label input {
+    margin-right: 10px;
+}
+
+.whatsapp-button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background: #25D366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.back-button {
+    width: 100%;
+    padding: 13px;
+    background: #fff;
+    border: 1px solid #111;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 40px;
+    background: #111;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer h3 {
+    letter-spacing: 2px;
+}
+
+footer p {
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 300px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .search-area {
+        padding: 15px 20%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="top-bar">
+    FREE DELIVERY ON ORDERS OVER R500
+</div>
+
+
+<header class="header">
+
+    <div class="header-main">
+
+        <div class="logo">
+            SLINEVISION
+        </div>
+
+        <div class="header-icons">
+
+            <div class="icon-button"
+                 onclick="document.getElementById('search').focus()">
+                🔍
+            </div>
+
+            <div class="icon-button"
+                 onclick="document.getElementById('cart-section').scrollIntoView({behavior:'smooth'})">
+                🛍️
+                <span id="cart-count">0</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="#products">NEW IN</a>
+        <a href="#products">WOMEN</a>
+        <a href="#products">MEN</a>
+        <a href="#products">SPORTS</a>
+        <a href="#products">ACCESSORIES</a>
+        <a href="#products">SALE</a>
+
+    </nav>
+
+</header>
+
+
+<div class="search-area">
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search products..."
+        onkeyup="searchProducts()"
+    >
+
+</div>
+
+
+<section class="hero">
+
+    <div>
+
+        <h1>SLINEVISION</h1>
+
+        <p>
+            STYLE • QUALITY • CONFIDENCE
+        </p>
+
+    </div>
+
+</section>
+
+
+<div class="section-title">
+
+    <h2>New Arrivals</h2>
+
+    <span>20 Products</span>
+
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
 
 <div class="products" id="products">
 
-  <!-- PRODUCT 1 -->
-  <div class="product" data-name="tracksuit">
-    <img src="tracksuit.jpg" alt="Tracksuit">
-    <h2>Tracksuit</h2>
-    <div class="price">R450.00</div>
-    <button class="add-button"
-      onclick="addToCart('Tracksuit', 450)">
-      Add to Cart
-    </button>
-  </div>
 
-  <!-- PRODUCT 2 -->
-  <div class="product" data-name="t-shirt">
-    <img src="tshirt.jpg" alt="T-Shirt">
-    <h2>T-Shirt</h2>
-    <div class="price">R250.00</div>
-    <button class="add-button"
-      onclick="addToCart('T-Shirt', 250)">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 1 -->
 
-  <!-- PRODUCT 3 -->
-  <div class="product" data-name="hoodie">
-    <img src="hoodie.jpg" alt="Hoodie">
-    <h2>Hoodie</h2>
-    <div class="price">R350.00</div>
-    <button class="add-button"
-      onclick="addToCart('Hoodie', 350)">
-      Add to Cart
-    </button>
-  </div>
+    <div class="product" data-name="tracksuit">
 
-  <!-- PRODUCT 4 -->
-  <div class="product" data-name="shoes">
-    <img src="shoes.jpg" alt="Shoes">
-    <h2>Shoes</h2>
-    <div class="price">R600.00</div>
-    <button class="add-button"
-      onclick="addToCart('Shoes', 600)">
-      Add to Cart
-    </button>
-  </div>
+        <div class="product-image">
 
-  <!-- PRODUCT 5 -->
-  <div class="product" data-name="jacket">
-    <img src="jacket.jpg" alt="Jacket">
-    <h2>Jacket</h2>
-    <div class="price">R550.00</div>
-    <button class="add-button"
-      onclick="addToCart('Jacket', 550)">
-      Add to Cart
-    </button>
-  </div>
+            <img src="tracksuit.jpg" alt="Tracksuit">
 
-  <!-- PRODUCT 6 -->
-  <div class="product" data-name="jeans">
-    <img src="jeans.jpg" alt="Jeans">
-    <h2>Jeans</h2>
-    <div class="price">R400.00</div>
-    <button class="add-button"
-      onclick="addToCart('Jeans', 400)">
-      Add to Cart
-    </button>
-  </div>
+            <div class="sale-badge">
+                SALE
+            </div>
 
-  <!-- PRODUCT 7 -->
-  <div class="product" data-name="shorts">
-    <img src="shorts.jpg" alt="Shorts">
-    <h2>Shorts</h2>
-    <div class="price">R220.00</div>
-    <button class="add-button"
-      onclick="addToCart('Shorts', 220)">
-      Add to Cart
-    </button>
-  </div>
+            <div class="heart">
+                ♡
+            </div>
 
-  <!-- PRODUCT 8 -->
-  <div class="product" data-name="cap">
-    <img src="cap.jpg" alt="Cap">
-    <h2>Cap</h2>
-    <div class="price">R150.00</div>
-    <button class="add-button"
-      onclick="addToCart('Cap', 150)">
-      Add to Cart
-    </button>
-  </div>
+        </div>
 
-  <!-- PRODUCT 9 -->
-  <div class="product" data-name="sneakers">
-    <img src="sneakers.jpg" alt="Sneakers">
-    <h2>Sneakers</h2>
-    <div class="price">R800.00</div>
-    <button class="add-button"
-      onclick="addToCart('Sneakers', 800)">
-      Add to Cart
-    </button>
-  </div>
+        <div class="product-info">
 
-  <!-- PRODUCT 10 -->
-  <div class="product" data-name="tracksuit jacket">
-    <img src="tracksuit-jacket.jpg" alt="Tracksuit Jacket">
-    <h2>Tracksuit Jacket</h2>
-    <div class="price">R300.00</div>
-    <button class="add-button"
-      onclick="addToCart('Tracksuit Jacket', 300)">
-      Add to Cart
-    </button>
-  </div>
+            <div class="product-name">
+                Tracksuit
+            </div>
 
-  <!-- PRODUCT 11 -->
-  <div class="product" data-name="polo shirt">
-    <img src="polo.jpg" alt="Polo Shirt">
-    <h2>Polo Shirt</h2>
-    <div class="price">R280.00</div>
-    <button class="add-button"
-      onclick="addToCart('Polo Shirt', 280)">
-      Add to Cart
-    </button>
-  </div>
+            <div class="rating">
+                ★★★★★
+            </div>
 
-  <!-- PRODUCT 12 -->
-  <div class="product" data-name="sweater">
-    <img src="sweater.jpg" alt="Sweater">
-    <h2>Sweater</h2>
-    <div class="price">R320.00</div>
-    <button class="add-button"
-      onclick="addToCart('Sweater', 320)">
-      Add to Cart
-    </button>
-  </div>
+            <div class="price">
+                R450.00
+            </div>
 
-  <!-- PRODUCT 13 -->
-  <div class="product" data-name="windbreaker">
-    <img src="windbreaker.jpg" alt="Windbreaker">
-    <h2>Windbreaker</h2>
-    <div class="price">R480.00</div>
-    <button class="add-button"
-      onclick="addToCart('Windbreaker', 480)">
-      Add to Cart
-    </button>
-  </div>
+            <button class="add-button"
+                    onclick="addToCart('Tracksuit',450)">
+                ADD TO BAG
+            </button>
 
-  <!-- PRODUCT 14 -->
-  <div class="product" data-name="tracksuit pants">
-    <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
-    <h2>Tracksuit Pants</h2>
-    <div class="price">R300.00</div>
-    <button class="add-button"
-      onclick="addToCart('Tracksuit Pants', 300)">
-      Add to Cart
-    </button>
-  </div>
+        </div>
 
-  <!-- PRODUCT 15 -->
-  <div class="product" data-name="sports shirt">
-    <img src="sports-shirt.jpg" alt="Sports Shirt">
-    <h2>Sports Shirt</h2>
-    <div class="price">R270.00</div>
-    <button class="add-button"
-      onclick="addToCart('Sports Shirt', 270)">
-      Add to Cart
-    </button>
-  </div>
+    </div>
 
-  <!-- PRODUCT 16 -->
-  <div class="product" data-name="sports shorts">
-    <img src="sports-shorts.jpg" alt="Sports Shorts">
-    <h2>Sports Shorts</h2>
-    <div class="price">R230.00</div>
-    <button class="add-button"
-      onclick="addToCart('Sports Shorts', 230)">
-      Add to Cart
-    </button>
-  </div>
 
-  <!-- PRODUCT 17 -->
-  <div class="product" data-name="backpack">
-    <img src="backpack.jpg" alt="Backpack">
-    <h2>Backpack</h2>
-    <div class="price">R350.00</div>
-    <button class="add-button"
-      onclick="addToCart('Backpack', 350)">
-      Add to Cart
-    </button>
-  </div>
+    <!-- 2 -->
 
-  <!-- PRODUCT 18 -->
-  <div class="product" data-name="socks">
-    <img src="socks.jpg" alt="Socks">
-    <h2>Socks</h2>
-    <div class="price">R100.00</div>
-    <button class="add-button"
-      onclick="addToCart('Socks', 100)">
-      Add to Cart
-    </button>
-  </div>
+    <div class="product" data-name="t-shirt">
 
-  <!-- PRODUCT 19 -->
-  <div class="product" data-name="bucket hat">
-    <img src="bucket-hat.jpg" alt="Bucket Hat">
-    <h2>Bucket Hat</h2>
-    <div class="price">R180.00</div>
-    <button class="add-button"
-      onclick="addToCart('Bucket Hat', 180)">
-      Add to Cart
-    </button>
-  </div>
+        <div class="product-image">
 
-  <!-- PRODUCT 20 -->
-  <div class="product" data-name="tracksuit set">
-    <img src="tracksuit-set.jpg" alt="Tracksuit Set">
-    <h2>Tracksuit Set</h2>
-    <div class="price">R500.00</div>
-    <button class="add-button"
-      onclick="addToCart('Tracksuit Set', 500)">
-      Add to Cart
-    </button>
-  </div>
+            <img src="tshirt.jpg" alt="T-Shirt">
+
+            <div class="heart">♡</div>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">
+                T-Shirt
+            </div>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R250.00
+            </div>
+
+            <button class="add-button"
+                    onclick="addToCart('T-Shirt',250)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="product" data-name="hoodie">
+
+        <div class="product-image">
+
+            <img src="hoodie.jpg" alt="Hoodie">
+
+            <div class="heart">♡</div>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">
+                Hoodie
+            </div>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R350.00
+            </div>
+
+            <button class="add-button"
+                    onclick="addToCart('Hoodie',350)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="product" data-name="shoes">
+
+        <div class="product-image">
+
+            <img src="shoes.jpg" alt="Shoes">
+
+            <div class="sale-badge">
+                HOT
+            </div>
+
+            <div class="heart">♡</div>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">
+                Shoes
+            </div>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R600.00
+            </div>
+
+            <button class="add-button"
+                    onclick="addToCart('Shoes',600)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="product" data-name="jacket">
+
+        <div class="product-image">
+            <img src="jacket.jpg" alt="Jacket">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Jacket</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R550.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Jacket',550)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="product" data-name="jeans">
+
+        <div class="product-image">
+            <img src="jeans.jpg" alt="Jeans">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Jeans</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R400.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Jeans',400)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="product" data-name="shorts">
+
+        <div class="product-image">
+            <img src="shorts.jpg" alt="Shorts">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Shorts</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R220.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Shorts',220)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 8 -->
+
+    <div class="product" data-name="cap">
+
+        <div class="product-image">
+            <img src="cap.jpg" alt="Cap">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Cap</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R150.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Cap',150)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 9 -->
+
+    <div class="product" data-name="sneakers">
+
+        <div class="product-image">
+            <img src="sneakers.jpg" alt="Sneakers">
+            <div class="sale-badge">SALE</div>
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Sneakers</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R800.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Sneakers',800)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 10 -->
+
+    <div class="product" data-name="tracksuit jacket">
+
+        <div class="product-image">
+            <img src="tracksuit-jacket.jpg" alt="Tracksuit Jacket">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Tracksuit Jacket</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R300.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Tracksuit Jacket',300)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 11 -->
+
+    <div class="product" data-name="polo shirt">
+
+        <div class="product-image">
+            <img src="polo.jpg" alt="Polo Shirt">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Polo Shirt</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R280.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Polo Shirt',280)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 12 -->
+
+    <div class="product" data-name="sweater">
+
+        <div class="product-image">
+            <img src="sweater.jpg" alt="Sweater">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Sweater</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R320.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Sweater',320)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 13 -->
+
+    <div class="product" data-name="windbreaker">
+
+        <div class="product-image">
+            <img src="windbreaker.jpg" alt="Windbreaker">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Windbreaker</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R480.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Windbreaker',480)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 14 -->
+
+    <div class="product" data-name="tracksuit pants">
+
+        <div class="product-image">
+            <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Tracksuit Pants</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R300.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Tracksuit Pants',300)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 15 -->
+
+    <div class="product" data-name="sports shirt">
+
+        <div class="product-image">
+            <img src="sports-shirt.jpg" alt="Sports Shirt">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Sports Shirt</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R270.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Sports Shirt',270)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 16 -->
+
+    <div class="product" data-name="sports shorts">
+
+        <div class="product-image">
+            <img src="sports-shorts.jpg" alt="Sports Shorts">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Sports Shorts</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R230.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Sports Shorts',230)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 17 -->
+
+    <div class="product" data-name="backpack">
+
+        <div class="product-image">
+            <img src="backpack.jpg" alt="Backpack">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Backpack</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R350.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Backpack',350)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 18 -->
+
+    <div class="product" data-name="socks">
+
+        <div class="product-image">
+            <img src="socks.jpg" alt="Socks">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Socks</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R100.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Socks',100)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 19 -->
+
+    <div class="product" data-name="bucket hat">
+
+        <div class="product-image">
+            <img src="bucket-hat.jpg" alt="Bucket Hat">
+            <div class="heart">♡</div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Bucket Hat</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R180.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Bucket Hat',180)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- 20 -->
+
+    <div class="product" data-name="tracksuit set">
+
+        <div class="product-image">
+            <img src="tracksuit-set.jpg" alt="Tracksuit Set">
+
+            <div class="sale-badge">
+                NEW
+            </div>
+
+            <div class="heart">♡</div>
+
+        </div>
+
+        <div class="product-info">
+            <div class="product-name">Tracksuit Set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R500.00</div>
+
+            <button class="add-button"
+                    onclick="addToCart('Tracksuit Set',500)">
+                ADD TO BAG
+            </button>
+        </div>
+
+    </div>
 
 </div>
 
 
-<!-- ================================
-     STEP 1 - CART
-================================ -->
+<!-- ================= CART ================= -->
 
-<div id="cart-section" class="checkout-section">
+<section id="cart-section" class="cart-section">
 
-  <h2>Step 1: Review Your Cart</h2>
+    <h2>Your Bag</h2>
 
-  <div id="cart-items"></div>
+    <div id="cart-items"></div>
 
-  <h3 id="cart-total">Total: R0.00</h3>
+    <div class="total">
+        <span>Total</span>
+        <span id="cart-total">R0.00</span>
+    </div>
 
-  <button onclick="goToStep2()">
-    Continue to Checkout
-  </button>
+    <button class="checkout-button"
+            onclick="continueToCheckout()">
+        CHECKOUT
+    </button>
 
-</div>
-
-
-<!-- ================================
-     STEP 2 - CHECKOUT
-================================ -->
-
-<div id="step2" class="checkout-section" style="display:none;">
-
-  <h2>Step 2: Complete Your Order</h2>
-
-  <h3>Customer Details</h3>
-
-  <input
-    type="text"
-    id="customer-name"
-    placeholder="Full Name"
-  >
-
-  <input
-    type="text"
-    id="customer-phone"
-    placeholder="Phone Number"
-  >
-
-  <input
-    type="text"
-    id="customer-address"
-    placeholder="Delivery Address"
-  >
+</section>
 
 
-  <h3>Payment Method</h3>
+<!-- ================= CHECKOUT ================= -->
 
-  <label class="payment-option">
+<section id="checkout-section"
+         class="checkout-section">
+
+    <div class="step-title">
+        2. Delivery & Payment
+    </div>
+
     <input
-      type="radio"
-      name="payment"
-      value="Visa / Mastercard"
-      checked
+        class="input"
+        id="customer-name"
+        type="text"
+        placeholder="Full Name"
     >
-    💳 Visa / Mastercard
-  </label>
 
-  <label class="payment-option">
     <input
-      type="radio"
-      name="payment"
-      value="PayPal"
+        class="input"
+        id="customer-phone"
+        type="text"
+        placeholder="Phone Number"
     >
-    🅿️ PayPal
-  </label>
 
-  <label class="payment-option">
     <input
-      type="radio"
-      name="payment"
-      value="Cash on Delivery"
+        class="input"
+        id="customer-address"
+        type="text"
+        placeholder="Delivery Address"
     >
-    💵 Cash on Delivery
-  </label>
 
 
-  <button onclick="backToStep1()">
-    ← Back to Cart
-  </button>
+    <h3>Payment Method</h3>
 
-  <button onclick="placeOrderOnWhatsApp()">
-    📱 Place Order on WhatsApp
-  </button>
 
-</div>
+    <div class="payment-box">
+
+        <label class="payment-label">
+
+            <input
+                type="radio"
+                name="payment"
+                value="Visa / Mastercard"
+                checked
+            >
+
+            💳 Visa / Mastercard
+
+        </label>
+
+    </div>
+
+
+    <div class="payment-box">
+
+        <label class="payment-label">
+
+            <input
+                type="radio"
+                name="payment"
+                value="PayPal"
+            >
+
+            🅿️ PayPal
+
+        </label>
+
+    </div>
+
+
+    <div class="payment-box">
+
+        <label class="payment-label">
+
+            <input
+                type="radio"
+                name="payment"
+                value="Cash on Delivery"
+            >
+
+            💵 Cash on Delivery
+
+        </label>
+
+    </div>
+
+
+    <button
+        class="whatsapp-button"
+        onclick="placeOrderOnWhatsApp()">
+
+        📱 PLACE ORDER ON WHATSAPP
+
+    </button>
+
+
+    <button
+        class="back-button"
+        onclick="backToCart()">
+
+        ← BACK TO BAG
+
+    </button>
+
+</section>
+
+
+<footer>
+
+    <h3>SLINEVISION</h3>
+
+    <p>
+        Fashion • Style • Confidence
+    </p>
+
+    <p>
+        © 2026 SLINEVISION
+    </p>
+
+</footer>
 
 
 <script>
 
-// ==========================================
-// CART
-// ==========================================
+/* =========================
+   LOAD CART
+========================= */
 
 let cart =
-  JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(localStorage.getItem("cart")) || [];
 
 
-// ==========================================
-// ADD TO CART
-// ==========================================
+/* =========================
+   ADD TO CART
+========================= */
 
 function addToCart(name, price) {
 
-  let existingProduct =
-    cart.find(item => item.name === name);
+    let existing =
+        cart.find(item => item.name === name);
 
+    if (existing) {
 
-  if (existingProduct) {
+        existing.quantity =
+            (existing.quantity || 1) + 1;
 
-    existingProduct.quantity =
-      (existingProduct.quantity || 1) + 1;
+    } else {
 
-  } else {
+        cart.push({
+            name: name,
+            price: Number(price),
+            quantity: 1
+        });
 
-    cart.push({
-      name: name,
-      price: Number(price),
-      quantity: 1
-    });
+    }
 
-  }
+    saveCart();
 
-
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
-
-
-  displayCart();
-
-
-  // Automatically show cart after adding
-  document.getElementById("cart-section")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
+    document
+        .getElementById("cart-section")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
 }
 
 
-// ==========================================
-// DISPLAY CART
-// ==========================================
-
-function displayCart() {
-
-  let cartItems =
-    document.getElementById("cart-items");
-
-  let cartTotal =
-    document.getElementById("cart-total");
-
-
-  cartItems.innerHTML = "";
-
-
-  if (cart.length === 0) {
-
-    cartItems.innerHTML =
-      "<p>Your cart is empty.</p>";
-
-    cartTotal.innerText =
-      "Total: R0.00";
-
-    return;
-  }
-
-
-  let total = 0;
-
-
-  cart.forEach(function(item, index) {
-
-    let quantity =
-      item.quantity || 1;
-
-    let price =
-      Number(item.price);
-
-    let subtotal =
-      price * quantity;
-
-    total += subtotal;
-
-
-    cartItems.innerHTML += `
-
-      <div class="cart-item">
-
-        <strong>
-          ${item.name}
-        </strong>
-
-        <p>
-          Price: R${price.toFixed(2)}
-        </p>
-
-        <p>
-          Subtotal: R${subtotal.toFixed(2)}
-        </p>
-
-        <button onclick="decreaseQuantity(${index})">
-          −
-        </button>
-
-        <span>
-          ${quantity}
-        </span>
-
-        <button onclick="increaseQuantity(${index})">
-          +
-        </button>
-
-        <button onclick="removeItem(${index})">
-          Remove
-        </button>
-
-      </div>
-
-    `;
-
-  });
-
-
-  cartTotal.innerText =
-    "Total: R" + total.toFixed(2);
-
-
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
-
-}
-
-
-// ==========================================
-// INCREASE QUANTITY
-// ==========================================
-
-function increaseQuantity(index) {
-
-  cart[index].quantity =
-    (cart[index].quantity || 1) + 1;
-
-  saveCart();
-
-}
-
-
-// ==========================================
-// DECREASE QUANTITY
-// ==========================================
-
-function decreaseQuantity(index) {
-
-  if (cart[index].quantity > 1) {
-
-    cart[index].quantity--;
-
-  } else {
-
-    cart.splice(index, 1);
-
-  }
-
-  saveCart();
-
-}
-
-
-// ==========================================
-// REMOVE ITEM
-// ==========================================
-
-function removeItem(index) {
-
-  cart.splice(index, 1);
-
-  saveCart();
-
-}
-
-
-// ==========================================
-// SAVE CART
-// ==========================================
+/* =========================
+   SAVE CART
+========================= */
 
 function saveCart() {
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
-
-  displayCart();
-
-}
-
-
-// ==========================================
-// GO TO STEP 2
-// ==========================================
-
-function goToStep2() {
-
-  if (cart.length === 0) {
-
-    alert(
-      "Please add at least one product to your cart."
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
     );
 
-    return;
-  }
-
-
-  document.getElementById(
-    "step2"
-  ).style.display = "block";
-
-
-  document.getElementById(
-    "step2"
-  ).scrollIntoView({
-    behavior: "smooth"
-  });
+    displayCart();
 
 }
 
 
-// ==========================================
-// BACK TO STEP 1
-// ==========================================
+/* =========================
+   DISPLAY CART
+========================= */
 
-function backToStep1() {
+function displayCart() {
 
-  document.getElementById(
-    "step2"
-  ).style.display = "none";
+    let container =
+        document.getElementById("cart-items");
+
+    let totalElement =
+        document.getElementById("cart-total");
+
+    let countElement =
+        document.getElementById("cart-count");
 
 
-  document.getElementById(
-    "cart-section"
-  ).scrollIntoView({
-    behavior: "smooth"
-  });
+    container.innerHTML = "";
+
+
+    let total = 0;
+    let count = 0;
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML =
+            "<p>Your bag is empty.</p>";
+
+        totalElement.innerText =
+            "R0.00";
+
+        countElement.innerText =
+            "0";
+
+        return;
+    }
+
+
+    cart.forEach(function(item, index) {
+
+        let quantity =
+            item.quantity || 1;
+
+        let price =
+            Number(item.price);
+
+        let subtotal =
+            price * quantity;
+
+        total += subtotal;
+
+        count += quantity;
+
+
+        container.innerHTML += `
+
+            <div class="cart-item">
+
+                <div class="cart-item-name">
+                    ${item.name}
+                </div>
+
+                <div class="cart-item-price">
+                    R${price.toFixed(2)}
+                </div>
+
+                <div class="quantity-controls">
+
+                    <button
+                        onclick="decreaseQuantity(${index})">
+                        −
+                    </button>
+
+                    <span>
+                        ${quantity}
+                    </span>
+
+                    <button
+                        onclick="increaseQuantity(${index})">
+                        +
+                    </button>
+
+                </div>
+
+                <div>
+                    Subtotal:
+                    R${subtotal.toFixed(2)}
+                </div>
+
+                <button
+                    class="remove-button"
+                    onclick="removeItem(${index})">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    totalElement.innerText =
+        "R" + total.toFixed(2);
+
+    countElement.innerText =
+        count;
 
 }
 
 
-// ==========================================
-// PLACE ORDER ON WHATSAPP
-// ==========================================
+/* =========================
+   QUANTITY
+========================= */
+
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+    saveCart();
+
+}
+
+
+function decreaseQuantity(index) {
+
+    if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+    } else {
+
+        cart.splice(index, 1);
+
+    }
+
+    saveCart();
+
+}
+
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    saveCart();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts() {
+
+    let search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let products =
+        document.querySelectorAll(".product");
+
+
+    products.forEach(function(product) {
+
+        let name =
+            product.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function continueToCheckout() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Please add an item to your bag first."
+        );
+
+        return;
+    }
+
+
+    document
+        .getElementById("checkout-section")
+        .style.display = "block";
+
+
+    document
+        .getElementById("checkout-section")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function backToCart() {
+
+    document
+        .getElementById("checkout-section")
+        .style.display = "none";
+
+
+    document
+        .getElementById("cart-section")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
 
 function placeOrderOnWhatsApp() {
 
-  if (cart.length === 0) {
+    if (cart.length === 0) {
 
-    alert("Your cart is empty.");
+        alert("Your bag is empty.");
 
-    return;
-  }
-
-
-  let name =
-    document.getElementById(
-      "customer-name"
-    ).value.trim();
+        return;
+    }
 
 
-  let phone =
-    document.getElementById(
-      "customer-phone"
-    ).value.trim();
+    let name =
+        document
+        .getElementById("customer-name")
+        .value.trim();
 
 
-  let address =
-    document.getElementById(
-      "customer-address"
-    ).value.trim();
+    let phone =
+        document
+        .getElementById("customer-phone")
+        .value.trim();
 
 
-  if (!name || !phone || !address) {
-
-    alert(
-      "Please complete your name, phone number and address."
-    );
-
-    return;
-  }
+    let address =
+        document
+        .getElementById("customer-address")
+        .value.trim();
 
 
-  let payment =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    ).value;
+    if (!name || !phone || !address) {
+
+        alert(
+            "Please complete your delivery details."
+        );
+
+        return;
+    }
 
 
-  let orderItems = "";
-
-  let total = 0;
-
-
-  cart.forEach(function(item) {
-
-    let quantity =
-      item.quantity || 1;
-
-    let price =
-      Number(item.price);
-
-    let subtotal =
-      price * quantity;
-
-    total += subtotal;
+    let payment =
+        document
+        .querySelector(
+            'input[name="payment"]:checked'
+        )
+        .value;
 
 
-    orderItems +=
-      "• " +
-      item.name +
-      " x" +
-      quantity +
-      " = R" +
-      subtotal.toFixed(2) +
-      "\n";
-
-  });
+    let items = "";
+    let total = 0;
 
 
-  let message =
-    "🛒 NEW SLINEVISION ORDER\n\n" +
+    cart.forEach(function(item) {
 
-    "ORDER ITEMS:\n" +
-    orderItems +
+        let quantity =
+            item.quantity || 1;
 
-    "\nTOTAL: R" +
-    total.toFixed(2) +
+        let subtotal =
+            Number(item.price) * quantity;
 
-    "\n\nPAYMENT METHOD:\n" +
-    payment +
-
-    "\n\nCUSTOMER DETAILS:\n" +
-    "Name: " +
-    name +
-
-    "\nPhone: " +
-    phone +
-
-    "\nAddress: " +
-    address;
+        total += subtotal;
 
 
-  // YOUR WHATSAPP NUMBER
-  let whatsappNumber =
-    "27691603308";
+        items +=
+            "• " +
+            item.name +
+            " x" +
+            quantity +
+            " - R" +
+            subtotal.toFixed(2) +
+            "\n";
+
+    });
 
 
-  let whatsappURL =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(message);
+    let message =
+
+        "🛍️ SLINEVISION NEW ORDER\n\n" +
+
+        "ORDER ITEMS\n" +
+        "--------------------\n" +
+
+        items +
+
+        "\nTOTAL: R" +
+        total.toFixed(2) +
+
+        "\n\nPAYMENT METHOD\n" +
+        payment +
+
+        "\n\nCUSTOMER DETAILS\n" +
+        "Name: " +
+        name +
+
+        "\nPhone: " +
+        phone +
+
+        "\nAddress: " +
+        address;
 
 
-  // Open WhatsApp
-  window.location.href =
-    whatsappURL;
+    let whatsappNumber =
+        "27691603308";
+
+
+    let url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.location.href = url;
 
 }
 
 
-// ==========================================
-// LOAD CART WHEN PAGE OPENS
-// ==========================================
+/* =========================
+   START
+========================= */
 
 displayCart();
 
 </script>
+
+</body>
+</html>
