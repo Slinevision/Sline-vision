@@ -1,167 +1,181 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slinevision</title>
+
+<title>Slinevision Checkout</title>
 
 <style>
 body {
   background: #ffffff;
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 10px;
+  padding: 15px;
   color: #111;
 }
 
 h1 {
   font-size: 26px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 21px;
+  margin-top: 20px;
 }
 
 .search {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
-.cart {
-  margin: 10px 0;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.cart-items {
-  margin-top: 15px;
+/* CART */
+.cart-box {
+  margin-top: 20px;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 12px;
 }
 
 .cart-item {
-  background: #f9f9f9;
+  background: white;
   padding: 12px;
-  margin: 10px 0;
-  border-radius: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   border: 1px solid #ddd;
 }
 
-.cart-item-name {
+.product-name {
   font-weight: bold;
   font-size: 17px;
 }
 
-.cart-item-price {
-  margin: 5px 0;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.quantity-controls button {
-  width: 40px;
-  padding: 8px;
-  margin: 0;
-  background: black;
-  color: white;
+.product-price {
+  margin-top: 5px;
 }
 
 .quantity {
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.remove-btn {
-  background: #c00 !important;
-  width: 100% !important;
-  margin-top: 10px !important;
+.quantity button {
+  width: 40px;
+  padding: 7px;
+  margin: 0;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remove {
+  width: 100%;
+  background: #d00000;
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 7px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .total {
   font-size: 20px;
   font-weight: bold;
-  margin: 15px 0;
+  margin-top: 15px;
 }
 
+/* CUSTOMER DETAILS */
 .checkout {
   margin-top: 20px;
-  padding: 15px;
   background: #f1f1f1;
+  padding: 15px;
   border-radius: 12px;
 }
 
-input {
+input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 8px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
-.payment-method {
-  margin-top: 15px;
-}
-
-.payment-method label {
+/* PAYMENT */
+.payment-option {
   display: block;
-  padding: 10px;
   background: white;
+  padding: 12px;
   margin: 8px 0;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
 
-.payment-method input {
+.payment-option input {
   width: auto;
   margin-right: 8px;
 }
 
-button {
+/* BUTTON */
+.continue-btn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background: black;
   color: white;
   border: none;
   border-radius: 10px;
-  margin-top: 8px;
-  font-size: 16px;
+  margin-top: 15px;
+  font-size: 17px;
   cursor: pointer;
+}
+
+.continue-btn:hover {
+  background: #333;
 }
 
 .empty-cart {
   text-align: center;
   padding: 20px;
-  color: #666;
+  color: #777;
 }
 </style>
-
 </head>
 
 <body>
 
 <h1>SLINEVISION</h1>
 
+<!-- SEARCH -->
 <input
   class="search"
   placeholder="Search products..."
 >
 
-<div class="cart">
-  🛒 Cart: <span id="cart-count">0</span>
+<!-- CART -->
+<div class="cart-box">
+
+  <h2>🛒 Your Cart</h2>
+
+  <div id="cart-items"></div>
+
+  <div id="cart-total" class="total"></div>
+
 </div>
 
-<!-- CART ITEMS WILL APPEAR HERE -->
-<div id="cart-items" class="cart-items"></div>
 
-<div id="cart-total" class="total"></div>
-
+<!-- CHECKOUT -->
 <div class="checkout">
 
-  <h2>Checkout</h2>
+  <h2>Customer Details</h2>
 
   <input
     type="text"
@@ -181,137 +195,156 @@ button {
     id="address"
   >
 
-  <div class="payment-method">
 
-    <h2>Payment Method</h2>
+  <!-- PAYMENT METHOD -->
+  <h2>Payment Method</h2>
 
-    <label>
-      <input
-        type="radio"
-        name="payment"
-        value="Visa / Mastercard"
-        checked
-      >
-      💳 Visa / Mastercard
-    </label>
+  <label class="payment-option">
+    <input
+      type="radio"
+      name="payment"
+      value="Visa / Mastercard"
+      checked
+    >
+    💳 Visa / Mastercard
+  </label>
 
-    <label>
-      <input
-        type="radio"
-        name="payment"
-        value="PayPal"
-      >
-      🅿️ PayPal
-    </label>
+  <label class="payment-option">
+    <input
+      type="radio"
+      name="payment"
+      value="PayPal"
+    >
+    🅿️ PayPal
+  </label>
 
-    <label>
-      <input
-        type="radio"
-        name="payment"
-        value="Cash on Delivery"
-      >
-      💵 Cash on Delivery
-    </label>
+  <label class="payment-option">
+    <input
+      type="radio"
+      name="payment"
+      value="Cash on Delivery"
+    >
+    💵 Cash on Delivery
+  </label>
 
-  </div>
 
-  <button onclick="placeOrder()">
-    Place Order on WhatsApp
+  <!-- CONTINUE -->
+  <button
+    class="continue-btn"
+    onclick="continueToPayment()"
+  >
+    Continue to Payment
   </button>
 
 </div>
 
+
 <script>
 
-// LOAD CART
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// GET CART FROM LOCAL STORAGE
+let cart = JSON.parse(
+  localStorage.getItem("cart")
+) || [];
+
 
 // DISPLAY CART
 function displayCart() {
 
-  const cartItems = document.getElementById("cart-items");
-  const cartCount = document.getElementById("cart-count");
-  const cartTotal = document.getElementById("cart-total");
+  const cartItems =
+    document.getElementById("cart-items");
+
+  const cartTotal =
+    document.getElementById("cart-total");
 
   cartItems.innerHTML = "";
 
   if (cart.length === 0) {
 
     cartItems.innerHTML =
-      '<div class="empty-cart">🛒 Your cart is empty.</div>';
+      '<div class="empty-cart">' +
+      '🛒 Your cart is empty.' +
+      '</div>';
 
-    cartCount.innerText = "0";
-    cartTotal.innerText = "";
+    cartTotal.innerHTML = "";
 
     return;
   }
 
-  let totalItems = 0;
-  let totalPrice = 0;
 
-  cart.forEach((item, index) => {
+  let total = 0;
+
+
+  cart.forEach(function(item, index) {
 
     // Make sure quantity exists
     if (!item.quantity) {
       item.quantity = 1;
     }
 
-    let itemTotal = Number(item.price) * item.quantity;
 
-    totalItems += item.quantity;
-    totalPrice += itemTotal;
+    let price =
+      Number(item.price);
+
+    let itemTotal =
+      price * item.quantity;
+
+    total += itemTotal;
+
 
     cartItems.innerHTML += `
 
       <div class="cart-item">
 
-        <div class="cart-item-name">
+        <div class="product-name">
           ${item.name}
         </div>
 
-        <div class="cart-item-price">
-          Price: R${Number(item.price).toFixed(2)}
+        <div class="product-price">
+          R${price.toFixed(2)}
         </div>
 
-        <div>
-          Subtotal:
-          R${itemTotal.toFixed(2)}
-        </div>
+        <div class="quantity">
 
-        <div class="quantity-controls">
-
-          <button onclick="decreaseQuantity(${index})">
+          <button
+            onclick="decreaseQuantity(${index})"
+          >
             −
           </button>
 
-          <span class="quantity">
+          <strong>
             ${item.quantity}
-          </span>
+          </strong>
 
-          <button onclick="increaseQuantity(${index})">
+          <button
+            onclick="increaseQuantity(${index})"
+          >
             +
           </button>
 
         </div>
 
         <button
-          class="remove-btn"
+          class="remove"
           onclick="removeItem(${index})"
         >
-          Remove Item
+          Remove
         </button>
 
       </div>
 
     `;
+
   });
 
-  cartCount.innerText = totalItems;
 
-  cartTotal.innerText =
-    "Total: R" + totalPrice.toFixed(2);
+  cartTotal.innerHTML =
+    "Total: R" + total.toFixed(2);
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
 }
 
 
@@ -321,12 +354,8 @@ function increaseQuantity(index) {
   cart[index].quantity =
     (cart[index].quantity || 1) + 1;
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
+  saveCart();
 
-  displayCart();
 }
 
 
@@ -340,14 +369,11 @@ function decreaseQuantity(index) {
   } else {
 
     cart.splice(index, 1);
+
   }
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
+  saveCart();
 
-  displayCart();
 }
 
 
@@ -356,37 +382,13 @@ function removeItem(index) {
 
   cart.splice(index, 1);
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
+  saveCart();
 
-  displayCart();
 }
 
 
-// ADD TO CART
-function addToCart(name, price) {
-
-  // Check if product already exists
-  let existingItem = cart.find(
-    item => item.name === name
-  );
-
-  if (existingItem) {
-
-    existingItem.quantity =
-      (existingItem.quantity || 1) + 1;
-
-  } else {
-
-    cart.push({
-      name: name,
-      price: Number(price),
-      quantity: 1
-    });
-
-  }
+// SAVE CART
+function saveCart() {
 
   localStorage.setItem(
     "cart",
@@ -394,18 +396,22 @@ function addToCart(name, price) {
   );
 
   displayCart();
+
 }
 
 
-// PLACE ORDER
-function placeOrder() {
+// CONTINUE TO PAYMENT
+function continueToPayment() {
 
   if (cart.length === 0) {
 
-    alert("Your cart is empty.");
-    return;
+    alert(
+      "Your cart is empty. Please add products first."
+    );
 
+    return;
   }
+
 
   let name =
     document.getElementById("name").value.trim();
@@ -416,61 +422,70 @@ function placeOrder() {
   let address =
     document.getElementById("address").value.trim();
 
+
   if (!name || !phone || !address) {
 
     alert(
-      "Please enter your name, phone number and address."
+      "Please enter your full name, phone number and address."
     );
 
     return;
   }
 
 
-  // GET PAYMENT METHOD
-  let paymentMethod =
+  // SELECTED PAYMENT METHOD
+  let payment =
     document.querySelector(
       'input[name="payment"]:checked'
     ).value;
 
 
-  // CREATE ITEM LIST
-  let items = "";
+  // CREATE ORDER LIST
+  let orderItems = "";
 
   let total = 0;
 
-  cart.forEach((item) => {
 
-    let itemTotal =
-      Number(item.price) * item.quantity;
+  cart.forEach(function(item) {
 
-    total += itemTotal;
+    let price =
+      Number(item.price);
 
-    items +=
+    let quantity =
+      item.quantity || 1;
+
+    let subtotal =
+      price * quantity;
+
+    total += subtotal;
+
+
+    orderItems +=
       "• " +
       item.name +
-      " x " +
-      item.quantity +
-      " - R" +
-      itemTotal.toFixed(2) +
+      " x" +
+      quantity +
+      " = R" +
+      subtotal.toFixed(2) +
       "\n";
 
   });
 
 
-  // CREATE WHATSAPP MESSAGE
+  // WHATSAPP MESSAGE
   let message =
-    "🛒 *NEW ORDER*\n\n" +
+    "🛒 NEW SLINEVISION ORDER\n\n" +
 
-    "*ORDER ITEMS:*\n" +
-    items +
+    "ORDER ITEMS:\n" +
+    orderItems +
 
-    "\n*TOTAL:* R" +
+    "\nTOTAL: R" +
     total.toFixed(2) +
 
-    "\n\n*PAYMENT METHOD:*\n" +
-    paymentMethod +
+    "\n\nPAYMENT METHOD:\n" +
+    payment +
 
-    "\n\n*CUSTOMER DETAILS:*\n" +
+    "\n\nCUSTOMER DETAILS:\n" +
     "Name: " +
     name +
 
@@ -482,11 +497,12 @@ function placeOrder() {
 
 
   // YOUR WHATSAPP NUMBER
-  let whatsappNumber = "27691603308";
+  let whatsappNumber =
+    "27691603308";
 
 
-  // WHATSAPP URL
-  let url =
+  // CREATE WHATSAPP LINK
+  let whatsappURL =
     "https://wa.me/" +
     whatsappNumber +
     "?text=" +
@@ -494,20 +510,16 @@ function placeOrder() {
 
 
   // OPEN WHATSAPP
-  window.location.href = url;
-
-
-  // CLEAR CART
-  localStorage.removeItem("cart");
+  window.location.href =
+    whatsappURL;
 
 }
 
 
-// DISPLAY CART WHEN PAGE LOADS
+// SHOW CART WHEN PAGE LOADS
 displayCart();
 
 </script>
 
 </body>
 </html>
-```
