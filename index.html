@@ -1,725 +1,242 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>SLINEVISION - Checkout</title>
-
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-
-    body {
-      margin: 0;
-      padding: 15px;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #111;
-    }
-
-
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-
-    h2 {
-      margin-top: 20px;
-    }
-
-
-    .back-button {
-      display: inline-block;
-      text-decoration: none;
-      color: black;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-
-
-    /* CART */
-
-    .cart-box {
-      background: #f5f5f5;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-
-    .cart-item {
-      background: white;
-      padding: 15px;
-      margin-bottom: 12px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-
-
-    .item-name {
-      font-size: 19px;
-      font-weight: bold;
-    }
-
-
-    .item-price {
-      margin-top: 5px;
-      color: #555;
-    }
-
-
-    .item-subtotal {
-      margin-top: 5px;
-      font-weight: bold;
-    }
-
-
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-
-    .quantity-controls button {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: black;
-      color: white;
-      border-radius: 7px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-
-    .quantity-number {
-      font-size: 18px;
-      font-weight: bold;
-      min-width: 25px;
-      text-align: center;
-    }
-
-
-    .remove-button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 10px;
-      border: none;
-      background: #d00000;
-      color: white;
-      border-radius: 7px;
-      cursor: pointer;
-    }
-
-
-    .cart-total {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-
-    .empty-cart {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-    }
-
-
-    /* CHECKOUT */
-
-    .checkout-box {
-      background: #f1f1f1;
-      padding: 15px;
-      border-radius: 12px;
-    }
-
-
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-
-    /* PAYMENT */
-
-    .payment-option {
-      display: block;
-      background: white;
-      padding: 13px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      cursor: pointer;
-    }
-
-
-    .payment-option input {
-      margin-right: 8px;
-    }
-
-
-    /* BUTTON */
-
-    .continue-button {
-      width: 100%;
-      padding: 15px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 10px;
-      background: black;
-      color: white;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-
-    .continue-button:hover {
-      background: #333;
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-
-<a
-  href="index.html"
-  class="back-button"
->
-  ← Continue Shopping
-</a>
-
-
-<h1>SLINEVISION CHECKOUT</h1>
-
-
-<!-- =====================================
-     CART
-====================================== -->
-
-<div class="cart-box">
-
-  <h2>🛒 Your Cart</h2>
-
-  <div id="cart-items"></div>
-
-  <div
-    id="cart-total"
-    class="cart-total"
-  ></div>
+<div class="products" id="products">
+
+  <!-- PRODUCT 1 -->
+  <div class="product" data-name="tracksuit">
+    <img src="tracksuit.jpg" alt="Tracksuit">
+    <h2>Tracksuit</h2>
+    <div class="price">R450.00</div>
+    <button class="add-button"
+      onclick="addToCart('Tracksuit', 450)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 2 -->
+  <div class="product" data-name="t-shirt">
+    <img src="tshirt.jpg" alt="T-Shirt">
+    <h2>T-Shirt</h2>
+    <div class="price">R250.00</div>
+    <button class="add-button"
+      onclick="addToCart('T-Shirt', 250)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 3 -->
+  <div class="product" data-name="hoodie">
+    <img src="hoodie.jpg" alt="Hoodie">
+    <h2>Hoodie</h2>
+    <div class="price">R350.00</div>
+    <button class="add-button"
+      onclick="addToCart('Hoodie', 350)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 4 -->
+  <div class="product" data-name="shoes">
+    <img src="shoes.jpg" alt="Shoes">
+    <h2>Shoes</h2>
+    <div class="price">R600.00</div>
+    <button class="add-button"
+      onclick="addToCart('Shoes', 600)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 5 -->
+  <div class="product" data-name="jacket">
+    <img src="jacket.jpg" alt="Jacket">
+    <h2>Jacket</h2>
+    <div class="price">R550.00</div>
+    <button class="add-button"
+      onclick="addToCart('Jacket', 550)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 6 -->
+  <div class="product" data-name="jeans">
+    <img src="jeans.jpg" alt="Jeans">
+    <h2>Jeans</h2>
+    <div class="price">R400.00</div>
+    <button class="add-button"
+      onclick="addToCart('Jeans', 400)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 7 -->
+  <div class="product" data-name="shorts">
+    <img src="shorts.jpg" alt="Shorts">
+    <h2>Shorts</h2>
+    <div class="price">R220.00</div>
+    <button class="add-button"
+      onclick="addToCart('Shorts', 220)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 8 -->
+  <div class="product" data-name="cap">
+    <img src="cap.jpg" alt="Cap">
+    <h2>Cap</h2>
+    <div class="price">R150.00</div>
+    <button class="add-button"
+      onclick="addToCart('Cap', 150)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 9 -->
+  <div class="product" data-name="sneakers">
+    <img src="sneakers.jpg" alt="Sneakers">
+    <h2>Sneakers</h2>
+    <div class="price">R800.00</div>
+    <button class="add-button"
+      onclick="addToCart('Sneakers', 800)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 10 -->
+  <div class="product" data-name="tracksuit jacket">
+    <img src="tracksuit-jacket.jpg" alt="Tracksuit Jacket">
+    <h2>Tracksuit Jacket</h2>
+    <div class="price">R300.00</div>
+    <button class="add-button"
+      onclick="addToCart('Tracksuit Jacket', 300)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 11 -->
+  <div class="product" data-name="polo shirt">
+    <img src="polo.jpg" alt="Polo Shirt">
+    <h2>Polo Shirt</h2>
+    <div class="price">R280.00</div>
+    <button class="add-button"
+      onclick="addToCart('Polo Shirt', 280)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 12 -->
+  <div class="product" data-name="sweater">
+    <img src="sweater.jpg" alt="Sweater">
+    <h2>Sweater</h2>
+    <div class="price">R320.00</div>
+    <button class="add-button"
+      onclick="addToCart('Sweater', 320)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 13 -->
+  <div class="product" data-name="windbreaker">
+    <img src="windbreaker.jpg" alt="Windbreaker">
+    <h2>Windbreaker</h2>
+    <div class="price">R480.00</div>
+    <button class="add-button"
+      onclick="addToCart('Windbreaker', 480)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 14 -->
+  <div class="product" data-name="tracksuit pants">
+    <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
+    <h2>Tracksuit Pants</h2>
+    <div class="price">R300.00</div>
+    <button class="add-button"
+      onclick="addToCart('Tracksuit Pants', 300)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 15 -->
+  <div class="product" data-name="sports shirt">
+    <img src="sports-shirt.jpg" alt="Sports Shirt">
+    <h2>Sports Shirt</h2>
+    <div class="price">R270.00</div>
+    <button class="add-button"
+      onclick="addToCart('Sports Shirt', 270)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 16 -->
+  <div class="product" data-name="sports shorts">
+    <img src="sports-shorts.jpg" alt="Sports Shorts">
+    <h2>Sports Shorts</h2>
+    <div class="price">R230.00</div>
+    <button class="add-button"
+      onclick="addToCart('Sports Shorts', 230)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 17 -->
+  <div class="product" data-name="backpack">
+    <img src="backpack.jpg" alt="Backpack">
+    <h2>Backpack</h2>
+    <div class="price">R350.00</div>
+    <button class="add-button"
+      onclick="addToCart('Backpack', 350)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 18 -->
+  <div class="product" data-name="socks">
+    <img src="socks.jpg" alt="Socks">
+    <h2>Socks</h2>
+    <div class="price">R100.00</div>
+    <button class="add-button"
+      onclick="addToCart('Socks', 100)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 19 -->
+  <div class="product" data-name="bucket hat">
+    <img src="bucket-hat.jpg" alt="Bucket Hat">
+    <h2>Bucket Hat</h2>
+    <div class="price">R180.00</div>
+    <button class="add-button"
+      onclick="addToCart('Bucket Hat', 180)">
+      Add to Cart
+    </button>
+  </div>
+
+
+  <!-- PRODUCT 20 -->
+  <div class="product" data-name="tracksuit set">
+    <img src="tracksuit-set.jpg" alt="Tracksuit Set">
+    <h2>Tracksuit Set</h2>
+    <div class="price">R500.00</div>
+    <button class="add-button"
+      onclick="addToCart('Tracksuit Set', 500)">
+      Add to Cart
+    </button>
+  </div>
 
 </div>
-
-
-<!-- =====================================
-     CUSTOMER DETAILS
-====================================== -->
-
-<div class="checkout-box">
-
-  <h2>Customer Details</h2>
-
-
-  <input
-    type="text"
-    id="name"
-    class="input-field"
-    placeholder="Full Name"
-  >
-
-
-  <input
-    type="text"
-    id="phone"
-    class="input-field"
-    placeholder="Phone Number"
-  >
-
-
-  <input
-    type="text"
-    id="address"
-    class="input-field"
-    placeholder="Delivery Address"
-  >
-
-
-  <!-- ===================================
-       PAYMENT METHOD
-  ==================================== -->
-
-  <h2>Payment Method</h2>
-
-
-  <label class="payment-option">
-
-    <input
-      type="radio"
-      name="payment"
-      value="Visa / Mastercard"
-      checked
-    >
-
-    💳 Visa / Mastercard
-
-  </label>
-
-
-  <label class="payment-option">
-
-    <input
-      type="radio"
-      name="payment"
-      value="PayPal"
-    >
-
-    🅿️ PayPal
-
-  </label>
-
-
-  <label class="payment-option">
-
-    <input
-      type="radio"
-      name="payment"
-      value="Cash on Delivery"
-    >
-
-    💵 Cash on Delivery
-
-  </label>
-
-
-  <!-- ===================================
-       CONTINUE
-  ==================================== -->
-
-  <button
-    class="continue-button"
-    onclick="placeOrder()"
-  >
-    Continue to Payment
-  </button>
-
-</div>
-
-
-<script>
-
-  // =========================================
-  // LOAD CART
-  // =========================================
-
-  let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
-
-
-  // =========================================
-  // DISPLAY CART
-  // =========================================
-
-  function displayCart() {
-
-    let cartItems =
-      document.getElementById(
-        "cart-items"
-      );
-
-
-    let cartTotal =
-      document.getElementById(
-        "cart-total"
-      );
-
-
-    cartItems.innerHTML = "";
-
-
-    // CART EMPTY
-    if (cart.length === 0) {
-
-      cartItems.innerHTML = `
-        <div class="empty-cart">
-          🛒 Your cart is empty.
-          <br><br>
-          <a href="index.html">
-            Go back to the shop
-          </a>
-        </div>
-      `;
-
-
-      cartTotal.innerText = "";
-
-      return;
-    }
-
-
-    let total = 0;
-
-
-    // DISPLAY EACH PRODUCT
-
-    cart.forEach(function(item, index) {
-
-      // Make sure quantity exists
-
-      if (!item.quantity) {
-
-        item.quantity = 1;
-
-      }
-
-
-      let price =
-        Number(item.price);
-
-
-      let quantity =
-        Number(item.quantity);
-
-
-      let subtotal =
-        price * quantity;
-
-
-      total += subtotal;
-
-
-      cartItems.innerHTML += `
-
-        <div class="cart-item">
-
-          <div class="item-name">
-            ${item.name}
-          </div>
-
-
-          <div class="item-price">
-            Price: R${price.toFixed(2)}
-          </div>
-
-
-          <div class="item-subtotal">
-            Subtotal:
-            R${subtotal.toFixed(2)}
-          </div>
-
-
-          <div class="quantity-controls">
-
-            <button
-              onclick="decreaseQuantity(${index})"
-            >
-              −
-            </button>
-
-
-            <span class="quantity-number">
-              ${quantity}
-            </span>
-
-
-            <button
-              onclick="increaseQuantity(${index})"
-            >
-              +
-            </button>
-
-          </div>
-
-
-          <button
-            class="remove-button"
-            onclick="removeItem(${index})"
-          >
-            Remove Item
-          </button>
-
-        </div>
-
-      `;
-
-    });
-
-
-    // SHOW TOTAL
-
-    cartTotal.innerText =
-      "Total: R" +
-      total.toFixed(2);
-
-
-    // SAVE UPDATED CART
-
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(cart)
-    );
-
-  }
-
-
-  // =========================================
-  // INCREASE QUANTITY
-  // =========================================
-
-  function increaseQuantity(index) {
-
-    cart[index].quantity =
-      Number(cart[index].quantity || 1) + 1;
-
-
-    saveCart();
-
-  }
-
-
-  // =========================================
-  // DECREASE QUANTITY
-  // =========================================
-
-  function decreaseQuantity(index) {
-
-    if (
-      Number(cart[index].quantity) > 1
-    ) {
-
-      cart[index].quantity--;
-
-    } else {
-
-      cart.splice(index, 1);
-
-    }
-
-
-    saveCart();
-
-  }
-
-
-  // =========================================
-  // REMOVE PRODUCT
-  // =========================================
-
-  function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    saveCart();
-
-  }
-
-
-  // =========================================
-  // SAVE CART
-  // =========================================
-
-  function saveCart() {
-
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(cart)
-    );
-
-
-    displayCart();
-
-  }
-
-
-  // =========================================
-  // PLACE ORDER
-  // =========================================
-
-  function placeOrder() {
-
-    // Check cart
-
-    if (cart.length === 0) {
-
-      alert(
-        "Your cart is empty. Please add a product first."
-      );
-
-      return;
-
-    }
-
-
-    // Customer details
-
-    let name =
-      document
-      .getElementById("name")
-      .value
-      .trim();
-
-
-    let phone =
-      document
-      .getElementById("phone")
-      .value
-      .trim();
-
-
-    let address =
-      document
-      .getElementById("address")
-      .value
-      .trim();
-
-
-    // Check customer details
-
-    if (
-      !name ||
-      !phone ||
-      !address
-    ) {
-
-      alert(
-        "Please complete your name, phone number and address."
-      );
-
-      return;
-
-    }
-
-
-    // Get selected payment
-
-    let payment =
-      document.querySelector(
-        'input[name="payment"]:checked'
-      ).value;
-
-
-    // Build order items
-
-    let orderItems = "";
-
-    let total = 0;
-
-
-    cart.forEach(function(item) {
-
-      let quantity =
-        Number(item.quantity || 1);
-
-
-      let price =
-        Number(item.price);
-
-
-      let subtotal =
-        price * quantity;
-
-
-      total += subtotal;
-
-
-      orderItems +=
-        "• " +
-        item.name +
-        " x" +
-        quantity +
-        " - R" +
-        subtotal.toFixed(2) +
-        "\n";
-
-    });
-
-
-    // =====================================
-    // WHATSAPP MESSAGE
-    // =====================================
-
-    let message =
-      "🛒 NEW SLINEVISION ORDER\n\n" +
-
-      "ORDER ITEMS:\n" +
-
-      orderItems +
-
-      "\nTOTAL: R" +
-      total.toFixed(2) +
-
-      "\n\nPAYMENT METHOD:\n" +
-      payment +
-
-      "\n\nCUSTOMER DETAILS:\n" +
-
-      "Name: " +
-      name +
-
-      "\nPhone: " +
-      phone +
-
-      "\nAddress: " +
-      address;
-
-
-    // =====================================
-    // YOUR WHATSAPP NUMBER
-    // =====================================
-
-    let whatsappNumber =
-      "27691603308";
-
-
-    // =====================================
-    // CREATE WHATSAPP URL
-    // =====================================
-
-    let whatsappURL =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(message);
-
-
-    // =====================================
-    // OPEN WHATSAPP
-    // =====================================
-
-    window.location.href =
-      whatsappURL;
-
-  }
-
-
-  // =========================================
-  // DISPLAY CART ON PAGE LOAD
-  // =========================================
-
-  displayCart();
-
-</script>
-
-
-</body>
-</html>
