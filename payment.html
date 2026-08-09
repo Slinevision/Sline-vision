@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,34 +25,65 @@ h1 {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .cart {
   margin: 10px 0;
   font-weight: bold;
+  font-size: 18px;
 }
 
-.product {
+.cart-items {
+  margin-top: 15px;
+}
+
+.cart-item {
   background: #f9f9f9;
   padding: 12px;
-  margin: 12px 0;
+  margin: 10px 0;
   border-radius: 12px;
+  border: 1px solid #ddd;
 }
 
-.product img {
-  width: 100%;
-  border-radius: 10px;
+.cart-item-name {
+  font-weight: bold;
+  font-size: 17px;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
+.cart-item-price {
+  margin: 5px 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.quantity-controls button {
+  width: 40px;
+  padding: 8px;
+  margin: 0;
   background: black;
   color: white;
-  border: none;
-  border-radius: 10px;
-  margin-top: 8px;
-  font-size: 16px;
+}
+
+.quantity {
+  font-weight: bold;
+}
+
+.remove-btn {
+  background: #c00 !important;
+  width: 100% !important;
+  margin-top: 10px !important;
+}
+
+.total {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 .checkout {
@@ -67,6 +99,43 @@ input {
   margin: 8px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.payment-method {
+  margin-top: 15px;
+}
+
+.payment-method label {
+  display: block;
+  padding: 10px;
+  background: white;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.payment-method input {
+  width: auto;
+  margin-right: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 20px;
+  color: #666;
 }
 </style>
 
@@ -76,19 +145,79 @@ input {
 
 <h1>SLINEVISION</h1>
 
-<input class="search" placeholder="Search products...">
+<input
+  class="search"
+  placeholder="Search products..."
+>
 
 <div class="cart">
-🛒 Cart: <span id="cart-count">0</span>
+  🛒 Cart: <span id="cart-count">0</span>
 </div>
 
-<h2>Checkout</h2>
+<!-- CART ITEMS WILL APPEAR HERE -->
+<div id="cart-items" class="cart-items"></div>
 
-<input type="text" placeholder="Full Name" id="name" required>
-<input type="text" placeholder="Phone Number" id="phone" required>
-<input type="text" placeholder="Address" id="address" required>
+<div id="cart-total" class="total"></div>
 
-<button onclick="placeOrder()">Place Order</button>
+<div class="checkout">
+
+  <h2>Checkout</h2>
+
+  <input
+    type="text"
+    placeholder="Full Name"
+    id="name"
+  >
+
+  <input
+    type="text"
+    placeholder="Phone Number"
+    id="phone"
+  >
+
+  <input
+    type="text"
+    placeholder="Address"
+    id="address"
+  >
+
+  <div class="payment-method">
+
+    <h2>Payment Method</h2>
+
+    <label>
+      <input
+        type="radio"
+        name="payment"
+        value="Visa / Mastercard"
+        checked
+      >
+      💳 Visa / Mastercard
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="payment"
+        value="PayPal"
+      >
+      🅿️ PayPal
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="payment"
+        value="Cash on Delivery"
+      >
+      💵 Cash on Delivery
+    </label>
+
+  </div>
+
+  <button onclick="placeOrder()">
+    Place Order on WhatsApp
+  </button>
 
 </div>
 
@@ -96,41 +225,289 @@ input {
 
 // LOAD CART
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-document.getElementById("cart-count").innerText = cart.length;
+
+// DISPLAY CART
+function displayCart() {
+
+  const cartItems = document.getElementById("cart-items");
+  const cartCount = document.getElementById("cart-count");
+  const cartTotal = document.getElementById("cart-total");
+
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML =
+      '<div class="empty-cart">🛒 Your cart is empty.</div>';
+
+    cartCount.innerText = "0";
+    cartTotal.innerText = "";
+
+    return;
+  }
+
+  let totalItems = 0;
+  let totalPrice = 0;
+
+  cart.forEach((item, index) => {
+
+    // Make sure quantity exists
+    if (!item.quantity) {
+      item.quantity = 1;
+    }
+
+    let itemTotal = Number(item.price) * item.quantity;
+
+    totalItems += item.quantity;
+    totalPrice += itemTotal;
+
+    cartItems.innerHTML += `
+
+      <div class="cart-item">
+
+        <div class="cart-item-name">
+          ${item.name}
+        </div>
+
+        <div class="cart-item-price">
+          Price: R${Number(item.price).toFixed(2)}
+        </div>
+
+        <div>
+          Subtotal:
+          R${itemTotal.toFixed(2)}
+        </div>
+
+        <div class="quantity-controls">
+
+          <button onclick="decreaseQuantity(${index})">
+            −
+          </button>
+
+          <span class="quantity">
+            ${item.quantity}
+          </span>
+
+          <button onclick="increaseQuantity(${index})">
+            +
+          </button>
+
+        </div>
+
+        <button
+          class="remove-btn"
+          onclick="removeItem(${index})"
+        >
+          Remove Item
+        </button>
+
+      </div>
+
+    `;
+  });
+
+  cartCount.innerText = totalItems;
+
+  cartTotal.innerText =
+    "Total: R" + totalPrice.toFixed(2);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+// INCREASE QUANTITY
+function increaseQuantity(index) {
+
+  cart[index].quantity =
+    (cart[index].quantity || 1) + 1;
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  displayCart();
+}
+
+
+// DECREASE QUANTITY
+function decreaseQuantity(index) {
+
+  if (cart[index].quantity > 1) {
+
+    cart[index].quantity--;
+
+  } else {
+
+    cart.splice(index, 1);
+  }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  displayCart();
+}
+
+
+// REMOVE ITEM
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  displayCart();
+}
+
 
 // ADD TO CART
-function addToCart(name, price){
-    cart.push({ name: name, price: price });
-    localStorage.setItem("cart", JSON.stringify(cart));
-    document.getElementById("cart-count").innerText = cart.length;
+function addToCart(name, price) {
+
+  // Check if product already exists
+  let existingItem = cart.find(
+    item => item.name === name
+  );
+
+  if (existingItem) {
+
+    existingItem.quantity =
+      (existingItem.quantity || 1) + 1;
+
+  } else {
+
+    cart.push({
+      name: name,
+      price: Number(price),
+      quantity: 1
+    });
+
   }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  displayCart();
+}
+
 
 // PLACE ORDER
 function placeOrder() {
 
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
- let items = cart.map(item => "- " + item.name + " - R" + item.price).join("\n");
-let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+  if (cart.length === 0) {
 
-let message = "🛒 New Order\n\n" +
-              "Items:\n" + items + "\n\n" +
-              "Total: R" + total + "\n\n" +
-              "Customer Details\n" +
-              "Name: " + name + "\n" +
-              "Phone: " + phone + "\n" +
-              "Address: " + address;
+    alert("Your cart is empty.");
+    return;
 
-  let whatsappNumber = "27691603308"; // 🔥 PUT YOUR REAL NUMBER
+  }
 
-  let url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+  let name =
+    document.getElementById("name").value.trim();
 
+  let phone =
+    document.getElementById("phone").value.trim();
+
+  let address =
+    document.getElementById("address").value.trim();
+
+  if (!name || !phone || !address) {
+
+    alert(
+      "Please enter your name, phone number and address."
+    );
+
+    return;
+  }
+
+
+  // GET PAYMENT METHOD
+  let paymentMethod =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    ).value;
+
+
+  // CREATE ITEM LIST
+  let items = "";
+
+  let total = 0;
+
+  cart.forEach((item) => {
+
+    let itemTotal =
+      Number(item.price) * item.quantity;
+
+    total += itemTotal;
+
+    items +=
+      "• " +
+      item.name +
+      " x " +
+      item.quantity +
+      " - R" +
+      itemTotal.toFixed(2) +
+      "\n";
+
+  });
+
+
+  // CREATE WHATSAPP MESSAGE
+  let message =
+    "🛒 *NEW ORDER*\n\n" +
+
+    "*ORDER ITEMS:*\n" +
+    items +
+
+    "\n*TOTAL:* R" +
+    total.toFixed(2) +
+
+    "\n\n*PAYMENT METHOD:*\n" +
+    paymentMethod +
+
+    "\n\n*CUSTOMER DETAILS:*\n" +
+    "Name: " +
+    name +
+
+    "\nPhone: " +
+    phone +
+
+    "\nAddress: " +
+    address;
+
+
+  // YOUR WHATSAPP NUMBER
+  let whatsappNumber = "27691603308";
+
+
+  // WHATSAPP URL
+  let url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  // OPEN WHATSAPP
+  window.location.href = url;
+
+
+  // CLEAR CART
   localStorage.removeItem("cart");
-window.location.href = url;
+
 }
+
+
+// DISPLAY CART WHEN PAGE LOADS
+displayCart();
 
 </script>
 
 </body>
 </html>
+```
