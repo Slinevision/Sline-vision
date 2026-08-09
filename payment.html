@@ -126,12 +126,11 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 document.getElementById("cart-count").innerText = cart.length;
 
 // ADD TO CART
-function addToCart(Name,Price) {
- cart.push({name: name, price: price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  document.getElementById("cart-count").innerText = cart.length;
-}
-
+function addToCart(name, price){
+    cart.push({ name: name, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    document.getElementById("cart-count").innerText = cart.length;
+  }
 
 // PLACE ORDER
 function placeOrder() {
@@ -142,20 +141,19 @@ function placeOrder() {
   let items = cart.map(item => item.name + " - R" + item.price).join("%0A");
   let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
 
-  let message = "Hey SlineVision, I want to place an order!.%0A%0A" +
-  "Items:\n" + items + "\n\n"
-  "Total: R" + total + "%0A" +
-  "Name: " + name + "%0A" +
-  "Phone: " + phone + "%0A" +
-  "Address: " + address;
+  let message = "Hey SlineVision, I want to place an order:\n\n" +
+              "Items:\n" + items + "\n\n" +
+              "Total: R" + total + "%0A" +
+              "Name: " + name + "%0A" +
+              "Phone: " + phone + "%0A" +
+              "Address: " + address + "%0A";
 
   let whatsappNumber = "27691603308"; // 🔥 PUT YOUR REAL NUMBER
 
   let url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
 
-  window.location.href = url;
-
   localStorage.removeItem("cart");
+window.location.href = url;
 }
 
 </script>
