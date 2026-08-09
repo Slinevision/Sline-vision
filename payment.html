@@ -139,7 +139,7 @@ function placeOrder() {
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
-  let items = cart.map(item => item.name + " - R" + item.price).join("\n");
+  let items = cart.map(item => item.name + " - R" + item.price).join("%0A");
   let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
 
   let message = "Hey SlineVision, I want to place an order!.%0A%0A" +
