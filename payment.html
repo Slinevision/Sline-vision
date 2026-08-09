@@ -138,15 +138,16 @@ function placeOrder() {
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
-  let items = cart.map(item => item.name + " - R" + item.price).join("%0A");
-  let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+ let items = cart.map(item => "- " + item.name + " - R" + item.price).join("\n");
+let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
 
-  let message = "Hey SlineVision, I want to place an order:\n\n" +
+let message = "🛒 New Order\n\n" +
               "Items:\n" + items + "\n\n" +
-              "Total: R" + total + "%0A" +
-              "Name: " + name + "%0A" +
-              "Phone: " + phone + "%0A" +
-              "Address: " + address + "%0A";
+              "Total: R" + total + "\n\n" +
+              "Customer Details\n" +
+              "Name: " + name + "\n" +
+              "Phone: " + phone + "\n" +
+              "Address: " + address;
 
   let whatsappNumber = "27691603308"; // 🔥 PUT YOUR REAL NUMBER
 
