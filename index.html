@@ -6,7 +6,7 @@
 
 <title>SLINEVISION | Fashion Store</title>
 
-<meta name="description" content="Sline Vision online clothing store in South Africa. Shop trendy fashion for men and women.">
+<meta name="description" content="SLINEVISION online clothing store. Style, quality and confidence.">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -27,16 +27,14 @@
 
         <div class="header-icons">
 
-            <div class="icon-button"
-                 onclick="document.getElementById('search').focus()">
+            <button class="icon-button" onclick="focusSearch()" aria-label="Search">
                 🔍
-            </div>
+            </button>
 
-            <div class="icon-button"
-                 onclick="document.getElementById('cart-section').scrollIntoView({behavior:'smooth'})">
+            <button class="bag-button" onclick="openCart()" aria-label="Shopping bag">
                 🛍️
                 <span id="cart-count">0</span>
-            </div>
+            </button>
 
         </div>
 
@@ -44,373 +42,844 @@
 
     <nav class="nav">
         <a href="#products">All</a>
+        <a href="#products">New In</a>
+        <a href="#products">Men</a>
+        <a href="#products">Women</a>
     </nav>
 
 </header>
 
 <!-- SEARCH -->
 <div class="search-area">
-    <input
-        type="text"
-        id="search"
-        class="search-box"
-        placeholder="Search products..."
-        onkeyup="searchProducts()"
-    >
+
+    <div class="search-wrapper">
+
+        <span>🔍</span>
+
+        <input
+            type="text"
+            id="search"
+            class="search-box"
+            placeholder="Search products..."
+            oninput="searchProducts()"
+        >
+
+        <button onclick="clearSearch()" class="clear-search" id="clear-search">
+            ×
+        </button>
+
+    </div>
+
 </div>
 
 <!-- HERO -->
 <section class="hero">
-    <div>
+
+    <div class="hero-content">
+
+        <p class="hero-small">EST. 2026</p>
+
         <h1>SLINEVISION</h1>
-        <p>STYLE • QUALITY • CONFIDENCE</p>
+
+        <p class="hero-subtitle">
+            STYLE • QUALITY • CONFIDENCE
+        </p>
+
+        <a href="#products" class="shop-now">
+            SHOP NOW
+        </a>
+
     </div>
+
 </section>
 
-<!-- PRODUCTS -->
-<div class="products" id="products">
+<!-- SECTION TITLE -->
+<div class="section-title">
 
-    <!-- 1 -->
-    <div class="product" data-name="tracksuit"
-         onclick="openProduct(0)">
-        <div class="product-image">
-            <img src="IMG-20260725-WA0066.jpg" alt="Tracksuit">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Tracksuit</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R450.00</div>
-        </div>
+    <div>
+        <span class="collection-label">SLINEVISION COLLECTION</span>
+        <h2>Shop All</h2>
     </div>
 
-    <!-- 2 -->
-    <div class="product" data-name="t-shirt"
-         onclick="openProduct(1)">
-        <div class="product-image">
-            <img src="IMG-20260725-WA0068.jpg" alt="T-Shirt">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">T-Shirt</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R250.00</div>
-        </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="product" data-name="hoodie"
-         onclick="openProduct(2)">
-        <div class="product-image">
-            <img src="IMG-20260725-WA0071.jpg" alt="Hoodie">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Hoodie</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R350.00</div>
-        </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="product" data-name="zip up"
-         onclick="openProduct(3)">
-        <div class="product-image">
-            <img src="IMG-20260727-WA0105.jpg" alt="Zip up">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Zip up</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R450.00</div>
-        </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="product" data-name="star trail"
-         onclick="openProduct(4)">
-        <div class="product-image">
-            <img src="IMG-20260727-WA0107.jpg" alt="Star Trail">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Star Trail</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R400.00</div>
-        </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="product" data-name="pixel motion tee"
-         onclick="openProduct(5)">
-        <div class="product-image">
-            <img src="IMG-20260725-WA0073.jpg" alt="Pixel Motion Tee">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Pixel Motion Tee</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R250.00</div>
-        </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="product" data-name="ve shadow set"
-         onclick="openProduct(6)">
-        <div class="product-image">
-            <img src="IMG-20260814-WA0026.jpg" alt="VE.Shadow set">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">VE.Shadow set</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R450.00</div>
-        </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="product" data-name="pink galaxy set"
-         onclick="openProduct(7)">
-        <div class="product-image">
-            <img src="IMG-20260815-WA0046.jpg" alt="Pink Galaxy Set">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Pink Galaxy Set</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R800.00</div>
-        </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="product" data-name="galaxy drift set"
-         onclick="openProduct(8)">
-        <div class="product-image">
-            <img src="IMG-20260815-WA0045.jpg" alt="Galaxy drift set">
-            <div class="sale-badge">SALE</div>
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Galaxy drift set</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R800.00</div>
-        </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="product" data-name="untamed tee"
-         onclick="openProduct(9)">
-        <div class="product-image">
-            <img src="IMG-20260727-WA0101.jpg" alt="Untamed Tee">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Untamed Tee</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R200.00</div>
-        </div>
-    </div>
-
-    <!-- 11 -->
-    <div class="product" data-name="celestial gallop tee"
-         onclick="openProduct(10)">
-        <div class="product-image">
-            <img src="IMG-20260727-WA0104.jpg" alt="Celestial Gallop Tee">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Celestial Gallop Tee</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R280.00</div>
-        </div>
-    </div>
-
-    <!-- 12 -->
-    <div class="product" data-name="untamed motion set"
-         onclick="openProduct(11)">
-        <div class="product-image">
-            <img src="IMG-20260727-WA0111.jpg" alt="Untamed Motion Set">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Untamed Motion Set</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R450.00</div>
-        </div>
-    </div>
-
-    <!-- 13 -->
-    <div class="product" data-name="windbreaker"
-         onclick="openProduct(12)">
-        <div class="product-image">
-            <img src="windbreaker.jpg" alt="Windbreaker">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Windbreaker</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R480.00</div>
-        </div>
-    </div>
-
-    <!-- 14 -->
-    <div class="product" data-name="tracksuit pants"
-         onclick="openProduct(13)">
-        <div class="product-image">
-            <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Tracksuit Pants</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R300.00</div>
-        </div>
-    </div>
-
-    <!-- 15 -->
-    <div class="product" data-name="sports shirt"
-         onclick="openProduct(14)">
-        <div class="product-image">
-            <img src="sports-shirt.jpg" alt="Sports Shirt">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Sports Shirt</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R270.00</div>
-        </div>
-    </div>
-
-    <!-- 16 -->
-    <div class="product" data-name="sports shorts"
-         onclick="openProduct(15)">
-        <div class="product-image">
-            <img src="sports-shorts.jpg" alt="Sports Shorts">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Sports Shorts</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R230.00</div>
-        </div>
-    </div>
-
-    <!-- 17 -->
-    <div class="product" data-name="backpack"
-         onclick="openProduct(16)">
-        <div class="product-image">
-            <img src="backpack.jpg" alt="Backpack">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Backpack</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R350.00</div>
-        </div>
-    </div>
-
-    <!-- 18 -->
-    <div class="product" data-name="socks"
-         onclick="openProduct(17)">
-        <div class="product-image">
-            <img src="socks.jpg" alt="Socks">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Socks</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R100.00</div>
-        </div>
-    </div>
-
-    <!-- 19 -->
-    <div class="product" data-name="bucket hat"
-         onclick="openProduct(18)">
-        <div class="product-image">
-            <img src="bucket-hat.jpg" alt="Bucket Hat">
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Bucket Hat</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R180.00</div>
-        </div>
-    </div>
-
-    <!-- 20 -->
-    <div class="product" data-name="tracksuit set"
-         onclick="openProduct(19)">
-        <div class="product-image">
-            <img src="tracksuit-set.jpg" alt="Tracksuit Set">
-            <div class="sale-badge">NEW</div>
-            <div class="heart">♡</div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">Tracksuit Set</div>
-            <div class="rating">★★★★★</div>
-            <div class="price">R500.00</div>
-        </div>
-    </div>
+    <span id="product-count"></span>
 
 </div>
 
-<!-- =========================
-     PRODUCT POPUP
-========================= -->
+<!-- PRODUCTS -->
+<main class="products" id="products">
 
-<div id="product-modal" class="product-modal">
+    <!-- 1 -->
+    <article class="product"
+        data-name="tracksuit"
+        data-price="450"
+        data-image="IMG-20260725-WA0066.jpg">
 
-    <div class="product-modal-box">
+        <div class="product-image" onclick="openProduct(0)">
 
-        <button class="close-modal" onclick="closeProduct()">×</button>
+            <img src="IMG-20260725-WA0066.jpg" alt="Tracksuit">
 
-        <img id="modal-image" class="modal-image" src="" alt="">
+            <span class="badge">NEW</span>
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)"
+                aria-label="Add to wishlist">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Tracksuit</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R450.00</div>
+
+            <button class="add-button" onclick="openProduct(0)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 2 -->
+    <article class="product"
+        data-name="t-shirt"
+        data-price="250"
+        data-image="IMG-20260725-WA0068.jpg">
+
+        <div class="product-image" onclick="openProduct(1)">
+
+            <img src="IMG-20260725-WA0068.jpg" alt="T-Shirt">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)"
+                aria-label="Add to wishlist">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">T-Shirt</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R250.00</div>
+
+            <button class="add-button" onclick="openProduct(1)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 3 -->
+    <article class="product"
+        data-name="hoodie"
+        data-price="350"
+        data-image="IMG-20260725-WA0071.jpg">
+
+        <div class="product-image" onclick="openProduct(2)">
+
+            <img src="IMG-20260725-WA0071.jpg" alt="Hoodie">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Hoodie</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R350.00</div>
+
+            <button class="add-button" onclick="openProduct(2)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 4 -->
+    <article class="product"
+        data-name="zip up"
+        data-price="450"
+        data-image="IMG-20260727-WA0105.jpg">
+
+        <div class="product-image" onclick="openProduct(3)">
+
+            <img src="IMG-20260727-WA0105.jpg" alt="Zip Up">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Zip Up</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R450.00</div>
+
+            <button class="add-button" onclick="openProduct(3)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 5 -->
+    <article class="product"
+        data-name="star trail"
+        data-price="400"
+        data-image="IMG-20260727-WA0107.jpg">
+
+        <div class="product-image" onclick="openProduct(4)">
+
+            <img src="IMG-20260727-WA0107.jpg" alt="Star Trail">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Star Trail</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R400.00</div>
+
+            <button class="add-button" onclick="openProduct(4)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 6 -->
+    <article class="product"
+        data-name="pixel motion tee"
+        data-price="250"
+        data-image="IMG-20260725-WA0073.jpg">
+
+        <div class="product-image" onclick="openProduct(5)">
+
+            <img src="IMG-20260725-WA0073.jpg" alt="Pixel Motion Tee">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Pixel Motion Tee</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R250.00</div>
+
+            <button class="add-button" onclick="openProduct(5)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 7 -->
+    <article class="product"
+        data-name="ve shadow set"
+        data-price="450"
+        data-image="IMG-20260814-WA0026.jpg">
+
+        <div class="product-image" onclick="openProduct(6)">
+
+            <img src="IMG-20260814-WA0026.jpg" alt="VE Shadow Set">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">VE.Shadow Set</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R450.00</div>
+
+            <button class="add-button" onclick="openProduct(6)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 8 -->
+    <article class="product"
+        data-name="pink galaxy set"
+        data-price="800"
+        data-image="IMG-20260815-WA0046.jpg">
+
+        <div class="product-image" onclick="openProduct(7)">
+
+            <img src="IMG-20260815-WA0046.jpg" alt="Pink Galaxy Set">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Pink Galaxy Set</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R800.00</div>
+
+            <button class="add-button" onclick="openProduct(7)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 9 -->
+    <article class="product"
+        data-name="galaxy drift set"
+        data-price="800"
+        data-image="IMG-20260815-WA0045.jpg">
+
+        <div class="product-image" onclick="openProduct(8)">
+
+            <img src="IMG-20260815-WA0045.jpg" alt="Galaxy Drift Set">
+
+            <span class="badge">SALE</span>
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Galaxy Drift Set</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R800.00</div>
+
+            <button class="add-button" onclick="openProduct(8)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 10 -->
+    <article class="product"
+        data-name="untamed tee"
+        data-price="200"
+        data-image="IMG-20260727-WA0101.jpg">
+
+        <div class="product-image" onclick="openProduct(9)">
+
+            <img src="IMG-20260727-WA0101.jpg" alt="Untamed Tee">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Untamed Tee</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R200.00</div>
+
+            <button class="add-button" onclick="openProduct(9)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 11 -->
+    <article class="product"
+        data-name="celestial gallop tee"
+        data-price="280"
+        data-image="IMG-20260727-WA0104.jpg">
+
+        <div class="product-image" onclick="openProduct(10)">
+
+            <img src="IMG-20260727-WA0104.jpg" alt="Celestial Gallop Tee">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Celestial Gallop Tee</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R280.00</div>
+
+            <button class="add-button" onclick="openProduct(10)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 12 -->
+    <article class="product"
+        data-name="untamed motion set"
+        data-price="450"
+        data-image="IMG-20260727-WA0111.jpg">
+
+        <div class="product-image" onclick="openProduct(11)">
+
+            <img src="IMG-20260727-WA0111.jpg" alt="Untamed Motion Set">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Untamed Motion Set</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R450.00</div>
+
+            <button class="add-button" onclick="openProduct(11)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 13 -->
+    <article class="product"
+        data-name="windbreaker"
+        data-price="480"
+        data-image="windbreaker.jpg">
+
+        <div class="product-image" onclick="openProduct(12)">
+
+            <img src="windbreaker.jpg" alt="Windbreaker">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Windbreaker</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R480.00</div>
+
+            <button class="add-button" onclick="openProduct(12)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 14 -->
+    <article class="product"
+        data-name="tracksuit pants"
+        data-price="300"
+        data-image="tracksuit-pants.jpg">
+
+        <div class="product-image" onclick="openProduct(13)">
+
+            <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Tracksuit Pants</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R300.00</div>
+
+            <button class="add-button" onclick="openProduct(13)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 15 -->
+    <article class="product"
+        data-name="sports shirt"
+        data-price="270"
+        data-image="sports-shirt.jpg">
+
+        <div class="product-image" onclick="openProduct(14)">
+
+            <img src="sports-shirt.jpg" alt="Sports Shirt">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Sports Shirt</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R270.00</div>
+
+            <button class="add-button" onclick="openProduct(14)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 16 -->
+    <article class="product"
+        data-name="sports shorts"
+        data-price="230"
+        data-image="sports-shorts.jpg">
+
+        <div class="product-image" onclick="openProduct(15)">
+
+            <img src="sports-shorts.jpg" alt="Sports Shorts">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Sports Shorts</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R230.00</div>
+
+            <button class="add-button" onclick="openProduct(15)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 17 -->
+    <article class="product"
+        data-name="backpack"
+        data-price="350"
+        data-image="backpack.jpg">
+
+        <div class="product-image" onclick="openProduct(16)">
+
+            <img src="backpack.jpg" alt="Backpack">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Backpack</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R350.00</div>
+
+            <button class="add-button" onclick="openProduct(16)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 18 -->
+    <article class="product"
+        data-name="socks"
+        data-price="100"
+        data-image="socks.jpg">
+
+        <div class="product-image" onclick="openProduct(17)">
+
+            <img src="socks.jpg" alt="Socks">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Socks</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R100.00</div>
+
+            <button class="add-button" onclick="openProduct(17)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 19 -->
+    <article class="product"
+        data-name="bucket hat"
+        data-price="180"
+        data-image="bucket-hat.jpg">
+
+        <div class="product-image" onclick="openProduct(18)">
+
+            <img src="bucket-hat.jpg" alt="Bucket Hat">
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Bucket Hat</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R180.00</div>
+
+            <button class="add-button" onclick="openProduct(18)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 20 -->
+    <article class="product"
+        data-name="tracksuit set"
+        data-price="500"
+        data-image="tracksuit-set.jpg">
+
+        <div class="product-image" onclick="openProduct(19)">
+
+            <img src="tracksuit-set.jpg" alt="Tracksuit Set">
+
+            <span class="badge">NEW</span>
+
+            <button class="heart"
+                onclick="toggleWishlist(event, this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-name">Tracksuit Set</div>
+
+            <div class="rating">★★★★★</div>
+
+            <div class="price">R500.00</div>
+
+            <button class="add-button" onclick="openProduct(19)">
+                SELECT OPTIONS
+            </button>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<!-- NO SEARCH RESULTS -->
+<div id="no-results" class="no-results">
+    <h3>No products found</h3>
+    <p>Try another search.</p>
+</div>
+
+
+<!-- PRODUCT OPTIONS MODAL -->
+<div id="product-modal" class="modal">
+
+    <div class="modal-overlay" onclick="closeProduct()"></div>
+
+    <div class="product-modal">
+
+        <button class="modal-close" onclick="closeProduct()">×</button>
+
+        <div class="modal-image">
+
+            <img id="modal-image" src="" alt="Product">
+
+        </div>
 
         <div class="modal-details">
 
-            <h2 id="modal-name"></h2>
+            <p class="modal-brand">SLINEVISION</p>
 
-            <div class="modal-rating">★★★★★</div>
+            <h2 id="modal-name">Product</h2>
 
-            <div id="modal-price" class="modal-price"></div>
+            <div class="modal-rating">
+                ★★★★★ <span>5.0</span>
+            </div>
 
-            <div class="option-title">SIZE</div>
+            <div id="modal-price" class="modal-price">
+                R0.00
+            </div>
 
-            <div class="size-options">
+            <div class="option-group">
 
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
+                <div class="option-heading">
+                    <strong>Size</strong>
+                    <span id="selected-size">Select size</span>
+                </div>
+
+                <div class="size-options">
+
+                    <button onclick="selectSize(this, 'XS')">XS</button>
+                    <button onclick="selectSize(this, 'S')">S</button>
+                    <button onclick="selectSize(this, 'M')">M</button>
+                    <button onclick="selectSize(this, 'L')">L</button>
+                    <button onclick="selectSize(this, 'XL')">XL</button>
+                    <button onclick="selectSize(this, 'XXL')">XXL</button>
+
+                </div>
 
             </div>
 
-            <div class="option-title">COLOR</div>
+            <div class="option-group">
 
-            <div class="color-options">
+                <div class="option-heading">
+                    <strong>Colour</strong>
+                    <span id="selected-color">Select colour</span>
+                </div>
 
-                <button onclick="selectColor(this)">Black</button>
-                <button onclick="selectColor(this)">White</button>
-                <button onclick="selectColor(this)">Grey</button>
+                <div class="color-options">
+
+                    <button class="color black"
+                        onclick="selectColor(this, 'Black')"
+                        aria-label="Black"></button>
+
+                    <button class="color white"
+                        onclick="selectColor(this, 'White')"
+                        aria-label="White"></button>
+
+                    <button class="color grey"
+                        onclick="selectColor(this, 'Grey')"
+                        aria-label="Grey"></button>
+
+                </div>
 
             </div>
 
-            <div class="option-title">QUANTITY</div>
-
-            <div class="modal-quantity">
-
-                <button onclick="changeModalQuantity(-1)">−</button>
-
-                <span id="modal-quantity">1</span>
-
-                <button onclick="changeModalQuantity(1)">+</button>
-
-            </div>
-
-            <button class="modal-add-button"
-                    onclick="addSelectedProduct()">
+            <button class="modal-add" onclick="addSelectedProduct()">
                 ADD TO BAG
             </button>
 
@@ -420,120 +889,228 @@
 
 </div>
 
-<!-- =========================
-     CART
-========================= -->
 
-<section id="cart-section" class="cart-section">
+<!-- CART DRAWER -->
+<div id="cart-drawer" class="cart-drawer">
 
-    <h2>Your Bag</h2>
+    <div class="cart-overlay" onclick="closeCart()"></div>
 
-    <div id="cart-items"></div>
+    <aside class="cart-panel">
 
-    <div class="total">
-        <span>Total</span>
-        <span id="cart-total">R0.00</span>
-    </div>
+        <div class="cart-header">
 
-    <button class="checkout-button"
-            onclick="continueToCheckout()">
-        CHECKOUT
-    </button>
+            <div>
+                <span class="cart-label">SLINEVISION</span>
+                <h2>Your Bag</h2>
+            </div>
 
-</section>
+            <button class="close-cart" onclick="closeCart()">×</button>
 
-<!-- =========================
-     CHECKOUT
-========================= -->
+        </div>
 
+        <div id="cart-items" class="cart-items"></div>
+
+        <div class="cart-bottom">
+
+            <div class="cart-total">
+
+                <span>Subtotal</span>
+
+                <strong id="cart-total">
+                    R0.00
+                </strong>
+
+            </div>
+
+            <p class="delivery-note">
+                Delivery calculated at checkout.
+            </p>
+
+            <button class="checkout-button"
+                onclick="continueToCheckout()">
+                CHECKOUT
+            </button>
+
+            <button class="continue-button"
+                onclick="closeCart()">
+                CONTINUE SHOPPING
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- CHECKOUT -->
 <section id="checkout-section" class="checkout-section">
 
-    <div class="step-title">
-        2. Delivery & Payment
-    </div>
+    <div class="checkout-container">
 
-    <input
-        class="input"
-        id="customer-name"
-        type="text"
-        placeholder="Full Name"
-    >
+        <button class="checkout-close"
+            onclick="closeCheckout()">
+            ×
+        </button>
 
-    <input
-        class="input"
-        id="customer-phone"
-        type="text"
-        placeholder="Phone Number"
-    >
+        <div class="checkout-heading">
 
-    <input
-        class="input"
-        id="customer-address"
-        type="text"
-        placeholder="Delivery Address"
-    >
+            <span>SLINEVISION</span>
 
-    <h3>Payment Method</h3>
+            <h2>Checkout</h2>
 
-    <div class="payment-box">
-        <label class="payment-label">
+            <p>Delivery & Payment</p>
+
+        </div>
+
+
+        <div class="checkout-summary">
+
+            <h3>Order Summary</h3>
+
+            <div id="checkout-items"></div>
+
+            <div class="checkout-total">
+
+                <span>Total</span>
+
+                <strong id="checkout-total">
+                    R0.00
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-form">
+
+            <h3>Delivery Details</h3>
+
             <input
-                type="radio"
-                name="payment"
-                value="Visa / Mastercard"
-                checked
+                id="customer-name"
+                class="input"
+                type="text"
+                placeholder="Full Name"
             >
-            💳 Visa / Mastercard
-        </label>
-    </div>
 
-    <div class="payment-box">
-        <label class="payment-label">
             <input
-                type="radio"
-                name="payment"
-                value="PayPal"
+                id="customer-phone"
+                class="input"
+                type="tel"
+                placeholder="Phone Number"
             >
-            🅿️ PayPal
-        </label>
+
+            <textarea
+                id="customer-address"
+                class="input address-input"
+                placeholder="Delivery Address"
+                rows="3"
+            ></textarea>
+
+
+            <h3>Payment Method</h3>
+
+            <label class="payment-box">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Visa / Mastercard"
+                    checked
+                >
+
+                <span>💳</span>
+
+                <div>
+                    <strong>Visa / Mastercard</strong>
+                    <small>Payment arranged with the store.</small>
+                </div>
+
+            </label>
+
+
+            <label class="payment-box">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="PayPal"
+                >
+
+                <span>🅿️</span>
+
+                <div>
+                    <strong>PayPal</strong>
+                    <small>Payment arranged with the store.</small>
+                </div>
+
+            </label>
+
+
+            <label class="payment-box">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Cash on Delivery"
+                >
+
+                <span>💵</span>
+
+                <div>
+                    <strong>Cash on Delivery</strong>
+                    <small>Pay when your order is delivered.</small>
+                </div>
+
+            </label>
+
+
+            <button
+                class="whatsapp-button"
+                onclick="placeOrderOnWhatsApp()">
+
+                📱 PLACE ORDER ON WHATSAPP
+
+            </button>
+
+
+            <button
+                class="back-button"
+                onclick="backToCart()">
+
+                ← BACK TO BAG
+
+            </button>
+
+        </div>
+
     </div>
-
-    <div class="payment-box">
-        <label class="payment-label">
-            <input
-                type="radio"
-                name="payment"
-                value="Cash on Delivery"
-            >
-            💵 Cash on Delivery
-        </label>
-    </div>
-
-    <button
-        class="whatsapp-button"
-        onclick="placeOrderOnWhatsApp()">
-        📱 PLACE ORDER ON WHATSAPP
-    </button>
-
-    <button
-        class="back-button"
-        onclick="backToCart()">
-        ← BACK TO BAG
-    </button>
 
 </section>
 
-<!-- FOOTER -->
 
+<!-- FOOTER -->
 <footer>
 
-    <h3>SLINEVISION</h3>
+    <div class="footer-logo">
+        SLINEVISION
+    </div>
 
-    <p>Fashion • Style • Confidence</p>
+    <p>STYLE • QUALITY • CONFIDENCE</p>
 
-    <p>© 2026 SLINEVISION</p>
+    <div class="footer-links">
+        <a href="#products">Shop</a>
+        <a href="#products">New In</a>
+        <a href="#products">All Products</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 SLINEVISION. All rights reserved.
+    </p>
 
 </footer>
+
 
 <script src="script.js"></script>
 
