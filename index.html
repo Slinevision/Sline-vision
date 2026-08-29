@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SLINEVISION | Fashion Store</title>
 
     <meta name="description"
-          content="SLINEVISION — Style, Quality & Confidence. Shop premium streetwear online.">
+          content="SLINEVISION online clothing store. Style, quality and confidence.">
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<!-- =====================================================
-     TOP BAR
-===================================================== -->
-
+<!-- TOP BAR -->
 <div class="top-bar">
     FREE DELIVERY ON ORDERS OVER R1000
 </div>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
+<!-- HEADER -->
 <header class="header">
 
     <div class="header-main">
@@ -40,33 +29,20 @@
             SLINEVISION
         </div>
 
-        <div class="header-actions">
+        <div class="header-icons">
 
-            <button
-                class="header-icon"
-                type="button"
-                onclick="focusSearch()"
-                aria-label="Search">
-
+            <button class="icon-button"
+                    onclick="focusSearch()"
+                    aria-label="Search">
                 🔍
-
             </button>
 
-            <button
-                class="header-icon"
-                type="button"
-                onclick="openCart()"
-                aria-label="Shopping bag">
+            <button class="icon-button cart-icon"
+                    onclick="scrollToCart()"
+                    aria-label="Shopping bag">
 
                 🛍️
-
-                <span
-                    id="cart-count"
-                    class="cart-badge">
-
-                    0
-
-                </span>
+                <span id="cart-count">0</span>
 
             </button>
 
@@ -77,79 +53,55 @@
 
     <nav class="nav">
 
-        <a href="#products">
-            ALL
-        </a>
-
-        <a href="#new-arrivals">
-            NEW ARRIVALS
-        </a>
-
-        <a href="#collections">
-            COLLECTIONS
-        </a>
-
-        <a href="#products">
-            SHOP
-        </a>
+        <a href="#products">ALL</a>
+        <a href="#products">NEW IN</a>
+        <a href="#products">MEN</a>
+        <a href="#products">WOMEN</a>
 
     </nav>
 
 </header>
 
 
-<!-- =====================================================
-     SEARCH
-===================================================== -->
-
+<!-- SEARCH -->
 <div class="search-area">
 
     <div class="search-wrapper">
+
+        <span>🔍</span>
 
         <input
             type="search"
             id="search"
             class="search-box"
             placeholder="Search products..."
-            autocomplete="off"
-            oninput="searchProducts()">
-
-        <span class="search-symbol">
-            🔍
-        </span>
+            oninput="searchProducts()"
+        >
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
+<!-- HERO -->
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            SLINEVISION COLLECTION
-        </div>
+        <p class="hero-small">
+            SLINEVISION
+        </p>
 
         <h1>
-            MOVE<br>
-            DIFFERENT.
+            STYLE WITHOUT LIMITS
         </h1>
 
-        <p>
+        <p class="hero-subtitle">
             STYLE • QUALITY • CONFIDENCE
         </p>
 
-        <a
-            href="#products"
-            class="hero-button">
-
+        <a href="#products" class="shop-now">
             SHOP NOW
-
         </a>
 
     </div>
@@ -157,227 +109,49 @@
 </section>
 
 
-<!-- =====================================================
-     PROMO
-===================================================== -->
+<!-- PRODUCTS HEADER -->
+<div class="section-title">
 
-<div class="promo-strip">
-
-    <div class="promo-item">
-
-        <div class="promo-icon">
-            🚚
-        </div>
-
-        <strong>
-            FAST DELIVERY
-        </strong>
-
-        <span>
-            South Africa
-        </span>
-
+    <div>
+        <span class="section-small">SLINEVISION COLLECTION</span>
+        <h2>SHOP ALL</h2>
     </div>
 
-
-    <div class="promo-item">
-
-        <div class="promo-icon">
-            🔒
-        </div>
-
-        <strong>
-            SECURE ORDERING
-        </strong>
-
-        <span>
-            Safe checkout
-        </span>
-
-    </div>
-
-
-    <div class="promo-item">
-
-        <div class="promo-icon">
-            💬
-        </div>
-
-        <strong>
-            WHATSAPP SUPPORT
-        </strong>
-
-        <span>
-            Easy ordering
-        </span>
-
-    </div>
+    <span id="product-count">
+        20 PRODUCTS
+    </span>
 
 </div>
 
 
-<!-- =====================================================
-     COLLECTIONS
-===================================================== -->
-
-<section id="collections">
-
-    <div class="section-heading">
-
-        <h2>
-            SHOP COLLECTIONS
-        </h2>
-
-    </div>
+<!-- PRODUCTS -->
+<main class="products" id="products">
 
 
-    <div class="categories">
-
-        <a
-            href="#products"
-            class="category">
-
-            <img
-                src="IMG-20260725-WA0066.jpg"
-                alt="Tracksuits">
-
-            <div class="category-overlay">
-
-                <h3>
-                    TRACKSUITS
-                </h3>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#products"
-            class="category">
-
-            <img
-                src="IMG-20260725-WA0071.jpg"
-                alt="Hoodies">
-
-            <div class="category-overlay">
-
-                <h3>
-                    HOODIES
-                </h3>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#products"
-            class="category">
-
-            <img
-                src="IMG-20260725-WA0068.jpg"
-                alt="T-Shirts">
-
-            <div class="category-overlay">
-
-                <h3>
-                    T-SHIRTS
-                </h3>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#products"
-            class="category">
-
-            <img
-                src="IMG-20260727-WA0107.jpg"
-                alt="Streetwear">
-
-            <div class="category-overlay">
-
-                <h3>
-                    STREETWEAR
-                </h3>
-
-            </div>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     NEW ARRIVALS
-===================================================== -->
-
-<section id="new-arrivals">
-
-    <div class="section-heading">
-
-        <h2>
-            NEW ARRIVALS
-        </h2>
-
-        <a href="#products">
-            VIEW ALL
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
-
-<main>
-
-<div
-    class="products"
-    id="products">
-
-
-    <!-- 1 -->
-
-    <div
-        class="product"
-        data-name="tracksuit">
+    <!-- 1 TRACKSUIT -->
+    <article class="product"
+             data-name="tracksuit">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260725-WA0066.jpg"
-                alt="Tracksuit">
+            <img src="IMG-20260725-WA0066.jpg"
+                 alt="Tracksuit"
+                 loading="lazy">
 
-            <div class="product-badge">
-                NEW
-            </div>
+            <span class="badge">NEW</span>
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Tracksuit
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -387,49 +161,51 @@
                 R450.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Tracksuit',450)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Tracksuit', 450)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 2 -->
-
-    <div
-        class="product"
-        data-name="t-shirt">
+    <!-- 2 T-SHIRT -->
+    <article class="product"
+             data-name="t-shirt tshirt tee">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260725-WA0068.jpg"
-                alt="T-Shirt">
+            <img src="IMG-20260725-WA0068.jpg"
+                 alt="T-Shirt"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 T-Shirt
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -439,49 +215,51 @@
                 R250.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('T-Shirt',250)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'T-Shirt', 250)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 3 -->
-
-    <div
-        class="product"
-        data-name="hoodie">
+    <!-- 3 HOODIE -->
+    <article class="product"
+             data-name="hoodie">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260725-WA0071.jpg"
-                alt="Hoodie">
+            <img src="IMG-20260725-WA0071.jpg"
+                 alt="Hoodie"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Hoodie
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -491,105 +269,161 @@
                 R350.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Hoodie',350)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Hoodie', 350)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 4 -->
-
-    <div
-        class="product"
-        data-name="zip up">
+    <!-- 4 ZIP UP -->
+    <article class="product"
+             data-name="zip up zipup">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260727-WA0105.jpg"
-                alt="Zip Up">
+            <img src="IMG-20260727-WA0105.jpg"
+                 alt="Zip Up"
+                 loading="lazy">
 
-            <div class="product-badge">
-                NEW
-            </div>
+            <span class="badge">NEW</span>
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Zip Up
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
             </div>
 
             <div class="price">
-                R450.00
+                R600.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Zip Up',450)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Zip Up', 600)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 5 -->
-
-    <div
-        class="product"
-        data-name="star trail">
+    <!-- 5 STAR TRAIL -->
+    <article class="product"
+             data-name="star trail">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260727-WA0107.jpg"
-                alt="Star Trail">
+            <img src="IMG-20260727-WA0107.jpg"
+                 alt="Star Trail"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Star Trail
+            </h3>
+
+            <div class="rating">
+                ★★★★★
             </div>
+
+            <div class="price">
+                R550.00
+            </div>
+
+            <div class="size-title">
+                SELECT SIZE
+            </div>
+
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Star Trail', 550)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 6 PIXEL MOTION -->
+    <article class="product"
+             data-name="pixel motion tee">
+
+        <div class="product-image">
+
+            <img src="IMG-20260725-WA0073.jpg"
+                 alt="Pixel Motion Tee"
+                 loading="lazy">
+
+            <button class="heart"
+                    onclick="toggleHeart(this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <h3 class="product-name">
+                Pixel Motion Tee
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -599,213 +433,163 @@
                 R400.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Star Trail',400)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Pixel Motion Tee', 400)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 6 -->
-
-    <div
-        class="product"
-        data-name="pixel motion tee">
+    <!-- 7 VE SHADOW -->
+    <article class="product"
+             data-name="ve shadow set">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260725-WA0073.jpg"
-                alt="Pixel Motion Tee">
+            <img src="IMG-20260814-WA0026.jpg"
+                 alt="VE Shadow Set"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
-                Pixel Motion Tee
-            </div>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R250.00
-            </div>
-
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Pixel Motion Tee',250)">
-
-                ADD TO BAG
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- 7 -->
-
-    <div
-        class="product"
-        data-name="ve shadow set">
-
-        <div class="product-image">
-
-            <img
-                src="IMG-20260814-WA0026.jpg"
-                alt="VE Shadow Set">
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
-                ♡
-
-            </button>
-
-        </div>
-
-        <div class="product-info">
-
-            <div class="product-name">
+            <h3 class="product-name">
                 VE.Shadow Set
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
             </div>
 
             <div class="price">
-                R450.00
+                R220.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('VE.Shadow Set',450)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'VE.Shadow Set', 220)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 8 -->
-
-    <div
-        class="product"
-        data-name="pink galaxy set">
+    <!-- 8 PINK GALAXY -->
+    <article class="product"
+             data-name="pink galaxy set">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260815-WA0046.jpg"
-                alt="Pink Galaxy Set">
+            <img src="IMG-20260815-WA0046.jpg"
+                 alt="Pink Galaxy Set"
+                 loading="lazy">
 
-            <div class="product-badge">
-                NEW
-            </div>
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Pink Galaxy Set
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
             </div>
 
             <div class="price">
-                R800.00
+                R150.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Pink Galaxy Set',800)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Pink Galaxy Set', 150)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 9 -->
-
-    <div
-        class="product"
-        data-name="galaxy drift set">
+    <!-- 9 GALAXY DRIFT -->
+    <article class="product"
+             data-name="galaxy drift set">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260815-WA0045.jpg"
-                alt="Galaxy Drift Set">
+            <img src="IMG-20260815-WA0045.jpg"
+                 alt="Galaxy Drift Set"
+                 loading="lazy">
 
-            <div class="product-badge">
+            <span class="badge">
                 SALE
-            </div>
+            </span>
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Galaxy Drift Set
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -815,257 +599,51 @@
                 R800.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Galaxy Drift Set',800)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Galaxy Drift Set', 800)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 10 -->
-
-    <div
-        class="product"
-        data-name="untamed tee">
+    <!-- 10 UNTAMED TEE -->
+    <article class="product"
+             data-name="untamed tee">
 
         <div class="product-image">
 
-            <img
-                src="IMG-20260727-WA0101.jpg"
-                alt="Untamed Tee">
+            <img src="IMG-20260727-WA0101.jpg"
+                 alt="Untamed Tee"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Untamed Tee
-            </div>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R200.00
-            </div>
-
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Untamed Tee',200)">
-
-                ADD TO BAG
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- 11 -->
-
-    <div
-        class="product"
-        data-name="celestial gallop tee">
-
-        <div class="product-image">
-
-            <img
-                src="IMG-20260727-WA0104.jpg"
-                alt="Celestial Gallop Tee">
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
-                ♡
-
-            </button>
-
-        </div>
-
-        <div class="product-info">
-
-            <div class="product-name">
-                Celestial Gallop Tee
-            </div>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R280.00
-            </div>
-
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Celestial Gallop Tee',280)">
-
-                ADD TO BAG
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- 12 -->
-
-    <div
-        class="product"
-        data-name="untamed motion set">
-
-        <div class="product-image">
-
-            <img
-                src="IMG-20260727-WA0111.jpg"
-                alt="Untamed Motion Set">
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
-                ♡
-
-            </button>
-
-        </div>
-
-        <div class="product-info">
-
-            <div class="product-name">
-                Untamed Motion Set
-            </div>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R450.00
-            </div>
-
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Untamed Motion Set',450)">
-
-                ADD TO BAG
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- 13 -->
-
-    <div
-        class="product"
-        data-name="windbreaker">
-
-        <div class="product-image">
-
-            <img
-                src="windbreaker.jpg"
-                alt="Windbreaker">
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
-                ♡
-
-            </button>
-
-        </div>
-
-        <div class="product-info">
-
-            <div class="product-name">
-                Windbreaker
-            </div>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R480.00
-            </div>
-
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Windbreaker',480)">
-
-                ADD TO BAG
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- 14 -->
-
-    <div
-        class="product"
-        data-name="tracksuit pants">
-
-        <div class="product-image">
-
-            <img
-                src="tracksuit-pants.jpg"
-                alt="Tracksuit Pants">
-
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
-                ♡
-
-            </button>
-
-        </div>
-
-        <div class="product-info">
-
-            <div class="product-name">
-                Tracksuit Pants
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1075,49 +653,267 @@
                 R300.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Tracksuit Pants',300)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Untamed Tee', 300)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 15 -->
-
-    <div
-        class="product"
-        data-name="sports shirt">
+    <!-- 11 CELESTIAL GALLOP -->
+    <article class="product"
+             data-name="celestial gallop tee">
 
         <div class="product-image">
 
-            <img
-                src="sports-shirt.jpg"
-                alt="Sports Shirt">
+            <img src="IMG-20260727-WA0104.jpg"
+                 alt="Celestial Gallop Tee"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
-                Sports Shirt
+            <h3 class="product-name">
+                Celestial Gallop Tee
+            </h3>
+
+            <div class="rating">
+                ★★★★★
             </div>
+
+            <div class="price">
+                R280.00
+            </div>
+
+            <div class="size-title">
+                SELECT SIZE
+            </div>
+
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Celestial Gallop Tee', 280)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 12 UNTAMED MOTION -->
+    <article class="product"
+             data-name="untamed motion set">
+
+        <div class="product-image">
+
+            <img src="IMG-20260727-WA0111.jpg"
+                 alt="Untamed Motion Set"
+                 loading="lazy">
+
+            <button class="heart"
+                    onclick="toggleHeart(this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <h3 class="product-name">
+                Untamed Motion Set
+            </h3>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R320.00
+            </div>
+
+            <div class="size-title">
+                SELECT SIZE
+            </div>
+
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Untamed Motion Set', 320)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 13 WINDBREAKER -->
+    <article class="product"
+             data-name="windbreaker">
+
+        <div class="product-image">
+
+            <img src="windbreaker.jpg"
+                 alt="Windbreaker"
+                 loading="lazy">
+
+            <button class="heart"
+                    onclick="toggleHeart(this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <h3 class="product-name">
+                Windbreaker
+            </h3>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R480.00
+            </div>
+
+            <div class="size-title">
+                SELECT SIZE
+            </div>
+
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Windbreaker', 480)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 14 TRACKSUIT PANTS -->
+    <article class="product"
+             data-name="tracksuit pants">
+
+        <div class="product-image">
+
+            <img src="tracksuit-pants.jpg"
+                 alt="Tracksuit Pants"
+                 loading="lazy">
+
+            <button class="heart"
+                    onclick="toggleHeart(this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <h3 class="product-name">
+                Tracksuit Pants
+            </h3>
+
+            <div class="rating">
+                ★★★★★
+            </div>
+
+            <div class="price">
+                R300.00
+            </div>
+
+            <div class="size-title">
+                SELECT SIZE
+            </div>
+
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Tracksuit Pants', 300)">
+                ADD TO BAG
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- 15 SPORTS SHIRT -->
+    <article class="product"
+             data-name="sports shirt">
+
+        <div class="product-image">
+
+            <img src="sports-shirt.jpg"
+                 alt="Sports Shirt"
+                 loading="lazy">
+
+            <button class="heart"
+                    onclick="toggleHeart(this)">
+                ♡
+            </button>
+
+        </div>
+
+        <div class="product-info">
+
+            <h3 class="product-name">
+                Sports Shirt
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1127,49 +923,51 @@
                 R270.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Sports Shirt',270)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Sports Shirt', 270)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 16 -->
-
-    <div
-        class="product"
-        data-name="sports shorts">
+    <!-- 16 SPORTS SHORTS -->
+    <article class="product"
+             data-name="sports shorts">
 
         <div class="product-image">
 
-            <img
-                src="sports-shorts.jpg"
-                alt="Sports Shorts">
+            <img src="sports-shorts.jpg"
+                 alt="Sports Shorts"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Sports Shorts
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1179,49 +977,51 @@
                 R230.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Sports Shorts',230)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Sports Shorts', 230)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 17 -->
-
-    <div
-        class="product"
-        data-name="backpack">
+    <!-- 17 BACKPACK -->
+    <article class="product"
+             data-name="backpack">
 
         <div class="product-image">
 
-            <img
-                src="backpack.jpg"
-                alt="Backpack">
+            <img src="backpack.jpg"
+                 alt="Backpack"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Backpack
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1231,49 +1031,49 @@
                 R350.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Backpack',350)">
+            <div class="size-title">
+                SIZE
+            </div>
 
+            <div class="sizes">
+                <button class="selected"
+                        onclick="selectSize(this)">
+                    ONE SIZE
+                </button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Backpack', 350)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 18 -->
-
-    <div
-        class="product"
-        data-name="socks">
+    <!-- 18 SOCKS -->
+    <article class="product"
+             data-name="socks">
 
         <div class="product-image">
 
-            <img
-                src="socks.jpg"
-                alt="Socks">
+            <img src="socks.jpg"
+                 alt="Socks"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Socks
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1283,49 +1083,49 @@
                 R100.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Socks',100)">
+            <div class="size-title">
+                SIZE
+            </div>
 
+            <div class="sizes">
+                <button class="selected"
+                        onclick="selectSize(this)">
+                    ONE SIZE
+                </button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Socks', 100)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 19 -->
-
-    <div
-        class="product"
-        data-name="bucket hat">
+    <!-- 19 BUCKET HAT -->
+    <article class="product"
+             data-name="bucket hat">
 
         <div class="product-image">
 
-            <img
-                src="bucket-hat.jpg"
-                alt="Bucket Hat">
+            <img src="bucket-hat.jpg"
+                 alt="Bucket Hat"
+                 loading="lazy">
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Bucket Hat
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1335,53 +1135,53 @@
                 R180.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Bucket Hat',180)">
+            <div class="size-title">
+                SIZE
+            </div>
 
+            <div class="sizes">
+                <button class="selected"
+                        onclick="selectSize(this)">
+                    ONE SIZE
+                </button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Bucket Hat', 180)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
+    </article>
 
 
-    <!-- 20 -->
-
-    <div
-        class="product"
-        data-name="tracksuit set">
+    <!-- 20 TRACKSUIT SET -->
+    <article class="product"
+             data-name="tracksuit set">
 
         <div class="product-image">
 
-            <img
-                src="tracksuit-set.jpg"
-                alt="Tracksuit Set">
+            <img src="tracksuit-set.jpg"
+                 alt="Tracksuit Set"
+                 loading="lazy">
 
-            <div class="product-badge">
+            <span class="badge">
                 NEW
-            </div>
+            </span>
 
-            <button
-                class="heart"
-                type="button"
-                onclick="toggleHeart(this)"
-                aria-label="Favourite">
-
+            <button class="heart"
+                    onclick="toggleHeart(this)">
                 ♡
-
             </button>
 
         </div>
 
         <div class="product-info">
 
-            <div class="product-name">
+            <h3 class="product-name">
                 Tracksuit Set
-            </div>
+            </h3>
 
             <div class="rating">
                 ★★★★★
@@ -1391,368 +1191,296 @@
                 R500.00
             </div>
 
-            <button
-                class="add-button"
-                type="button"
-                onclick="addToCart('Tracksuit Set',500)">
+            <div class="size-title">
+                SELECT SIZE
+            </div>
 
+            <div class="sizes">
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+            </div>
+
+            <button class="add-button"
+                    onclick="addProduct(this, 'Tracksuit Set', 500)">
                 ADD TO BAG
-
             </button>
 
         </div>
 
-    </div>
-
-
-</div>
+    </article>
 
 </main>
 
 
-<!-- =====================================================
-     NEWSLETTER
-===================================================== -->
-
-<section class="newsletter">
-
-    <h2>
-        JOIN SLINEVISION
-    </h2>
-
-    <p>
-        Stay updated with new drops and collections.
-    </p>
-
-    <form
-        class="newsletter-form"
-        onsubmit="return subscribeNewsletter(event)">
-
-        <input
-            class="newsletter-input"
-            type="email"
-            placeholder="Your email address"
-            required>
-
-        <button
-            class="newsletter-button"
-            type="submit">
-
-            JOIN
-
-        </button>
-
-    </form>
-
-</section>
-
-
-<!-- =====================================================
-     CART OVERLAY
-===================================================== -->
-
-<div
-    id="cart-overlay"
-    class="cart-overlay"
-    onclick="closeCart()">
+<!-- EMPTY SEARCH MESSAGE -->
+<div id="no-results" class="no-results">
+    No products found.
 </div>
 
 
-<!-- =====================================================
-     CART DRAWER
-===================================================== -->
-
-<aside
-    id="cart-drawer"
-    class="cart-drawer"
-    aria-label="Shopping bag">
+<!-- CART -->
+<section id="cart-section" class="cart-section">
 
     <div class="cart-header">
 
-        <h2>
-            YOUR BAG
-        </h2>
-
-        <button
-            class="close-cart"
-            type="button"
-            onclick="closeCart()"
-            aria-label="Close bag">
-
-            ×
-
-        </button>
-
-    </div>
-
-
-    <div
-        id="cart-items"
-        class="cart-items">
-
-    </div>
-
-
-    <div class="cart-bottom">
-
-        <div class="cart-total">
-
-            <span>
-                TOTAL
+        <div>
+            <span class="section-small">
+                YOUR SELECTION
             </span>
 
-            <span id="cart-total">
-                R0.00
-            </span>
-
+            <h2>
+                YOUR BAG
+            </h2>
         </div>
 
-        <button
-            class="checkout-button"
-            type="button"
-            onclick="continueToCheckout()">
+        <span id="bag-count">
+            0 ITEMS
+        </span>
 
+    </div>
+
+
+    <div id="cart-items">
+
+        <div class="empty-cart">
+            <div class="empty-icon">
+                🛍️
+            </div>
+
+            <h3>
+                Your bag is empty
+            </h3>
+
+            <p>
+                Add something you love to your bag.
+            </p>
+
+            <a href="#products">
+                CONTINUE SHOPPING
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="cart-summary">
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="cart-total">
+                R0.00
+            </strong>
+        </div>
+
+        <div class="summary-row delivery-row">
+            <span>Delivery</span>
+            <span id="delivery-cost">
+                Calculated at checkout
+            </span>
+        </div>
+
+        <div class="free-delivery">
+            FREE DELIVERY OVER R1000
+        </div>
+
+        <button class="checkout-button"
+                onclick="continueToCheckout()">
             CHECKOUT
-
         </button>
 
     </div>
-
-</aside>
-
-
-<!-- =====================================================
-     CHECKOUT
-===================================================== -->
-
-<section
-    id="checkout-section"
-    class="checkout-section">
-
-    <h2 class="checkout-title">
-        CHECKOUT
-    </h2>
-
-    <p class="checkout-subtitle">
-        Enter your delivery details below.
-    </p>
-
-
-    <label class="input-label">
-        FULL NAME
-    </label>
-
-    <input
-        class="input"
-        id="customer-name"
-        type="text"
-        placeholder="Full Name"
-        autocomplete="name">
-
-
-    <label class="input-label">
-        PHONE NUMBER
-    </label>
-
-    <input
-        class="input"
-        id="customer-phone"
-        type="tel"
-        placeholder="Phone Number"
-        autocomplete="tel">
-
-
-    <label class="input-label">
-        DELIVERY ADDRESS
-    </label>
-
-    <input
-        class="input"
-        id="customer-address"
-        type="text"
-        placeholder="Delivery Address"
-        autocomplete="street-address">
-
-
-    <div class="payment-title">
-        PAYMENT METHOD
-    </div>
-
-
-    <div class="payment-box">
-
-        <label class="payment-label">
-
-            <input
-                type="radio"
-                name="payment"
-                value="Visa / Mastercard"
-                checked>
-
-            💳 Visa / Mastercard
-
-        </label>
-
-    </div>
-
-
-    <div class="payment-box">
-
-        <label class="payment-label">
-
-            <input
-                type="radio"
-                name="payment"
-                value="PayPal">
-
-            🅿️ PayPal
-
-        </label>
-
-    </div>
-
-
-    <div class="payment-box">
-
-        <label class="payment-label">
-
-            <input
-                type="radio"
-                name="payment"
-                value="Cash on Delivery">
-
-            💵 Cash on Delivery
-
-        </label>
-
-    </div>
-
-
-    <button
-        class="whatsapp-button"
-        type="button"
-        onclick="placeOrderOnWhatsApp()">
-
-        📱 PLACE ORDER ON WHATSAPP
-
-    </button>
-
-
-    <button
-        class="back-button"
-        type="button"
-        onclick="backToCart()">
-
-        ← BACK TO BAG
-
-    </button>
 
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- CHECKOUT -->
+<section id="checkout-section"
+         class="checkout-section">
 
+    <div class="checkout-top">
+
+        <span class="section-small">
+            SLINEVISION CHECKOUT
+        </span>
+
+        <h2>
+            DELIVERY & PAYMENT
+        </h2>
+
+    </div>
+
+
+    <div class="checkout-card">
+
+        <label>
+            FULL NAME
+        </label>
+
+        <input
+            class="input"
+            id="customer-name"
+            type="text"
+            placeholder="Enter your full name"
+            autocomplete="name"
+        >
+
+
+        <label>
+            PHONE NUMBER
+        </label>
+
+        <input
+            class="input"
+            id="customer-phone"
+            type="tel"
+            placeholder="Enter your phone number"
+            autocomplete="tel"
+        >
+
+
+        <label>
+            DELIVERY ADDRESS
+        </label>
+
+        <textarea
+            class="input address-input"
+            id="customer-address"
+            placeholder="Enter your delivery address"
+            rows="3"
+            autocomplete="street-address"></textarea>
+
+
+        <label>
+            PAYMENT METHOD
+        </label>
+
+
+        <div class="payment-options">
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Visa / Mastercard"
+                    checked
+                >
+
+                <span>
+                    💳
+                </span>
+
+                <div>
+                    <strong>Visa / Mastercard</strong>
+                    <small>Card payment</small>
+                </div>
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="PayPal"
+                >
+
+                <span>
+                    🅿️
+                </span>
+
+                <div>
+                    <strong>PayPal</strong>
+                    <small>PayPal payment</small>
+                </div>
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Cash on Delivery"
+                >
+
+                <span>
+                    💵
+                </span>
+
+                <div>
+                    <strong>Cash on Delivery</strong>
+                    <small>Pay when your order arrives</small>
+                </div>
+
+            </label>
+
+        </div>
+
+
+        <div class="checkout-total">
+
+            <span>
+                ORDER TOTAL
+            </span>
+
+            <strong id="checkout-total">
+                R0.00
+            </strong>
+
+        </div>
+
+
+        <button
+            class="whatsapp-button"
+            onclick="placeOrderOnWhatsApp()">
+
+            📱 PLACE ORDER ON WHATSAPP
+
+        </button>
+
+
+        <button
+            class="back-button"
+            onclick="backToCart()">
+
+            ← BACK TO BAG
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 <footer>
 
     <div class="footer-logo">
         SLINEVISION
     </div>
 
-    <p class="footer-tagline">
-        Fashion • Style • Confidence
-        <br>
-        Built for those who move different.
+    <p>
+        STYLE • QUALITY • CONFIDENCE
     </p>
 
-
     <div class="footer-links">
-
-        <div class="footer-column">
-
-            <h3>
-                SHOP
-            </h3>
-
-            <a href="#products">
-                All Products
-            </a>
-
-            <a href="#new-arrivals">
-                New Arrivals
-            </a>
-
-            <a href="#collections">
-                Collections
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>
-                HELP
-            </h3>
-
-            <a href="#products">
-                Shopping
-            </a>
-
-            <a href="#checkout-section">
-                Checkout
-            </a>
-
-            <a href="#top">
-                Back To Top
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>
-                SLINEVISION
-            </h3>
-
-            <a href="#collections">
-                About
-            </a>
-
-            <a href="#products">
-                Shop
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>
-                CONTACT
-            </h3>
-
-            <a
-                href="https://wa.me/27691603308"
-                target="_blank"
-                rel="noopener">
-
-                WhatsApp
-
-            </a>
-
-        </div>
-
+        <a href="#products">SHOP</a>
+        <a href="#cart-section">BAG</a>
+        <a href="#checkout-section">CHECKOUT</a>
     </div>
 
+    <div class="footer-line"></div>
 
-    <div class="footer-bottom">
-
+    <small>
         © 2026 SLINEVISION. ALL RIGHTS RESERVED.
-
-    </div>
+    </small>
 
 </footer>
 
@@ -1760,5 +1488,4 @@
 <script src="script.js"></script>
 
 </body>
-
-          </html>
+    </html>
