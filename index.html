@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SLINEVISION | Fashion Store</title>
+<title>SLINEVISION | Fashion Store</title>
 
-    <meta name="description"
-          content="SLINEVISION online clothing store. Style, quality and confidence.">
+<meta name="description" content="Sline Vision online clothing store in South Africa. Shop trendy fashion for men and women.">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -19,1471 +18,522 @@
     FREE DELIVERY ON ORDERS OVER R1000
 </div>
 
-
 <!-- HEADER -->
 <header class="header">
 
     <div class="header-main">
 
-        <div class="logo">
-            SLINEVISION
-        </div>
+        <div class="logo">SLINEVISION</div>
 
         <div class="header-icons">
 
-            <button class="icon-button"
-                    onclick="focusSearch()"
-                    aria-label="Search">
+            <div class="icon-button"
+                 onclick="document.getElementById('search').focus()">
                 🔍
-            </button>
+            </div>
 
-            <button class="icon-button cart-icon"
-                    onclick="scrollToCart()"
-                    aria-label="Shopping bag">
-
+            <div class="icon-button"
+                 onclick="document.getElementById('cart-section').scrollIntoView({behavior:'smooth'})">
                 🛍️
                 <span id="cart-count">0</span>
-
-            </button>
+            </div>
 
         </div>
 
     </div>
 
-
     <nav class="nav">
-
-        <a href="#products">ALL</a>
-        <a href="#products">NEW IN</a>
-        <a href="#products">MEN</a>
-        <a href="#products">WOMEN</a>
-
+        <a href="#products">All</a>
     </nav>
 
 </header>
 
-
 <!-- SEARCH -->
 <div class="search-area">
-
-    <div class="search-wrapper">
-
-        <span>🔍</span>
-
-        <input
-            type="search"
-            id="search"
-            class="search-box"
-            placeholder="Search products..."
-            oninput="searchProducts()"
-        >
-
-    </div>
-
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search products..."
+        onkeyup="searchProducts()"
+    >
 </div>
-
 
 <!-- HERO -->
 <section class="hero">
-
-    <div class="hero-content">
-
-        <p class="hero-small">
-            SLINEVISION
-        </p>
-
-        <h1>
-            STYLE WITHOUT LIMITS
-        </h1>
-
-        <p class="hero-subtitle">
-            STYLE • QUALITY • CONFIDENCE
-        </p>
-
-        <a href="#products" class="shop-now">
-            SHOP NOW
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- PRODUCTS HEADER -->
-<div class="section-title">
-
     <div>
-        <span class="section-small">SLINEVISION COLLECTION</span>
-        <h2>SHOP ALL</h2>
+        <h1>SLINEVISION</h1>
+        <p>STYLE • QUALITY • CONFIDENCE</p>
     </div>
-
-    <span id="product-count">
-        20 PRODUCTS
-    </span>
-
-</div>
-
+</section>
 
 <!-- PRODUCTS -->
-<main class="products" id="products">
+<div class="products" id="products">
 
-
-    <!-- 1 TRACKSUIT -->
-    <article class="product"
-             data-name="tracksuit">
-
+    <!-- 1 -->
+    <div class="product" data-name="tracksuit"
+         onclick="openProduct(0)">
         <div class="product-image">
-
-            <img src="IMG-20260725-WA0066.jpg"
-                 alt="Tracksuit"
-                 loading="lazy">
-
-            <span class="badge">NEW</span>
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260725-WA0066.jpg" alt="Tracksuit">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Tracksuit
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R450.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Tracksuit', 450)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Tracksuit</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R450.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 2 T-SHIRT -->
-    <article class="product"
-             data-name="t-shirt tshirt tee">
-
+    <!-- 2 -->
+    <div class="product" data-name="t-shirt"
+         onclick="openProduct(1)">
         <div class="product-image">
-
-            <img src="IMG-20260725-WA0068.jpg"
-                 alt="T-Shirt"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260725-WA0068.jpg" alt="T-Shirt">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                T-Shirt
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R250.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'T-Shirt', 250)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">T-Shirt</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R250.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 3 HOODIE -->
-    <article class="product"
-             data-name="hoodie">
-
+    <!-- 3 -->
+    <div class="product" data-name="hoodie"
+         onclick="openProduct(2)">
         <div class="product-image">
-
-            <img src="IMG-20260725-WA0071.jpg"
-                 alt="Hoodie"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260725-WA0071.jpg" alt="Hoodie">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Hoodie
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R350.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Hoodie', 350)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Hoodie</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R350.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 4 ZIP UP -->
-    <article class="product"
-             data-name="zip up zipup">
-
+    <!-- 4 -->
+    <div class="product" data-name="zip up"
+         onclick="openProduct(3)">
         <div class="product-image">
-
-            <img src="IMG-20260727-WA0105.jpg"
-                 alt="Zip Up"
-                 loading="lazy">
-
-            <span class="badge">NEW</span>
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260727-WA0105.jpg" alt="Zip up">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Zip Up
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R600.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Zip Up', 600)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Zip up</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R450.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 5 STAR TRAIL -->
-    <article class="product"
-             data-name="star trail">
-
+    <!-- 5 -->
+    <div class="product" data-name="star trail"
+         onclick="openProduct(4)">
         <div class="product-image">
-
-            <img src="IMG-20260727-WA0107.jpg"
-                 alt="Star Trail"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260727-WA0107.jpg" alt="Star Trail">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Star Trail
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R550.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Star Trail', 550)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Star Trail</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R400.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 6 PIXEL MOTION -->
-    <article class="product"
-             data-name="pixel motion tee">
-
+    <!-- 6 -->
+    <div class="product" data-name="pixel motion tee"
+         onclick="openProduct(5)">
         <div class="product-image">
-
-            <img src="IMG-20260725-WA0073.jpg"
-                 alt="Pixel Motion Tee"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260725-WA0073.jpg" alt="Pixel Motion Tee">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Pixel Motion Tee
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R400.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Pixel Motion Tee', 400)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Pixel Motion Tee</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R250.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 7 VE SHADOW -->
-    <article class="product"
-             data-name="ve shadow set">
-
+    <!-- 7 -->
+    <div class="product" data-name="ve shadow set"
+         onclick="openProduct(6)">
         <div class="product-image">
-
-            <img src="IMG-20260814-WA0026.jpg"
-                 alt="VE Shadow Set"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260814-WA0026.jpg" alt="VE.Shadow set">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                VE.Shadow Set
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R220.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'VE.Shadow Set', 220)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">VE.Shadow set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R450.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 8 PINK GALAXY -->
-    <article class="product"
-             data-name="pink galaxy set">
-
+    <!-- 8 -->
+    <div class="product" data-name="pink galaxy set"
+         onclick="openProduct(7)">
         <div class="product-image">
-
-            <img src="IMG-20260815-WA0046.jpg"
-                 alt="Pink Galaxy Set"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260815-WA0046.jpg" alt="Pink Galaxy Set">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Pink Galaxy Set
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R150.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Pink Galaxy Set', 150)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Pink Galaxy Set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R800.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 9 GALAXY DRIFT -->
-    <article class="product"
-             data-name="galaxy drift set">
-
+    <!-- 9 -->
+    <div class="product" data-name="galaxy drift set"
+         onclick="openProduct(8)">
         <div class="product-image">
-
-            <img src="IMG-20260815-WA0045.jpg"
-                 alt="Galaxy Drift Set"
-                 loading="lazy">
-
-            <span class="badge">
-                SALE
-            </span>
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260815-WA0045.jpg" alt="Galaxy drift set">
+            <div class="sale-badge">SALE</div>
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Galaxy Drift Set
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R800.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Galaxy Drift Set', 800)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Galaxy drift set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R800.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 10 UNTAMED TEE -->
-    <article class="product"
-             data-name="untamed tee">
-
+    <!-- 10 -->
+    <div class="product" data-name="untamed tee"
+         onclick="openProduct(9)">
         <div class="product-image">
-
-            <img src="IMG-20260727-WA0101.jpg"
-                 alt="Untamed Tee"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260727-WA0101.jpg" alt="Untamed Tee">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Untamed Tee
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R300.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Untamed Tee', 300)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Untamed Tee</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R200.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 11 CELESTIAL GALLOP -->
-    <article class="product"
-             data-name="celestial gallop tee">
-
+    <!-- 11 -->
+    <div class="product" data-name="celestial gallop tee"
+         onclick="openProduct(10)">
         <div class="product-image">
-
-            <img src="IMG-20260727-WA0104.jpg"
-                 alt="Celestial Gallop Tee"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260727-WA0104.jpg" alt="Celestial Gallop Tee">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Celestial Gallop Tee
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R280.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Celestial Gallop Tee', 280)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Celestial Gallop Tee</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R280.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 12 UNTAMED MOTION -->
-    <article class="product"
-             data-name="untamed motion set">
-
+    <!-- 12 -->
+    <div class="product" data-name="untamed motion set"
+         onclick="openProduct(11)">
         <div class="product-image">
-
-            <img src="IMG-20260727-WA0111.jpg"
-                 alt="Untamed Motion Set"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="IMG-20260727-WA0111.jpg" alt="Untamed Motion Set">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Untamed Motion Set
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R320.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Untamed Motion Set', 320)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Untamed Motion Set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R450.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 13 WINDBREAKER -->
-    <article class="product"
-             data-name="windbreaker">
-
+    <!-- 13 -->
+    <div class="product" data-name="windbreaker"
+         onclick="openProduct(12)">
         <div class="product-image">
-
-            <img src="windbreaker.jpg"
-                 alt="Windbreaker"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="windbreaker.jpg" alt="Windbreaker">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Windbreaker
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R480.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Windbreaker', 480)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Windbreaker</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R480.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 14 TRACKSUIT PANTS -->
-    <article class="product"
-             data-name="tracksuit pants">
-
+    <!-- 14 -->
+    <div class="product" data-name="tracksuit pants"
+         onclick="openProduct(13)">
         <div class="product-image">
-
-            <img src="tracksuit-pants.jpg"
-                 alt="Tracksuit Pants"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="tracksuit-pants.jpg" alt="Tracksuit Pants">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Tracksuit Pants
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R300.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Tracksuit Pants', 300)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Tracksuit Pants</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R300.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 15 SPORTS SHIRT -->
-    <article class="product"
-             data-name="sports shirt">
-
+    <!-- 15 -->
+    <div class="product" data-name="sports shirt"
+         onclick="openProduct(14)">
         <div class="product-image">
-
-            <img src="sports-shirt.jpg"
-                 alt="Sports Shirt"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="sports-shirt.jpg" alt="Sports Shirt">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Sports Shirt
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R270.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Sports Shirt', 270)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Sports Shirt</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R270.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 16 SPORTS SHORTS -->
-    <article class="product"
-             data-name="sports shorts">
-
+    <!-- 16 -->
+    <div class="product" data-name="sports shorts"
+         onclick="openProduct(15)">
         <div class="product-image">
-
-            <img src="sports-shorts.jpg"
-                 alt="Sports Shorts"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="sports-shorts.jpg" alt="Sports Shorts">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Sports Shorts
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R230.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Sports Shorts', 230)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Sports Shorts</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R230.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 17 BACKPACK -->
-    <article class="product"
-             data-name="backpack">
-
+    <!-- 17 -->
+    <div class="product" data-name="backpack"
+         onclick="openProduct(16)">
         <div class="product-image">
-
-            <img src="backpack.jpg"
-                 alt="Backpack"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="backpack.jpg" alt="Backpack">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Backpack
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R350.00
-            </div>
-
-            <div class="size-title">
-                SIZE
-            </div>
-
-            <div class="sizes">
-                <button class="selected"
-                        onclick="selectSize(this)">
-                    ONE SIZE
-                </button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Backpack', 350)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Backpack</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R350.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 18 SOCKS -->
-    <article class="product"
-             data-name="socks">
-
+    <!-- 18 -->
+    <div class="product" data-name="socks"
+         onclick="openProduct(17)">
         <div class="product-image">
-
-            <img src="socks.jpg"
-                 alt="Socks"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="socks.jpg" alt="Socks">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Socks
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R100.00
-            </div>
-
-            <div class="size-title">
-                SIZE
-            </div>
-
-            <div class="sizes">
-                <button class="selected"
-                        onclick="selectSize(this)">
-                    ONE SIZE
-                </button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Socks', 100)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Socks</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R100.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 19 BUCKET HAT -->
-    <article class="product"
-             data-name="bucket hat">
-
+    <!-- 19 -->
+    <div class="product" data-name="bucket hat"
+         onclick="openProduct(18)">
         <div class="product-image">
-
-            <img src="bucket-hat.jpg"
-                 alt="Bucket Hat"
-                 loading="lazy">
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="bucket-hat.jpg" alt="Bucket Hat">
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Bucket Hat
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R180.00
-            </div>
-
-            <div class="size-title">
-                SIZE
-            </div>
-
-            <div class="sizes">
-                <button class="selected"
-                        onclick="selectSize(this)">
-                    ONE SIZE
-                </button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Bucket Hat', 180)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Bucket Hat</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R180.00</div>
         </div>
+    </div>
 
-    </article>
-
-
-    <!-- 20 TRACKSUIT SET -->
-    <article class="product"
-             data-name="tracksuit set">
-
+    <!-- 20 -->
+    <div class="product" data-name="tracksuit set"
+         onclick="openProduct(19)">
         <div class="product-image">
-
-            <img src="tracksuit-set.jpg"
-                 alt="Tracksuit Set"
-                 loading="lazy">
-
-            <span class="badge">
-                NEW
-            </span>
-
-            <button class="heart"
-                    onclick="toggleHeart(this)">
-                ♡
-            </button>
-
+            <img src="tracksuit-set.jpg" alt="Tracksuit Set">
+            <div class="sale-badge">NEW</div>
+            <div class="heart">♡</div>
         </div>
-
         <div class="product-info">
-
-            <h3 class="product-name">
-                Tracksuit Set
-            </h3>
-
-            <div class="rating">
-                ★★★★★
-            </div>
-
-            <div class="price">
-                R500.00
-            </div>
-
-            <div class="size-title">
-                SELECT SIZE
-            </div>
-
-            <div class="sizes">
-                <button onclick="selectSize(this)">XS</button>
-                <button onclick="selectSize(this)">S</button>
-                <button onclick="selectSize(this)">M</button>
-                <button onclick="selectSize(this)">L</button>
-                <button onclick="selectSize(this)">XL</button>
-                <button onclick="selectSize(this)">XXL</button>
-            </div>
-
-            <button class="add-button"
-                    onclick="addProduct(this, 'Tracksuit Set', 500)">
-                ADD TO BAG
-            </button>
-
+            <div class="product-name">Tracksuit Set</div>
+            <div class="rating">★★★★★</div>
+            <div class="price">R500.00</div>
         </div>
+    </div>
 
-    </article>
-
-</main>
-
-
-<!-- EMPTY SEARCH MESSAGE -->
-<div id="no-results" class="no-results">
-    No products found.
 </div>
 
+<!-- =========================
+     PRODUCT POPUP
+========================= -->
 
-<!-- CART -->
-<section id="cart-section" class="cart-section">
+<div id="product-modal" class="product-modal">
 
-    <div class="cart-header">
+    <div class="product-modal-box">
 
-        <div>
-            <span class="section-small">
-                YOUR SELECTION
-            </span>
+        <button class="close-modal" onclick="closeProduct()">×</button>
 
-            <h2>
-                YOUR BAG
-            </h2>
-        </div>
+        <img id="modal-image" class="modal-image" src="" alt="">
 
-        <span id="bag-count">
-            0 ITEMS
-        </span>
+        <div class="modal-details">
 
-    </div>
+            <h2 id="modal-name"></h2>
 
+            <div class="modal-rating">★★★★★</div>
 
-    <div id="cart-items">
+            <div id="modal-price" class="modal-price"></div>
 
-        <div class="empty-cart">
-            <div class="empty-icon">
-                🛍️
+            <div class="option-title">SIZE</div>
+
+            <div class="size-options">
+
+                <button onclick="selectSize(this)">XS</button>
+                <button onclick="selectSize(this)">S</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">L</button>
+                <button onclick="selectSize(this)">XL</button>
+                <button onclick="selectSize(this)">XXL</button>
+
             </div>
 
-            <h3>
-                Your bag is empty
-            </h3>
+            <div class="option-title">COLOR</div>
 
-            <p>
-                Add something you love to your bag.
-            </p>
+            <div class="color-options">
 
-            <a href="#products">
-                CONTINUE SHOPPING
-            </a>
+                <button onclick="selectColor(this)">Black</button>
+                <button onclick="selectColor(this)">White</button>
+                <button onclick="selectColor(this)">Grey</button>
+
+            </div>
+
+            <div class="option-title">QUANTITY</div>
+
+            <div class="modal-quantity">
+
+                <button onclick="changeModalQuantity(-1)">−</button>
+
+                <span id="modal-quantity">1</span>
+
+                <button onclick="changeModalQuantity(1)">+</button>
+
+            </div>
+
+            <button class="modal-add-button"
+                    onclick="addSelectedProduct()">
+                ADD TO BAG
+            </button>
+
         </div>
 
     </div>
 
+</div>
 
-    <div class="cart-summary">
+<!-- =========================
+     CART
+========================= -->
 
-        <div class="summary-row">
-            <span>Subtotal</span>
-            <strong id="cart-total">
-                R0.00
-            </strong>
-        </div>
+<section id="cart-section" class="cart-section">
 
-        <div class="summary-row delivery-row">
-            <span>Delivery</span>
-            <span id="delivery-cost">
-                Calculated at checkout
-            </span>
-        </div>
+    <h2>Your Bag</h2>
 
-        <div class="free-delivery">
-            FREE DELIVERY OVER R1000
-        </div>
+    <div id="cart-items"></div>
 
-        <button class="checkout-button"
-                onclick="continueToCheckout()">
-            CHECKOUT
-        </button>
-
+    <div class="total">
+        <span>Total</span>
+        <span id="cart-total">R0.00</span>
     </div>
+
+    <button class="checkout-button"
+            onclick="continueToCheckout()">
+        CHECKOUT
+    </button>
 
 </section>
 
+<!-- =========================
+     CHECKOUT
+========================= -->
 
-<!-- CHECKOUT -->
-<section id="checkout-section"
-         class="checkout-section">
+<section id="checkout-section" class="checkout-section">
 
-    <div class="checkout-top">
-
-        <span class="section-small">
-            SLINEVISION CHECKOUT
-        </span>
-
-        <h2>
-            DELIVERY & PAYMENT
-        </h2>
-
+    <div class="step-title">
+        2. Delivery & Payment
     </div>
 
+    <input
+        class="input"
+        id="customer-name"
+        type="text"
+        placeholder="Full Name"
+    >
 
-    <div class="checkout-card">
+    <input
+        class="input"
+        id="customer-phone"
+        type="text"
+        placeholder="Phone Number"
+    >
 
-        <label>
-            FULL NAME
+    <input
+        class="input"
+        id="customer-address"
+        type="text"
+        placeholder="Delivery Address"
+    >
+
+    <h3>Payment Method</h3>
+
+    <div class="payment-box">
+        <label class="payment-label">
+            <input
+                type="radio"
+                name="payment"
+                value="Visa / Mastercard"
+                checked
+            >
+            💳 Visa / Mastercard
         </label>
-
-        <input
-            class="input"
-            id="customer-name"
-            type="text"
-            placeholder="Enter your full name"
-            autocomplete="name"
-        >
-
-
-        <label>
-            PHONE NUMBER
-        </label>
-
-        <input
-            class="input"
-            id="customer-phone"
-            type="tel"
-            placeholder="Enter your phone number"
-            autocomplete="tel"
-        >
-
-
-        <label>
-            DELIVERY ADDRESS
-        </label>
-
-        <textarea
-            class="input address-input"
-            id="customer-address"
-            placeholder="Enter your delivery address"
-            rows="3"
-            autocomplete="street-address"></textarea>
-
-
-        <label>
-            PAYMENT METHOD
-        </label>
-
-
-        <div class="payment-options">
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Visa / Mastercard"
-                    checked
-                >
-
-                <span>
-                    💳
-                </span>
-
-                <div>
-                    <strong>Visa / Mastercard</strong>
-                    <small>Card payment</small>
-                </div>
-
-            </label>
-
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="PayPal"
-                >
-
-                <span>
-                    🅿️
-                </span>
-
-                <div>
-                    <strong>PayPal</strong>
-                    <small>PayPal payment</small>
-                </div>
-
-            </label>
-
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Cash on Delivery"
-                >
-
-                <span>
-                    💵
-                </span>
-
-                <div>
-                    <strong>Cash on Delivery</strong>
-                    <small>Pay when your order arrives</small>
-                </div>
-
-            </label>
-
-        </div>
-
-
-        <div class="checkout-total">
-
-            <span>
-                ORDER TOTAL
-            </span>
-
-            <strong id="checkout-total">
-                R0.00
-            </strong>
-
-        </div>
-
-
-        <button
-            class="whatsapp-button"
-            onclick="placeOrderOnWhatsApp()">
-
-            📱 PLACE ORDER ON WHATSAPP
-
-        </button>
-
-
-        <button
-            class="back-button"
-            onclick="backToCart()">
-
-            ← BACK TO BAG
-
-        </button>
-
     </div>
+
+    <div class="payment-box">
+        <label class="payment-label">
+            <input
+                type="radio"
+                name="payment"
+                value="PayPal"
+            >
+            🅿️ PayPal
+        </label>
+    </div>
+
+    <div class="payment-box">
+        <label class="payment-label">
+            <input
+                type="radio"
+                name="payment"
+                value="Cash on Delivery"
+            >
+            💵 Cash on Delivery
+        </label>
+    </div>
+
+    <button
+        class="whatsapp-button"
+        onclick="placeOrderOnWhatsApp()">
+        📱 PLACE ORDER ON WHATSAPP
+    </button>
+
+    <button
+        class="back-button"
+        onclick="backToCart()">
+        ← BACK TO BAG
+    </button>
 
 </section>
-
 
 <!-- FOOTER -->
+
 <footer>
 
-    <div class="footer-logo">
-        SLINEVISION
-    </div>
+    <h3>SLINEVISION</h3>
 
-    <p>
-        STYLE • QUALITY • CONFIDENCE
-    </p>
+    <p>Fashion • Style • Confidence</p>
 
-    <div class="footer-links">
-        <a href="#products">SHOP</a>
-        <a href="#cart-section">BAG</a>
-        <a href="#checkout-section">CHECKOUT</a>
-    </div>
-
-    <div class="footer-line"></div>
-
-    <small>
-        © 2026 SLINEVISION. ALL RIGHTS RESERVED.
-    </small>
+    <p>© 2026 SLINEVISION</p>
 
 </footer>
-
 
 <script src="script.js"></script>
 
