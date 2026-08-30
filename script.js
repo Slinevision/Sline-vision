@@ -1,135 +1,305 @@
 /* =====================================================
-   SLINEVISION - SCRIPT.JS
-   Size selection only
-   ===================================================== */
+   SLINEVISION — SCRIPT.JS
+   Premium Store Version 2.0
+===================================================== */
 
 
-/* =========================
+/* =====================================================
    PRODUCT DATA
-========================= */
+===================================================== */
 
 const products = [
+
     {
         name: "Tracksuit",
         price: 450,
-        image: "IMG-20260725-WA0066.jpg"
+        image: "IMG-20260725-WA0066.jpg",
+        category: "sets",
+        badge: "NEW"
     },
+
     {
         name: "T-Shirt",
         price: 250,
-        image: "IMG-20260725-WA0068.jpg"
+        image: "IMG-20260725-WA0068.jpg",
+        category: "tops"
     },
+
     {
         name: "Hoodie",
         price: 350,
-        image: "IMG-20260725-WA0071.jpg"
+        image: "IMG-20260725-WA0071.jpg",
+        category: "tops"
     },
+
     {
         name: "Zip Up",
         price: 450,
-        image: "IMG-20260727-WA0105.jpg"
+        image: "IMG-20260727-WA0105.jpg",
+        category: "tops"
     },
+
     {
         name: "Star Trail",
         price: 400,
-        image: "IMG-20260727-WA0107.jpg"
+        image: "IMG-20260727-WA0107.jpg",
+        category: "tops"
     },
+
     {
         name: "Pixel Motion Tee",
         price: 250,
-        image: "IMG-20260725-WA0073.jpg"
+        image: "IMG-20260725-WA0073.jpg",
+        category: "tops"
     },
+
     {
         name: "VE.Shadow Set",
         price: 450,
-        image: "IMG-20260814-WA0026.jpg"
+        image: "IMG-20260814-WA0026.jpg",
+        category: "sets",
+        badge: "NEW"
     },
+
     {
         name: "Pink Galaxy Set",
         price: 800,
-        image: "IMG-20260815-WA0046.jpg"
+        image: "IMG-20260815-WA0046.jpg",
+        category: "sets"
     },
+
     {
         name: "Galaxy Drift Set",
         price: 800,
-        image: "IMG-20260815-WA0045.jpg"
+        image: "IMG-20260815-WA0045.jpg",
+        category: "sets",
+        badge: "SALE"
     },
+
     {
         name: "Untamed Tee",
         price: 200,
-        image: "IMG-20260727-WA0101.jpg"
+        image: "IMG-20260727-WA0101.jpg",
+        category: "tops"
     },
+
     {
         name: "Celestial Gallop Tee",
         price: 280,
-        image: "IMG-20260727-WA0104.jpg"
+        image: "IMG-20260727-WA0104.jpg",
+        category: "tops"
     },
+
     {
         name: "Untamed Motion Set",
         price: 450,
-        image: "IMG-20260727-WA0111.jpg"
+        image: "IMG-20260727-WA0111.jpg",
+        category: "sets"
     },
+
     {
         name: "Windbreaker",
         price: 480,
-        image: "windbreaker.jpg"
+        image: "windbreaker.jpg",
+        category: "tops"
     },
+
     {
         name: "Tracksuit Pants",
         price: 300,
-        image: "tracksuit-pants.jpg"
+        image: "tracksuit-pants.jpg",
+        category: "bottoms"
     },
+
     {
         name: "Sports Shirt",
         price: 270,
-        image: "sports-shirt.jpg"
+        image: "sports-shirt.jpg",
+        category: "tops"
     },
+
     {
         name: "Sports Shorts",
         price: 230,
-        image: "sports-shorts.jpg"
+        image: "sports-shorts.jpg",
+        category: "bottoms"
     },
+
     {
         name: "Backpack",
         price: 350,
-        image: "backpack.jpg"
+        image: "backpack.jpg",
+        category: "accessories"
     },
+
     {
         name: "Socks",
         price: 100,
-        image: "socks.jpg"
+        image: "socks.jpg",
+        category: "accessories"
     },
+
     {
         name: "Bucket Hat",
         price: 180,
-        image: "bucket-hat.jpg"
+        image: "bucket-hat.jpg",
+        category: "accessories"
     },
+
     {
         name: "Tracksuit Set",
         price: 500,
-        image: "tracksuit-set.jpg"
+        image: "tracksuit-set.jpg",
+        category: "sets",
+        badge: "NEW"
     }
+
 ];
 
 
-/* =========================
+/* =====================================================
    CART
-========================= */
+===================================================== */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
-/* =========================
+/* =====================================================
    CURRENT PRODUCT
-========================= */
+===================================================== */
 
 let currentProduct = null;
 let selectedSize = "";
+let activeCategory = "all";
 
 
-/* =========================
+/* =====================================================
+   DOM READY
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    renderProducts(products);
+
+    displayCart();
+
+    updateProductCount();
+
+    setupKeyboard();
+
+});
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(list) {
+
+    const grid =
+        document.getElementById("product-grid");
+
+    if (!grid) {
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    list.forEach((product, index) => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "product";
+
+        card.dataset.name =
+            product.name.toLowerCase();
+
+        card.dataset.category =
+            product.category;
+
+        card.innerHTML = `
+
+            <div class="product-image"
+                 onclick="openProduct(${index}, ${products.indexOf(product)})">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                >
+
+                ${
+                    product.badge
+                    ? `<span class="badge">${product.badge}</span>`
+                    : ""
+                }
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(event, this)"
+                    aria-label="Add ${product.name} to wishlist">
+                    ♡
+                </button>
+
+                <button
+                    class="quick-add"
+                    onclick="quickAdd(event, ${products.indexOf(product)})">
+                    QUICK ADD
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-brand">
+                    SLINEVISION
+                </div>
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+
+                    <div class="price">
+                        R${product.price.toFixed(2)}
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   QUICK ADD
+===================================================== */
+
+function quickAdd(event, index) {
+
+    event.stopPropagation();
+
+    openProduct(index);
+
+}
+
+
+/* =====================================================
    OPEN PRODUCT
-========================= */
+===================================================== */
 
 function openProduct(index) {
 
@@ -137,27 +307,46 @@ function openProduct(index) {
         return;
     }
 
-    currentProduct = products[index];
+    currentProduct =
+        products[index];
 
     selectedSize = "";
 
-    document.getElementById("modal-image").src =
-        currentProduct.image;
+    const image =
+        document.getElementById("modal-image");
 
-    document.getElementById("modal-image").alt =
-        currentProduct.name;
+    const name =
+        document.getElementById("modal-name");
 
-    document.getElementById("modal-name").innerText =
-        currentProduct.name;
+    const price =
+        document.getElementById("modal-price");
 
-    document.getElementById("modal-price").innerText =
-        "R" + currentProduct.price.toFixed(2);
+    const selected =
+        document.getElementById("selected-size");
 
-    document.getElementById("selected-size").innerText =
-        "Select size";
+    if (image) {
+        image.src =
+            currentProduct.image;
 
+        image.alt =
+            currentProduct.name;
+    }
 
-    /* Remove old selected size */
+    if (name) {
+        name.innerText =
+            currentProduct.name;
+    }
+
+    if (price) {
+        price.innerText =
+            "R" +
+            currentProduct.price.toFixed(2);
+    }
+
+    if (selected) {
+        selected.innerText =
+            "Required";
+    }
 
     document
         .querySelectorAll(".size-options button")
@@ -165,36 +354,39 @@ function openProduct(index) {
             button.classList.remove("selected");
         });
 
-
     document
         .getElementById("product-modal")
         .classList.add("active");
 
-
     document.body.classList.add("modal-open");
+
 }
 
 
-/* =========================
+/* =====================================================
    CLOSE PRODUCT
-========================= */
+===================================================== */
 
 function closeProduct() {
 
-    document
-        .getElementById("product-modal")
-        .classList.remove("active");
+    const modal =
+        document.getElementById("product-modal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
 
     document.body.classList.remove("modal-open");
 
     currentProduct = null;
     selectedSize = "";
+
 }
 
 
-/* =========================
+/* =====================================================
    SELECT SIZE
-========================= */
+===================================================== */
 
 function selectSize(button, size) {
 
@@ -208,21 +400,26 @@ function selectSize(button, size) {
 
     button.classList.add("selected");
 
-    document.getElementById("selected-size").innerText =
-        size;
+    const selected =
+        document.getElementById("selected-size");
+
+    if (selected) {
+        selected.innerText =
+            size;
+    }
+
 }
 
 
-/* =========================
+/* =====================================================
    ADD SELECTED PRODUCT
-========================= */
+===================================================== */
 
 function addSelectedProduct() {
 
     if (!currentProduct) {
         return;
     }
-
 
     if (!selectedSize) {
 
@@ -231,12 +428,29 @@ function addSelectedProduct() {
         return;
     }
 
-
-    let existing = cart.find(item =>
-        item.name === currentProduct.name &&
-        item.size === selectedSize
+    addToCart(
+        currentProduct,
+        selectedSize
     );
 
+    closeProduct();
+
+    openCart();
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(product, size) {
+
+    const existing =
+        cart.find(item =>
+            item.name === product.name &&
+            item.size === size
+        );
 
     if (existing) {
 
@@ -247,13 +461,13 @@ function addSelectedProduct() {
 
         cart.push({
 
-            name: currentProduct.name,
+            name: product.name,
 
-            price: Number(currentProduct.price),
+            price: Number(product.price),
 
-            image: currentProduct.image,
+            image: product.image,
 
-            size: selectedSize,
+            size: size,
 
             quantity: 1
 
@@ -261,19 +475,14 @@ function addSelectedProduct() {
 
     }
 
-
     saveCart();
-
-    closeProduct();
-
-    openCart();
 
 }
 
 
-/* =========================
+/* =====================================================
    SAVE CART
-========================= */
+===================================================== */
 
 function saveCart() {
 
@@ -287,9 +496,9 @@ function saveCart() {
 }
 
 
-/* =========================
+/* =====================================================
    DISPLAY CART
-========================= */
+===================================================== */
 
 function displayCart() {
 
@@ -306,9 +515,7 @@ function displayCart() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     let total = 0;
     let count = 0;
@@ -317,11 +524,23 @@ function displayCart() {
     if (cart.length === 0) {
 
         container.innerHTML = `
+
             <div class="empty-cart">
-                <div class="empty-cart-icon">🛍️</div>
-                <h3>Your bag is empty</h3>
-                <p>Add something you love.</p>
+
+                <div class="empty-cart-icon">
+                    BAG
+                </div>
+
+                <h3>
+                    Your bag is empty
+                </h3>
+
+                <p>
+                    Discover something new.
+                </p>
+
             </div>
+
         `;
 
     } else {
@@ -349,11 +568,12 @@ function displayCart() {
                     <div class="cart-item-image">
 
                         <img
-                            src="${item.image || ''}"
+                            src="${item.image || ""}"
                             alt="${item.name}"
                         >
 
                     </div>
+
 
                     <div class="cart-item-details">
 
@@ -414,27 +634,79 @@ function displayCart() {
 
 
     if (cartCount) {
-
-        cartCount.innerText = count;
-
+        cartCount.innerText =
+            count;
     }
-
 
     if (cartTotal) {
-
         cartTotal.innerText =
-            "R" + total.toFixed(2);
-
+            "R" +
+            total.toFixed(2);
     }
 
+    updateDeliveryProgress(total);
 
     updateCheckout();
+
 }
 
 
-/* =========================
+/* =====================================================
+   DELIVERY PROGRESS
+===================================================== */
+
+function updateDeliveryProgress(total) {
+
+    const message =
+        document.getElementById("delivery-message");
+
+    const progress =
+        document.getElementById("delivery-progress-bar");
+
+    if (!message || !progress) {
+        return;
+    }
+
+    const target = 1000;
+
+    const percentage =
+        Math.min(
+            (total / target) * 100,
+            100
+        );
+
+    progress.style.width =
+        percentage + "%";
+
+
+    if (total <= 0) {
+
+        message.innerText =
+            "Add items to unlock free delivery.";
+
+    } else if (total < target) {
+
+        const remaining =
+            target - total;
+
+        message.innerText =
+            "R" +
+            remaining.toFixed(2) +
+            " away from FREE DELIVERY.";
+
+    } else {
+
+        message.innerText =
+            "FREE DELIVERY unlocked.";
+
+    }
+
+}
+
+
+/* =====================================================
    INCREASE QUANTITY
-========================= */
+===================================================== */
 
 function increaseQuantity(index) {
 
@@ -446,19 +718,19 @@ function increaseQuantity(index) {
         (cart[index].quantity || 1) + 1;
 
     saveCart();
+
 }
 
 
-/* =========================
+/* =====================================================
    DECREASE QUANTITY
-========================= */
+===================================================== */
 
 function decreaseQuantity(index) {
 
     if (!cart[index]) {
         return;
     }
-
 
     if ((cart[index].quantity || 1) > 1) {
 
@@ -470,14 +742,14 @@ function decreaseQuantity(index) {
 
     }
 
-
     saveCart();
+
 }
 
 
-/* =========================
+/* =====================================================
    REMOVE ITEM
-========================= */
+===================================================== */
 
 function removeItem(index) {
 
@@ -488,115 +760,101 @@ function removeItem(index) {
     cart.splice(index, 1);
 
     saveCart();
+
 }
 
 
-/* =========================
+/* =====================================================
    OPEN CART
-========================= */
+===================================================== */
 
 function openCart() {
 
-    document
-        .getElementById("cart-drawer")
-        .classList.add("active");
+    const drawer =
+        document.getElementById("cart-drawer");
+
+    if (!drawer) {
+        return;
+    }
+
+    drawer.classList.add("active");
 
     document.body.classList.add("cart-open");
 
     displayCart();
+
 }
 
 
-/* =========================
+/* =====================================================
    CLOSE CART
-========================= */
+===================================================== */
 
 function closeCart() {
 
-    document
-        .getElementById("cart-drawer")
-        .classList.remove("active");
+    const drawer =
+        document.getElementById("cart-drawer");
+
+    if (drawer) {
+        drawer.classList.remove("active");
+    }
 
     document.body.classList.remove("cart-open");
+
 }
 
 
-/* =========================
+/* =====================================================
    SEARCH
-========================= */
+===================================================== */
 
 function searchProducts() {
 
+    const inputElement =
+        document.getElementById("search");
+
+    if (!inputElement) {
+        return;
+    }
+
     const input =
-        document
-        .getElementById("search")
-        .value
+        inputElement.value
         .toLowerCase()
         .trim();
 
 
-    const productCards =
-        document.querySelectorAll(".product");
+    let filtered =
+        products.filter(product => {
+
+            const matchesName =
+                product.name
+                .toLowerCase()
+                .includes(input);
+
+            const matchesCategory =
+                activeCategory === "all" ||
+                product.category === activeCategory;
+
+            return matchesName &&
+                   matchesCategory;
+
+        });
 
 
-    let visibleCount = 0;
+    renderProducts(filtered);
 
-
-    productCards.forEach(product => {
-
-        const name =
-            product
-            .dataset
-            .name
-            .toLowerCase();
-
-
-        if (name.includes(input)) {
-
-            product.style.display = "";
-
-            visibleCount++;
-
-        } else {
-
-            product.style.display = "none";
-
-        }
-
-    });
+    updateProductCount(filtered.length);
 
 
     const noResults =
         document.getElementById("no-results");
 
-
     if (noResults) {
 
         noResults.style.display =
-            visibleCount === 0
+            filtered.length === 0
             ? "block"
             : "none";
-
-    }
-
-
-    const productCount =
-        document.getElementById("product-count");
-
-
-    if (productCount) {
-
-        if (input) {
-
-            productCount.innerText =
-                visibleCount + " products";
-
-        } else {
-
-            productCount.innerText =
-                products.length + " products";
-
-        }
 
     }
 
@@ -604,74 +862,150 @@ function searchProducts() {
     const clearButton =
         document.getElementById("clear-search");
 
-
     if (clearButton) {
 
         clearButton.style.display =
-            input ? "block" : "none";
+            input
+            ? "block"
+            : "none";
 
     }
 
 }
 
 
-/* =========================
+/* =====================================================
    CLEAR SEARCH
-========================= */
+===================================================== */
 
 function clearSearch() {
 
     const search =
         document.getElementById("search");
 
-
-    if (search) {
-
-        search.value = "";
-
-        searchProducts();
-
-        search.focus();
-
-    }
-
-}
-
-
-/* =========================
-   FOCUS SEARCH
-========================= */
-
-function focusSearch() {
-
-    const search =
-        document.getElementById("search");
-
-
     if (!search) {
         return;
     }
 
+    search.value = "";
 
-    search.focus();
-
-
-    search.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    searchProducts();
 
 }
 
 
-/* =========================
+/* =====================================================
+   OPEN SEARCH
+===================================================== */
+
+function openSearch() {
+
+    const panel =
+        document.getElementById("search-panel");
+
+    if (!panel) {
+        return;
+    }
+
+    panel.classList.toggle("active");
+
+    if (panel.classList.contains("active")) {
+
+        setTimeout(() => {
+
+            const input =
+                document.getElementById("search");
+
+            if (input) {
+                input.focus();
+            }
+
+        }, 250);
+
+    }
+
+}
+
+
+/* =====================================================
+   FOCUS SEARCH
+===================================================== */
+
+function focusSearch() {
+
+    openSearch();
+
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+function toggleFilters() {
+
+    const filterBar =
+        document.getElementById("filter-bar");
+
+    if (!filterBar) {
+        return;
+    }
+
+    filterBar.classList.toggle("visible");
+
+}
+
+
+/* =====================================================
+   FILTER PRODUCTS
+===================================================== */
+
+function filterProducts(category, button) {
+
+    activeCategory = category;
+
+    document
+        .querySelectorAll(".filter-chip")
+        .forEach(item => {
+            item.classList.remove("active");
+        });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    searchProducts();
+
+}
+
+
+/* =====================================================
+   PRODUCT COUNT
+===================================================== */
+
+function updateProductCount(count = products.length) {
+
+    const productCount =
+        document.getElementById("product-count");
+
+    if (!productCount) {
+        return;
+    }
+
+    productCount.innerText =
+        count + " " +
+        (count === 1 ? "product" : "products");
+
+}
+
+
+/* =====================================================
    WISHLIST
-========================= */
+===================================================== */
 
 function toggleWishlist(event, button) {
 
     event.stopPropagation();
-
 
     if (button.classList.contains("liked")) {
 
@@ -690,9 +1024,51 @@ function toggleWishlist(event, button) {
 }
 
 
-/* =========================
+/* =====================================================
+   SCROLL TO PRODUCTS
+===================================================== */
+
+function scrollToProducts() {
+
+    const productsSection =
+        document.getElementById("products");
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMobileMenu() {
+
+    const menu =
+        document.getElementById("mobile-menu");
+
+    if (!menu) {
+        return;
+    }
+
+    menu.classList.toggle("active");
+
+    document.body.classList.toggle(
+        "mobile-menu-open"
+    );
+
+}
+
+
+/* =====================================================
    CHECKOUT
-========================= */
+===================================================== */
 
 function continueToCheckout() {
 
@@ -703,32 +1079,24 @@ function continueToCheckout() {
         return;
     }
 
-
     closeCart();
 
-
     updateCheckout();
-
 
     document
         .getElementById("checkout-section")
         .classList.add("active");
 
-
-    document.body.classList.add("checkout-open");
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    document.body.classList.add(
+        "checkout-open"
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
    UPDATE CHECKOUT
-========================= */
+===================================================== */
 
 function updateCheckout() {
 
@@ -738,14 +1106,11 @@ function updateCheckout() {
     const checkoutTotal =
         document.getElementById("checkout-total");
 
-
     if (!checkoutItems) {
         return;
     }
 
-
     checkoutItems.innerHTML = "";
-
 
     let total = 0;
 
@@ -761,7 +1126,6 @@ function updateCheckout() {
         const subtotal =
             price * quantity;
 
-
         total += subtotal;
 
 
@@ -776,7 +1140,8 @@ function updateCheckout() {
                     </strong>
 
                     <small>
-                        Size: ${item.size || "Not selected"}
+                        Size:
+                        ${item.size || "Not selected"}
                         × ${quantity}
                     </small>
 
@@ -796,32 +1161,39 @@ function updateCheckout() {
     if (checkoutTotal) {
 
         checkoutTotal.innerText =
-            "R" + total.toFixed(2);
+            "R" +
+            total.toFixed(2);
 
     }
 
 }
 
 
-/* =========================
+/* =====================================================
    CLOSE CHECKOUT
-========================= */
+===================================================== */
 
 function closeCheckout() {
 
-    document
-        .getElementById("checkout-section")
-        .classList.remove("active");
+    const checkout =
+        document.getElementById(
+            "checkout-section"
+        );
 
+    if (checkout) {
+        checkout.classList.remove("active");
+    }
 
-    document.body.classList.remove("checkout-open");
+    document.body.classList.remove(
+        "checkout-open"
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
    BACK TO CART
-========================= */
+===================================================== */
 
 function backToCart() {
 
@@ -832,9 +1204,9 @@ function backToCart() {
 }
 
 
-/* =========================
+/* =====================================================
    WHATSAPP ORDER
-========================= */
+===================================================== */
 
 function placeOrderOnWhatsApp() {
 
@@ -924,7 +1296,7 @@ function placeOrderOnWhatsApp() {
 
     const message =
 
-        "🛍️ SLINEVISION NEW ORDER\n\n" +
+        "SLINEVISION NEW ORDER\n\n" +
 
         "ORDER ITEMS\n" +
         "--------------------\n" +
@@ -949,8 +1321,6 @@ function placeOrderOnWhatsApp() {
         address;
 
 
-    /* Your WhatsApp number */
-
     const whatsappNumber =
         "27691603308";
 
@@ -967,61 +1337,41 @@ function placeOrderOnWhatsApp() {
 }
 
 
-/* =========================
-   PRODUCT COUNT
-========================= */
+/* =====================================================
+   KEYBOARD CONTROLS
+===================================================== */
 
-function updateProductCount() {
+function setupKeyboard() {
 
-    const productCount =
-        document.getElementById("product-count");
+    document.addEventListener(
+        "keydown",
+        function(event) {
 
+            if (event.key === "Escape") {
 
-    if (productCount) {
+                closeProduct();
 
-        productCount.innerText =
-            products.length + " products";
+                closeCart();
 
-    }
+                closeCheckout();
 
-}
+                const menu =
+                    document.getElementById(
+                        "mobile-menu"
+                    );
 
+                if (
+                    menu &&
+                    menu.classList.contains("active")
+                ) {
 
-/* =========================
-   CLOSE MODALS WITH ESC
-========================= */
+                    toggleMobileMenu();
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+                }
 
-        if (event.key === "Escape") {
-
-            closeProduct();
-
-            closeCart();
-
-            closeCheckout();
+            }
 
         }
+    );
 
-    }
-);
-
-
-/* =========================
-   START WEBSITE
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        displayCart();
-
-        updateProductCount();
-
-        searchProducts();
-
-    }
-);
+}
