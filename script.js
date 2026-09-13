@@ -1,1377 +1,608 @@
-/* =====================================================
-   SLINEVISION — SCRIPT.JS
-   Premium Store Version 2.0
-===================================================== */
+/* =========================================
+   SLINEVISION STORE
+========================================= */
 
-
-/* =====================================================
-   PRODUCT DATA
-===================================================== */
+/*
+  Replace these demo products with your
+  actual SLINEVISION products.
+*/
 
 const products = [
+  {
+    id: 1,
+    name: "VISION CORE TEE",
+    category: "T-Shirts",
+    gender: "Men",
+    price: 450,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
+    description: "A clean everyday streetwear essential with the SLINEVISION identity."
+  },
 
-    {
-        name: "Tracksuit",
-        price: 450,
-        image: "IMG-20260725-WA0066.jpg",
-        category: "sets",
-        badge: "NEW"
-    },
+  {
+    id: 2,
+    name: "SHADOW OVERSIZED TEE",
+    category: "T-Shirts",
+    gender: "Unisex",
+    price: 480,
+    image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85",
+    description: "Oversized silhouette designed for a relaxed streetwear fit."
+  },
 
-    {
-        name: "T-Shirt",
-        price: 250,
-        image: "IMG-20260725-WA0068.jpg",
-        category: "tops"
-    },
+  {
+    id: 3,
+    name: "VISION HOODIE",
+    category: "Hoodies",
+    gender: "Unisex",
+    price: 850,
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
+    description: "Heavyweight hoodie with a minimal SLINEVISION aesthetic."
+  },
 
-    {
-        name: "Hoodie",
-        price: 350,
-        image: "IMG-20260725-WA0071.jpg",
-        category: "tops"
-    },
+  {
+    id: 4,
+    name: "LEGACY HOODIE",
+    category: "Hoodies",
+    gender: "Men",
+    price: 900,
+    image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",
+    description: "A premium streetwear hoodie built for everyday wear."
+  },
 
-    {
-        name: "Zip Up",
-        price: 450,
-        image: "IMG-20260727-WA0105.jpg",
-        category: "tops"
-    },
+  {
+    id: 5,
+    name: "SHADOW SET",
+    category: "Sets",
+    gender: "Women",
+    price: 1100,
+    image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=85",
+    description: "Matching streetwear set with a bold monochrome aesthetic."
+  },
 
-    {
-        name: "Star Trail",
-        price: 400,
-        image: "IMG-20260727-WA0107.jpg",
-        category: "tops"
-    },
+  {
+    id: 6,
+    name: "ICON SET",
+    category: "Sets",
+    gender: "Unisex",
+    price: 1200,
+    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85",
+    description: "A complete look designed around the SLINEVISION identity."
+  },
 
-    {
-        name: "Pixel Motion Tee",
-        price: 250,
-        image: "IMG-20260725-WA0073.jpg",
-        category: "tops"
-    },
+  {
+    id: 7,
+    name: "VISION CAP",
+    category: "Accessories",
+    gender: "Unisex",
+    price: 350,
+    image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=85",
+    description: "Minimal everyday cap finished with a clean streetwear look."
+  },
 
-    {
-        name: "VE.Shadow Set",
-        price: 450,
-        image: "IMG-20260814-WA0026.jpg",
-        category: "sets",
-        badge: "NEW"
-    },
-
-    {
-        name: "Pink Galaxy Set",
-        price: 800,
-        image: "IMG-20260815-WA0046.jpg",
-        category: "sets"
-    },
-
-    {
-        name: "Galaxy Drift Set",
-        price: 800,
-        image: "IMG-20260815-WA0045.jpg",
-        category: "sets",
-        badge: "SALE"
-    },
-
-    {
-        name: "Untamed Tee",
-        price: 200,
-        image: "IMG-20260727-WA0101.jpg",
-        category: "tops"
-    },
-
-    {
-        name: "Celestial Gallop Tee",
-        price: 280,
-        image: "IMG-20260727-WA0104.jpg",
-        category: "tops"
-    },
-
-    {
-        name: "Untamed Motion Set",
-        price: 450,
-        image: "IMG-20260727-WA0111.jpg",
-        category: "sets"
-    },
-
-    {
-        name: "Windbreaker",
-        price: 480,
-        image: "windbreaker.jpg",
-        category: "tops"
-    },
-
-    {
-        name: "Tracksuit Pants",
-        price: 300,
-        image: "tracksuit-pants.jpg",
-        category: "bottoms"
-    },
-
-    {
-        name: "Sports Shirt",
-        price: 270,
-        image: "sports-shirt.jpg",
-        category: "tops"
-    },
-
-    {
-        name: "Sports Shorts",
-        price: 230,
-        image: "sports-shorts.jpg",
-        category: "bottoms"
-    },
-
-    {
-        name: "Backpack",
-        price: 350,
-        image: "backpack.jpg",
-        category: "accessories"
-    },
-
-    {
-        name: "Socks",
-        price: 100,
-        image: "socks.jpg",
-        category: "accessories"
-    },
-
-    {
-        name: "Bucket Hat",
-        price: 180,
-        image: "bucket-hat.jpg",
-        category: "accessories"
-    },
-
-    {
-        name: "Tracksuit Set",
-        price: 500,
-        image: "tracksuit-set.jpg",
-        category: "sets",
-        badge: "NEW"
-    }
-
+  {
+    id: 8,
+    name: "SIGNATURE BAG",
+    category: "Accessories",
+    gender: "Unisex",
+    price: 500,
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+    description: "Compact everyday bag for the SLINEVISION lifestyle."
+  }
 ];
 
 
-/* =====================================================
-   CART
-===================================================== */
+/* =========================================
+   STATE
+========================================= */
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("slinevisionCart")) || [];
 
-
-/* =====================================================
-   CURRENT PRODUCT
-===================================================== */
-
-let currentProduct = null;
-let selectedSize = "";
-let activeCategory = "all";
+let currentFilter = "All";
+let currentSearch = "";
+let selectedProduct = null;
+let selectedSize = "M";
 
 
-/* =====================================================
-   DOM READY
-===================================================== */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+const productsGrid = document.getElementById("productsGrid");
+const noProducts = document.getElementById("noProducts");
 
-    renderProducts(products);
+const cartElement = document.getElementById("cart");
+const cartItems = document.getElementById("cartItems");
+const cartEmpty = document.getElementById("cartEmpty");
+const cartTotal = document.getElementById("cartTotal");
+const cartCount = document.getElementById("cartCount");
 
-    displayCart();
+const overlay = document.getElementById("overlay");
 
-    updateProductCount();
+const productModal = document.getElementById("productModal");
+const modalImage = document.getElementById("modalImage");
+const modalName = document.getElementById("modalName");
+const modalPrice = document.getElementById("modalPrice");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalAdd = document.getElementById("modalAdd");
 
-    setupKeyboard();
+const searchPanel = document.getElementById("searchPanel");
+const searchInput = document.getElementById("searchInput");
+
+
+/* =========================================
+   FORMAT PRICE
+========================================= */
+
+function money(amount) {
+  return `R${amount.toLocaleString("en-ZA")}`;
+}
+
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
+
+function renderProducts() {
+
+  const filtered = products.filter(product => {
+
+    const matchesFilter =
+      currentFilter === "All" ||
+      product.category === currentFilter;
+
+    const matchesSearch =
+      product.name.toLowerCase().includes(
+        currentSearch.toLowerCase()
+      ) ||
+      product.category.toLowerCase().includes(
+        currentSearch.toLowerCase()
+      );
+
+    return matchesFilter && matchesSearch;
+  });
+
+  productsGrid.innerHTML = "";
+
+  if (!filtered.length) {
+    noProducts.style.display = "block";
+    return;
+  }
+
+  noProducts.style.display = "none";
+
+  filtered.forEach(product => {
+
+    const card = document.createElement("article");
+
+    card.className = "product-card";
+
+    card.innerHTML = `
+      <div class="product-image">
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+        >
+
+        ${
+          product.id === 1
+            ? `<span class="product-tag">NEW</span>`
+            : ""
+        }
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          ${product.name}
+        </div>
+
+        <div class="product-category">
+          ${product.category}
+        </div>
+
+        <div class="product-price">
+          ${money(product.price)}
+        </div>
+
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      openProduct(product);
+    });
+
+    productsGrid.appendChild(card);
+  });
+}
+
+
+/* =========================================
+   PRODUCT MODAL
+========================================= */
+
+function openProduct(product) {
+
+  selectedProduct = product;
+
+  modalImage.src = product.image;
+  modalImage.alt = product.name;
+
+  modalName.textContent = product.name;
+  modalPrice.textContent = money(product.price);
+  modalCategory.textContent = product.category;
+  modalDescription.textContent = product.description;
+
+  selectedSize = "M";
+
+  document.querySelectorAll(".sizes button").forEach(button => {
+    button.classList.remove("selected");
+
+    if (button.textContent === "M") {
+      button.classList.add("selected");
+    }
+  });
+
+  productModal.classList.add("show");
+}
+
+
+function closeProduct() {
+  productModal.classList.remove("show");
+}
+
+
+/* =========================================
+   SIZE SELECTOR
+========================================= */
+
+document.querySelectorAll(".sizes button").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    document.querySelectorAll(".sizes button")
+      .forEach(btn => btn.classList.remove("selected"));
+
+    button.classList.add("selected");
+
+    selectedSize = button.textContent;
+  });
 
 });
 
 
-/* =====================================================
-   RENDER PRODUCTS
-===================================================== */
-
-function renderProducts(list) {
-
-    const grid =
-        document.getElementById("product-grid");
-
-    if (!grid) {
-        return;
-    }
-
-    grid.innerHTML = "";
-
-    list.forEach((product, index) => {
-
-        const card =
-            document.createElement("article");
-
-        card.className = "product";
-
-        card.dataset.name =
-            product.name.toLowerCase();
-
-        card.dataset.category =
-            product.category;
-
-        card.innerHTML = `
-
-            <div class="product-image"
-                 onclick="openProduct(${index}, ${products.indexOf(product)})">
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy"
-                >
-
-                ${
-                    product.badge
-                    ? `<span class="badge">${product.badge}</span>`
-                    : ""
-                }
-
-                <button
-                    class="heart"
-                    onclick="toggleWishlist(event, this)"
-                    aria-label="Add ${product.name} to wishlist">
-                    ♡
-                </button>
-
-                <button
-                    class="quick-add"
-                    onclick="quickAdd(event, ${products.indexOf(product)})">
-                    QUICK ADD
-                </button>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-brand">
-                    SLINEVISION
-                </div>
-
-                <div class="product-name">
-                    ${product.name}
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="rating">
-                        ★★★★★
-                    </div>
-
-                    <div class="price">
-                        R${product.price.toFixed(2)}
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-        grid.appendChild(card);
-
-    });
-
-}
-
-
-/* =====================================================
-   QUICK ADD
-===================================================== */
-
-function quickAdd(event, index) {
-
-    event.stopPropagation();
-
-    openProduct(index);
-
-}
-
-
-/* =====================================================
-   OPEN PRODUCT
-===================================================== */
-
-function openProduct(index) {
-
-    if (!products[index]) {
-        return;
-    }
-
-    currentProduct =
-        products[index];
-
-    selectedSize = "";
-
-    const image =
-        document.getElementById("modal-image");
-
-    const name =
-        document.getElementById("modal-name");
-
-    const price =
-        document.getElementById("modal-price");
-
-    const selected =
-        document.getElementById("selected-size");
-
-    if (image) {
-        image.src =
-            currentProduct.image;
-
-        image.alt =
-            currentProduct.name;
-    }
-
-    if (name) {
-        name.innerText =
-            currentProduct.name;
-    }
-
-    if (price) {
-        price.innerText =
-            "R" +
-            currentProduct.price.toFixed(2);
-    }
-
-    if (selected) {
-        selected.innerText =
-            "Required";
-    }
-
-    document
-        .querySelectorAll(".size-options button")
-        .forEach(button => {
-            button.classList.remove("selected");
-        });
-
-    document
-        .getElementById("product-modal")
-        .classList.add("active");
-
-    document.body.classList.add("modal-open");
-
-}
-
-
-/* =====================================================
-   CLOSE PRODUCT
-===================================================== */
-
-function closeProduct() {
-
-    const modal =
-        document.getElementById("product-modal");
-
-    if (modal) {
-        modal.classList.remove("active");
-    }
-
-    document.body.classList.remove("modal-open");
-
-    currentProduct = null;
-    selectedSize = "";
-
-}
-
-
-/* =====================================================
-   SELECT SIZE
-===================================================== */
-
-function selectSize(button, size) {
-
-    selectedSize = size;
-
-    document
-        .querySelectorAll(".size-options button")
-        .forEach(item => {
-            item.classList.remove("selected");
-        });
-
-    button.classList.add("selected");
-
-    const selected =
-        document.getElementById("selected-size");
-
-    if (selected) {
-        selected.innerText =
-            size;
-    }
-
-}
-
-
-/* =====================================================
-   ADD SELECTED PRODUCT
-===================================================== */
-
-function addSelectedProduct() {
-
-    if (!currentProduct) {
-        return;
-    }
-
-    if (!selectedSize) {
-
-        alert("Please select a size first.");
-
-        return;
-    }
-
-    addToCart(
-        currentProduct,
-        selectedSize
-    );
-
-    closeProduct();
-
-    openCart();
-
-}
-
-
-/* =====================================================
+/* =========================================
    ADD TO CART
-===================================================== */
+========================================= */
 
-function addToCart(product, size) {
+function addToCart(product, size = "M") {
 
-    const existing =
-        cart.find(item =>
-            item.name === product.name &&
-            item.size === size
-        );
+  const existing = cart.find(item =>
+    item.id === product.id &&
+    item.size === size
+  );
 
-    if (existing) {
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: size,
+      quantity: 1
+    });
+  }
 
-        existing.quantity =
-            (existing.quantity || 1) + 1;
+  saveCart();
 
-    } else {
+  closeProduct();
 
-        cart.push({
-
-            name: product.name,
-
-            price: Number(product.price),
-
-            image: product.image,
-
-            size: size,
-
-            quantity: 1
-
-        });
-
-    }
-
-    saveCart();
-
+  openCart();
 }
 
 
-/* =====================================================
-   SAVE CART
-===================================================== */
+/* =========================================
+   CART
+========================================= */
 
 function saveCart() {
 
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
+  localStorage.setItem(
+    "slinevisionCart",
+    JSON.stringify(cart)
+  );
 
-    displayCart();
-
+  renderCart();
 }
 
 
-/* =====================================================
-   DISPLAY CART
-===================================================== */
+function renderCart() {
 
-function displayCart() {
+  cartItems.innerHTML = "";
 
-    const container =
-        document.getElementById("cart-items");
+  let total = 0;
+  let count = 0;
 
-    const cartCount =
-        document.getElementById("cart-count");
+  cart.forEach((item, index) => {
 
-    const cartTotal =
-        document.getElementById("cart-total");
+    total += item.price * item.quantity;
+    count += item.quantity;
 
-    if (!container) {
-        return;
-    }
+    const element = document.createElement("div");
 
-    container.innerHTML = "";
+    element.className = "cart-item";
 
-    let total = 0;
-    let count = 0;
+    element.innerHTML = `
 
+      <img
+        src="${item.image}"
+        alt="${item.name}"
+      >
 
-    if (cart.length === 0) {
+      <div>
 
-        container.innerHTML = `
+        <div class="cart-item-name">
+          ${item.name}
+        </div>
 
-            <div class="empty-cart">
+        <div class="cart-item-price">
+          Size: ${item.size}<br>
+          ${money(item.price)} × ${item.quantity}
+        </div>
 
-                <div class="empty-cart-icon">
-                    BAG
-                </div>
+      </div>
 
-                <h3>
-                    Your bag is empty
-                </h3>
+      <button
+        class="remove-item"
+        data-index="${index}"
+      >
+        REMOVE
+      </button>
 
-                <p>
-                    Discover something new.
-                </p>
+    `;
 
-            </div>
+    cartItems.appendChild(element);
+  });
 
-        `;
+  cartTotal.textContent = money(total);
+  cartCount.textContent = count;
 
-    } else {
+  cartEmpty.style.display =
+    cart.length ? "none" : "block";
 
-        cart.forEach((item, index) => {
+  document.querySelectorAll(".remove-item")
+    .forEach(button => {
 
-            const quantity =
-                Number(item.quantity) || 1;
+      button.addEventListener("click", () => {
 
-            const price =
-                Number(item.price) || 0;
-
-            const subtotal =
-                price * quantity;
-
-            total += subtotal;
-
-            count += quantity;
-
-
-            container.innerHTML += `
-
-                <div class="cart-item">
-
-                    <div class="cart-item-image">
-
-                        <img
-                            src="${item.image || ""}"
-                            alt="${item.name}"
-                        >
-
-                    </div>
-
-
-                    <div class="cart-item-details">
-
-                        <div class="cart-item-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="cart-item-size">
-                            Size: ${item.size || "Not selected"}
-                        </div>
-
-                        <div class="cart-item-price">
-                            R${price.toFixed(2)}
-                        </div>
-
-
-                        <div class="quantity-controls">
-
-                            <button
-                                onclick="decreaseQuantity(${index})">
-                                −
-                            </button>
-
-                            <span>
-                                ${quantity}
-                            </span>
-
-                            <button
-                                onclick="increaseQuantity(${index})">
-                                +
-                            </button>
-
-                        </div>
-
-
-                        <div class="cart-subtotal">
-                            R${subtotal.toFixed(2)}
-                        </div>
-
-
-                        <button
-                            class="remove-button"
-                            onclick="removeItem(${index})">
-
-                            Remove
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-    }
-
-
-    if (cartCount) {
-        cartCount.innerText =
-            count;
-    }
-
-    if (cartTotal) {
-        cartTotal.innerText =
-            "R" +
-            total.toFixed(2);
-    }
-
-    updateDeliveryProgress(total);
-
-    updateCheckout();
-
-}
-
-
-/* =====================================================
-   DELIVERY PROGRESS
-===================================================== */
-
-function updateDeliveryProgress(total) {
-
-    const message =
-        document.getElementById("delivery-message");
-
-    const progress =
-        document.getElementById("delivery-progress-bar");
-
-    if (!message || !progress) {
-        return;
-    }
-
-    const target = 1000;
-
-    const percentage =
-        Math.min(
-            (total / target) * 100,
-            100
-        );
-
-    progress.style.width =
-        percentage + "%";
-
-
-    if (total <= 0) {
-
-        message.innerText =
-            "Add items to unlock free delivery.";
-
-    } else if (total < target) {
-
-        const remaining =
-            target - total;
-
-        message.innerText =
-            "R" +
-            remaining.toFixed(2) +
-            " away from FREE DELIVERY.";
-
-    } else {
-
-        message.innerText =
-            "FREE DELIVERY unlocked.";
-
-    }
-
-}
-
-
-/* =====================================================
-   INCREASE QUANTITY
-===================================================== */
-
-function increaseQuantity(index) {
-
-    if (!cart[index]) {
-        return;
-    }
-
-    cart[index].quantity =
-        (cart[index].quantity || 1) + 1;
-
-    saveCart();
-
-}
-
-
-/* =====================================================
-   DECREASE QUANTITY
-===================================================== */
-
-function decreaseQuantity(index) {
-
-    if (!cart[index]) {
-        return;
-    }
-
-    if ((cart[index].quantity || 1) > 1) {
-
-        cart[index].quantity--;
-
-    } else {
+        const index =
+          Number(button.dataset.index);
 
         cart.splice(index, 1);
 
-    }
+        saveCart();
+      });
 
-    saveCart();
-
+    });
 }
 
-
-/* =====================================================
-   REMOVE ITEM
-===================================================== */
-
-function removeItem(index) {
-
-    if (!cart[index]) {
-        return;
-    }
-
-    cart.splice(index, 1);
-
-    saveCart();
-
-}
-
-
-/* =====================================================
-   OPEN CART
-===================================================== */
 
 function openCart() {
 
-    const drawer =
-        document.getElementById("cart-drawer");
-
-    if (!drawer) {
-        return;
-    }
-
-    drawer.classList.add("active");
-
-    document.body.classList.add("cart-open");
-
-    displayCart();
-
+  cartElement.classList.add("open");
+  overlay.classList.add("show");
 }
 
-
-/* =====================================================
-   CLOSE CART
-===================================================== */
 
 function closeCart() {
 
-    const drawer =
-        document.getElementById("cart-drawer");
-
-    if (drawer) {
-        drawer.classList.remove("active");
-    }
-
-    document.body.classList.remove("cart-open");
-
+  cartElement.classList.remove("open");
+  overlay.classList.remove("show");
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
-
-function searchProducts() {
-
-    const inputElement =
-        document.getElementById("search");
-
-    if (!inputElement) {
-        return;
-    }
-
-    const input =
-        inputElement.value
-        .toLowerCase()
-        .trim();
-
-
-    let filtered =
-        products.filter(product => {
-
-            const matchesName =
-                product.name
-                .toLowerCase()
-                .includes(input);
-
-            const matchesCategory =
-                activeCategory === "all" ||
-                product.category === activeCategory;
-
-            return matchesName &&
-                   matchesCategory;
-
-        });
-
-
-    renderProducts(filtered);
-
-    updateProductCount(filtered.length);
-
-
-    const noResults =
-        document.getElementById("no-results");
-
-    if (noResults) {
-
-        noResults.style.display =
-            filtered.length === 0
-            ? "block"
-            : "none";
-
-    }
-
-
-    const clearButton =
-        document.getElementById("clear-search");
-
-    if (clearButton) {
-
-        clearButton.style.display =
-            input
-            ? "block"
-            : "none";
-
-    }
-
-}
-
-
-/* =====================================================
-   CLEAR SEARCH
-===================================================== */
-
-function clearSearch() {
-
-    const search =
-        document.getElementById("search");
-
-    if (!search) {
-        return;
-    }
-
-    search.value = "";
-
-    searchProducts();
-
-}
-
-
-/* =====================================================
-   OPEN SEARCH
-===================================================== */
-
-function openSearch() {
-
-    const panel =
-        document.getElementById("search-panel");
-
-    if (!panel) {
-        return;
-    }
-
-    panel.classList.toggle("active");
-
-    if (panel.classList.contains("active")) {
-
-        setTimeout(() => {
-
-            const input =
-                document.getElementById("search");
-
-            if (input) {
-                input.focus();
-            }
-
-        }, 250);
-
-    }
-
-}
-
-
-/* =====================================================
-   FOCUS SEARCH
-===================================================== */
-
-function focusSearch() {
-
-    openSearch();
-
-}
-
-
-/* =====================================================
+/* =========================================
    FILTERS
-===================================================== */
+========================================= */
 
-function toggleFilters() {
+document.querySelectorAll(".filter")
+  .forEach(button => {
 
-    const filterBar =
-        document.getElementById("filter-bar");
+    button.addEventListener("click", () => {
 
-    if (!filterBar) {
-        return;
-    }
+      document.querySelectorAll(".filter")
+        .forEach(btn =>
+          btn.classList.remove("active")
+        );
 
-    filterBar.classList.toggle("visible");
+      button.classList.add("active");
 
-}
+      currentFilter = button.dataset.filter;
 
+      renderProducts();
+    });
 
-/* =====================================================
-   FILTER PRODUCTS
-===================================================== */
+  });
 
-function filterProducts(category, button) {
 
-    activeCategory = category;
+/* =========================================
+   CATEGORY LINKS
+========================================= */
 
-    document
-        .querySelectorAll(".filter-chip")
-        .forEach(item => {
-            item.classList.remove("active");
-        });
+document.querySelectorAll("[data-category-link]")
+  .forEach(link => {
 
-    if (button) {
-        button.classList.add("active");
-    }
+    link.addEventListener("click", () => {
 
-    searchProducts();
+      const category =
+        link.dataset.categoryLink;
 
-}
-
-
-/* =====================================================
-   PRODUCT COUNT
-===================================================== */
-
-function updateProductCount(count = products.length) {
-
-    const productCount =
-        document.getElementById("product-count");
-
-    if (!productCount) {
-        return;
-    }
-
-    productCount.innerText =
-        count + " " +
-        (count === 1 ? "product" : "products");
-
-}
-
-
-/* =====================================================
-   WISHLIST
-===================================================== */
-
-function toggleWishlist(event, button) {
-
-    event.stopPropagation();
-
-    if (button.classList.contains("liked")) {
-
-        button.classList.remove("liked");
-
-        button.innerText = "♡";
-
-    } else {
-
-        button.classList.add("liked");
-
-        button.innerText = "♥";
-
-    }
-
-}
-
-
-/* =====================================================
-   SCROLL TO PRODUCTS
-===================================================== */
-
-function scrollToProducts() {
-
-    const productsSection =
-        document.getElementById("products");
-
-    if (productsSection) {
-
-        productsSection.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-function toggleMobileMenu() {
-
-    const menu =
-        document.getElementById("mobile-menu");
-
-    if (!menu) {
-        return;
-    }
-
-    menu.classList.toggle("active");
-
-    document.body.classList.toggle(
-        "mobile-menu-open"
-    );
-
-}
-
-
-/* =====================================================
-   CHECKOUT
-===================================================== */
-
-function continueToCheckout() {
-
-    if (cart.length === 0) {
-
-        alert("Your bag is empty.");
-
-        return;
-    }
-
-    closeCart();
-
-    updateCheckout();
-
-    document
-        .getElementById("checkout-section")
-        .classList.add("active");
-
-    document.body.classList.add(
-        "checkout-open"
-    );
-
-}
-
-
-/* =====================================================
-   UPDATE CHECKOUT
-===================================================== */
-
-function updateCheckout() {
-
-    const checkoutItems =
-        document.getElementById("checkout-items");
-
-    const checkoutTotal =
-        document.getElementById("checkout-total");
-
-    if (!checkoutItems) {
-        return;
-    }
-
-    checkoutItems.innerHTML = "";
-
-    let total = 0;
-
-
-    cart.forEach(item => {
-
-        const quantity =
-            Number(item.quantity) || 1;
-
-        const price =
-            Number(item.price) || 0;
-
-        const subtotal =
-            price * quantity;
-
-        total += subtotal;
-
-
-        checkoutItems.innerHTML += `
-
-            <div class="checkout-item">
-
-                <div>
-
-                    <strong>
-                        ${item.name}
-                    </strong>
-
-                    <small>
-                        Size:
-                        ${item.size || "Not selected"}
-                        × ${quantity}
-                    </small>
-
-                </div>
-
-                <strong>
-                    R${subtotal.toFixed(2)}
-                </strong>
-
-            </div>
-
-        `;
+      if (
+        ["Men", "Women", "Sale"].includes(category)
+      ) {
+        currentFilter = "All";
+      }
 
     });
 
+  });
 
-    if (checkoutTotal) {
 
-        checkoutTotal.innerText =
-            "R" +
-            total.toFixed(2);
+/* =========================================
+   SEARCH
+========================================= */
 
+document.getElementById("searchBtn")
+  .addEventListener("click", () => {
+
+    searchPanel.classList.toggle("show");
+
+    if (searchPanel.classList.contains("show")) {
+      searchInput.focus();
     }
 
-}
+  });
 
 
-/* =====================================================
-   CLOSE CHECKOUT
-===================================================== */
+searchInput.addEventListener("input", event => {
 
-function closeCheckout() {
+  currentSearch = event.target.value;
 
-    const checkout =
-        document.getElementById(
-            "checkout-section"
-        );
+  renderProducts();
 
-    if (checkout) {
-        checkout.classList.remove("active");
-    }
-
-    document.body.classList.remove(
-        "checkout-open"
-    );
-
-}
+});
 
 
-/* =====================================================
-   BACK TO CART
-===================================================== */
+/* =========================================
+   MENU
+========================================= */
 
-function backToCart() {
+document.getElementById("menuBtn")
+  .addEventListener("click", () => {
 
-    closeCheckout();
+    document.getElementById("nav")
+      .classList.toggle("open");
 
-    openCart();
-
-}
+  });
 
 
-/* =====================================================
+/* =========================================
+   CART BUTTONS
+========================================= */
+
+document.getElementById("cartBtn")
+  .addEventListener("click", openCart);
+
+document.getElementById("cartClose")
+  .addEventListener("click", closeCart);
+
+overlay.addEventListener("click", closeCart);
+
+
+/* =========================================
+   MODAL BUTTONS
+========================================= */
+
+document.getElementById("modalClose")
+  .addEventListener("click", closeProduct);
+
+productModal.addEventListener("click", event => {
+
+  if (event.target === productModal) {
+    closeProduct();
+  }
+
+});
+
+
+modalAdd.addEventListener("click", () => {
+
+  if (!selectedProduct) return;
+
+  addToCart(
+    selectedProduct,
+    selectedSize
+  );
+
+});
+
+
+/* =========================================
    WHATSAPP ORDER
-===================================================== */
+========================================= */
 
-function placeOrderOnWhatsApp() {
+document.getElementById("whatsappBtn")
+  .addEventListener("click", () => {
 
-    if (cart.length === 0) {
-
-        alert("Your bag is empty.");
-
-        return;
+    if (!cart.length) {
+      alert("Your bag is empty.");
+      return;
     }
 
+    /*
+      CHANGE THIS NUMBER TO YOUR
+      SLINEVISION WHATSAPP NUMBER.
 
-    const name =
-        document
-        .getElementById("customer-name")
-        .value
-        .trim();
+      Use international format without +.
+      Example South Africa:
+      27821234567
+    */
 
+    const phone = "27821234567";
 
-    const phone =
-        document
-        .getElementById("customer-phone")
-        .value
-        .trim();
-
-
-    const address =
-        document
-        .getElementById("customer-address")
-        .value
-        .trim();
-
-
-    if (!name || !phone || !address) {
-
-        alert(
-            "Please complete your delivery details."
-        );
-
-        return;
-    }
-
-
-    const paymentElement =
-        document.querySelector(
-            'input[name="payment"]:checked'
-        );
-
-
-    const payment =
-        paymentElement
-        ? paymentElement.value
-        : "Not selected";
-
-
-    let items = "";
-    let total = 0;
-
+    let message =
+      "Hi SLINEVISION! I would like to order:%0A%0A";
 
     cart.forEach(item => {
 
-        const quantity =
-            Number(item.quantity) || 1;
-
-        const price =
-            Number(item.price) || 0;
-
-        const subtotal =
-            price * quantity;
-
-
-        total += subtotal;
-
-
-        items +=
-            "• " +
-            item.name +
-            " | Size: " +
-            (item.size || "Not selected") +
-            " | Qty: " +
-            quantity +
-            " | R" +
-            subtotal.toFixed(2) +
-            "\n";
+      message +=
+        `• ${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}%0A`;
 
     });
 
-
-    const message =
-
-        "SLINEVISION NEW ORDER\n\n" +
-
-        "ORDER ITEMS\n" +
-        "--------------------\n" +
-
-        items +
-
-        "\nTOTAL: R" +
-        total.toFixed(2) +
-
-        "\n\nPAYMENT METHOD\n" +
-        payment +
-
-        "\n\nCUSTOMER DETAILS\n" +
-
-        "Name: " +
-        name +
-
-        "\nPhone: " +
-        phone +
-
-        "\nAddress: " +
-        address;
-
-
-    const whatsappNumber =
-        "27691603308";
-
-
-    const url =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-    window.location.href = url;
-
-}
-
-
-/* =====================================================
-   KEYBOARD CONTROLS
-===================================================== */
-
-function setupKeyboard() {
-
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Escape") {
-
-                closeProduct();
-
-                closeCart();
-
-                closeCheckout();
-
-                const menu =
-                    document.getElementById(
-                        "mobile-menu"
-                    );
-
-                if (
-                    menu &&
-                    menu.classList.contains("active")
-                ) {
-
-                    toggleMobileMenu();
-
-                }
-
-            }
-
-        }
+    const total = cart.reduce(
+      (sum, item) =>
+        sum + item.price * item.quantity,
+      0
     );
 
-}
+    message +=
+      `%0ATotal: ${money(total)}`;
+
+    window.open(
+      `https://wa.me/${phone}?text=${message}`,
+      "_blank"
+    );
+
+  });
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+document.getElementById("checkoutBtn")
+  .addEventListener("click", () => {
+
+    if (!cart.length) {
+      alert("Your bag is empty.");
+      return;
+    }
+
+    alert(
+      "Checkout is ready to connect to your payment provider."
+    );
+
+  });
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+renderProducts();
+renderCart();
