@@ -12,6 +12,7 @@ body {
   font-family: "Inter", Arial, sans-serif;
   background: #f7f7f5;
   color: #080808;
+  overflow-x: hidden;
 }
 
 button,
@@ -29,7 +30,9 @@ a {
   text-decoration: none;
 }
 
-/* Announcement */
+/* =========================================
+   ANNOUNCEMENT
+========================================= */
 
 .announcement {
   background: #000;
@@ -37,11 +40,13 @@ a {
   text-align: center;
   padding: 10px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1.5px;
 }
 
-/* Header */
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
   height: 78px;
@@ -75,6 +80,7 @@ a {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
+  transition: opacity .2s;
 }
 
 .nav a:hover {
@@ -109,7 +115,9 @@ a {
   display: none;
 }
 
-/* Search */
+/* =========================================
+   SEARCH
+========================================= */
 
 .search-panel {
   display: none;
@@ -131,22 +139,34 @@ a {
   font-size: 20px;
 }
 
-/* Hero */
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
   min-height: 720px;
+
   background:
-    linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.05)),
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.82),
+      rgba(0,0,0,.15)
+    ),
     url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85")
     center / cover;
+
   display: flex;
   align-items: flex-end;
   padding: 7%;
   color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
   max-width: 700px;
+  position: relative;
+  z-index: 3;
 }
 
 .eyebrow {
@@ -174,7 +194,117 @@ a {
   margin-bottom: 30px;
 }
 
-/* Buttons */
+/* =========================================
+   GLOBAL HERO LOGO
+========================================= */
+
+.hero-global-logo {
+  position: absolute;
+  right: 9%;
+  top: 13%;
+  width: 230px;
+  text-align: center;
+  opacity: .9;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+.globe {
+  width: 170px;
+  height: 170px;
+  margin: auto;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  position: relative;
+  animation: globeSpin 12s linear infinite;
+  box-shadow:
+    0 0 30px rgba(0,200,220,.15),
+    inset 0 0 30px rgba(255,255,255,.08);
+}
+
+.globe::before,
+.globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 50%;
+}
+
+.globe::before {
+  transform: scaleX(.42);
+}
+
+.globe::after {
+  transform: scaleX(.7);
+}
+
+.globe-lines {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(255,255,255,.45);
+}
+
+.globe-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  color: #c76be9;
+  text-shadow: 0 0 15px rgba(199,107,233,.7);
+}
+
+.globe-ring {
+  position: absolute;
+  width: 225px;
+  height: 55px;
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  top: 57px;
+  left: -28px;
+}
+
+.ring-two {
+  transform: rotate(90deg);
+}
+
+.global-text {
+  color: #00b7c8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin-top: 14px;
+}
+
+@keyframes globeSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
 
 .btn {
   display: inline-block;
@@ -189,13 +319,20 @@ a {
   color: #000;
 }
 
+.btn-white:hover {
+  background: #c95bdd;
+  color: #fff;
+}
+
 .btn-black {
   width: 100%;
   background: #000;
   color: #fff;
 }
 
-/* Categories */
+/* =========================================
+   CATEGORIES
+========================================= */
 
 .categories {
   display: grid;
@@ -211,13 +348,16 @@ a {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
+  transition: .25s;
 }
 
 .categories a:hover {
-  background: #222;
+  background: #7b087d;
 }
 
-/* Products */
+/* =========================================
+   PRODUCTS
+========================================= */
 
 .products-section {
   padding: 100px 5%;
@@ -325,13 +465,17 @@ a {
   padding: 80px;
 }
 
-/* Statement */
+/* =========================================
+   STATEMENT
+========================================= */
 
 .statement {
   background: #000;
   color: #fff;
   padding: 130px 5%;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .statement p {
@@ -346,7 +490,58 @@ a {
   letter-spacing: -5px;
 }
 
-/* About */
+/* Small rotating globe */
+
+.statement-globe {
+  margin-bottom: 45px;
+}
+
+.mini-globe {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: globeSpin 9s linear infinite;
+}
+
+.mini-globe::before,
+.mini-globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #555;
+  border-radius: 50%;
+}
+
+.mini-globe::before {
+  transform: scaleX(.4);
+}
+
+.mini-globe::after {
+  transform: scaleX(.7);
+}
+
+.mini-globe span {
+  color: #d066e8;
+  font-weight: 900;
+}
+
+.statement-globe p {
+  color: #00b7c8;
+  font-size: 9px;
+  letter-spacing: 4px;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* =========================================
+   ABOUT
+========================================= */
 
 .about {
   padding: 110px 5%;
@@ -372,7 +567,9 @@ a {
   margin-bottom: 20px;
 }
 
-/* Footer */
+/* =========================================
+   FOOTER
+========================================= */
 
 .footer {
   background: #111;
@@ -425,7 +622,322 @@ a {
   font-size: 9px;
 }
 
-/* Modal */
+/* =========================================
+   DISCOUNT POPUP
+========================================= */
+
+.discount-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,.84);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+
+.discount-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.discount-popup {
+  width: min(620px, 100%);
+  min-height: 620px;
+
+  background:
+    radial-gradient(
+      circle at center top,
+      rgba(114,0,125,.15),
+      transparent 45%
+    ),
+    #030303;
+
+  color: #fff;
+
+  position: relative;
+
+  padding: 65px 45px 45px;
+
+  text-align: center;
+
+  border: 1px solid #1b1b1b;
+
+  box-shadow:
+    0 0 80px rgba(160,0,180,.18);
+
+  transform: scale(.92) translateY(20px);
+  transition: transform .5s ease;
+}
+
+.discount-overlay.show .discount-popup {
+  transform: scale(1) translateY(0);
+}
+
+.discount-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 45px;
+  height: 45px;
+
+  background: transparent;
+  color: #aaa;
+
+  font-size: 42px;
+  font-weight: 200;
+
+  line-height: 1;
+
+  transition: .2s;
+}
+
+.discount-close:hover {
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* Popup Globe */
+
+.popup-logo {
+  margin: 0 auto 42px;
+  width: 250px;
+}
+
+.popup-globe {
+  width: 185px;
+  height: 185px;
+
+  margin: auto;
+
+  border: 1px solid #999;
+  border-radius: 50%;
+
+  position: relative;
+
+  animation: popupGlobeRotate 10s linear infinite;
+
+  box-shadow:
+    0 0 35px rgba(0,190,210,.12),
+    inset 0 0 35px rgba(255,255,255,.08);
+}
+
+.popup-globe::before,
+.popup-globe::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid #777;
+  border-radius: 50%;
+}
+
+.popup-globe::before {
+  transform: scaleX(.38);
+}
+
+.popup-globe::after {
+  transform: scaleX(.7);
+}
+
+.popup-globe-lines {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+  background: #777;
+}
+
+.popup-globe-center {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  animation: counterRotate 10s linear infinite;
+}
+
+.popup-globe-center strong {
+  font-size: 31px;
+  letter-spacing: -2px;
+  color: #bf5cd4;
+
+  text-shadow:
+    0 0 15px rgba(190,70,220,.5);
+}
+
+.popup-globe-center span {
+  color: #d05be4;
+  font-size: 27px;
+  margin-top: 5px;
+}
+
+.popup-ring {
+  position: absolute;
+
+  width: 245px;
+  height: 60px;
+
+  border: 2px solid #aaa;
+  border-radius: 50%;
+
+  top: 62px;
+  left: -31px;
+}
+
+.popup-ring-two {
+  transform: rotate(90deg);
+}
+
+.popup-global {
+  color: #00aabd;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 5px;
+
+  margin-top: 16px;
+}
+
+@keyframes popupGlobeRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Popup Text */
+
+.discount-popup h2 {
+  font-size: clamp(27px, 5vw, 42px);
+
+  line-height: 1.12;
+
+  letter-spacing: -1.5px;
+
+  margin-bottom: 25px;
+}
+
+.discount-popup > p {
+  max-width: 440px;
+
+  margin: auto auto 38px;
+
+  color: #aaa;
+
+  font-size: 17px;
+
+  line-height: 1.45;
+}
+
+/* Email */
+
+#discountForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#discountEmail {
+  width: 100%;
+
+  padding: 22px;
+
+  background: #080808;
+
+  color: #fff;
+
+  border: 2px solid #970096;
+
+  border-radius: 14px;
+
+  outline: none;
+
+  font-size: 16px;
+
+  transition: .25s;
+}
+
+#discountEmail::placeholder {
+  color: #b45ab0;
+}
+
+#discountEmail:focus {
+  border-color: #e46cdd;
+
+  box-shadow:
+    0 0 20px rgba(200,50,190,.25);
+}
+
+#discountForm button {
+  width: 100%;
+
+  padding: 22px;
+
+  border-radius: 12px;
+
+  background: #104db2;
+
+  color: #fff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 0 20px rgba(0,70,200,.15);
+
+  transition: .25s;
+}
+
+#discountForm button:hover {
+  background: #1665dc;
+
+  transform: translateY(-2px);
+}
+
+#discountMessage {
+  display: block;
+
+  margin-top: 15px;
+
+  color: #b75fca;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   PRODUCT MODAL
+========================================= */
 
 .modal {
   position: fixed;
@@ -521,7 +1033,9 @@ a {
   color: #fff;
 }
 
-/* Cart */
+/* =========================================
+   CART
+========================================= */
 
 .cart {
   position: fixed;
@@ -639,7 +1153,9 @@ a {
   color: #000;
 }
 
-/* Overlay */
+/* =========================================
+   OVERLAY
+========================================= */
 
 .overlay {
   position: fixed;
@@ -653,20 +1169,28 @@ a {
   display: block;
 }
 
-/* Responsive */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 900px) {
 
   .nav {
     display: none;
+
     position: absolute;
     top: 78px;
     left: 0;
     right: 0;
+
     background: #fff;
+
     flex-direction: column;
+
     padding: 25px;
+
     gap: 20px;
+
     border-bottom: 1px solid #ddd;
   }
 
@@ -680,6 +1204,12 @@ a {
 
   .hero {
     min-height: 620px;
+  }
+
+  .hero-global-logo {
+    right: 5%;
+    top: 10%;
+    transform: scale(.75);
   }
 
   .products-grid {
@@ -720,6 +1250,17 @@ a {
     letter-spacing: -4px;
   }
 
+  .hero-global-logo {
+    right: 50%;
+    transform: translateX(50%) scale(.55);
+    top: 5%;
+    opacity: .65;
+  }
+
+  .hero-content {
+    margin-top: 160px;
+  }
+
   .categories {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -757,6 +1298,43 @@ a {
     gap: 40px;
   }
 
+  /* Popup mobile */
+
+  .discount-overlay {
+    padding: 12px;
+  }
+
+  .discount-popup {
+    min-height: auto;
+
+    padding:
+      48px
+      20px
+      28px;
+  }
+
+  .popup-logo {
+    margin-bottom: 28px;
+    transform: scale(.78);
+  }
+
+  .discount-popup h2 {
+    font-size: 27px;
+  }
+
+  .discount-popup > p {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  #discountEmail {
+    padding: 19px;
+  }
+
+  #discountForm button {
+    padding: 19px;
+  }
+
   .modal-box {
     grid-template-columns: 1fr;
   }
@@ -769,4 +1347,4 @@ a {
     padding: 35px 25px;
   }
 
-   }
+  } 
