@@ -1,977 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SLINEVISION — Modern streetwear.">
+  <title>SLINEVISION — Streetwear</title>
 
-<title>SLINEVISION — New Season</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<meta name="description" content="SLINEVISION — Style, quality and confidence. Discover the latest streetwear collection.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     ANNOUNCEMENT
-===================================================== -->
+  <!-- Announcement -->
+  <div class="announcement">
+    FREE SHIPPING ON ORDERS OVER R1000
+  </div>
 
-<div class="top-bar">
-    <span>FREE DELIVERY ON ORDERS OVER R1000</span>
-    <span class="top-dot">•</span>
-    <span>NEW SEASON 2026</span>
-</div>
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">SLINE<span>VISION</span></a>
 
+    <nav class="nav" id="nav">
+      <a href="#products">SHOP</a>
+      <a href="#new">NEW IN</a>
+      <a href="#men">MEN</a>
+      <a href="#women">WOMEN</a>
+      <a href="#sale">SALE</a>
+    </nav>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="header">
-
-    <div class="header-main">
-
-        <button class="mobile-menu-button"
-                onclick="toggleMobileMenu()"
-                aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <a href="#" class="logo">SLINEVISION</a>
-
-        <nav class="desktop-nav">
-            <a href="#products">NEW IN</a>
-            <a href="#products">MEN</a>
-            <a href="#products">WOMEN</a>
-            <a href="#products">COLLECTIONS</a>
-            <a href="#products">SALE</a>
-        </nav>
-
-        <div class="header-actions">
-
-            <button class="header-icon"
-                    onclick="openSearch()"
-                    aria-label="Search">
-
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <path d="M16.5 16.5L21 21"></path>
-                </svg>
-
-            </button>
-
-            <button class="header-icon wishlist-header"
-                    onclick="scrollToProducts()"
-                    aria-label="Wishlist">
-
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.8 8.7c0 5.5-8.8 10.2-8.8 10.2S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"></path>
-                </svg>
-
-            </button>
-
-            <button class="header-icon bag-icon"
-                    onclick="openCart()"
-                    aria-label="Shopping bag">
-
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 8h14l-1 13H6L5 8Z"></path>
-                    <path d="M9 8a3 3 0 0 1 6 0"></path>
-                </svg>
-
-                <span id="cart-count">0</span>
-
-            </button>
-
-        </div>
-
+    <div class="header-actions">
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <button id="cartBtn" aria-label="Shopping bag">
+        BAG <span id="cartCount">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     </div>
+  </header>
 
+  <!-- Search -->
+  <div class="search-panel" id="searchPanel">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search products..."
+      autocomplete="off"
+    >
+  </div>
 
-    <!-- MOBILE NAV -->
+  <!-- Hero -->
+  <main>
 
-    <div id="mobile-menu" class="mobile-menu">
-
-        <button class="mobile-menu-close"
-                onclick="toggleMobileMenu()"
-                aria-label="Close menu">
-            ×
-        </button>
-
-        <div class="mobile-menu-inner">
-
-            <span class="mobile-menu-label">
-                SLINEVISION
-            </span>
-
-            <a href="#products" onclick="toggleMobileMenu()">
-                NEW IN
-            </a>
-
-            <a href="#products" onclick="toggleMobileMenu()">
-                MEN
-            </a>
-
-            <a href="#products" onclick="toggleMobileMenu()">
-                WOMEN
-            </a>
-
-            <a href="#products" onclick="toggleMobileMenu()">
-                COLLECTIONS
-            </a>
-
-            <a href="#products" onclick="toggleMobileMenu()">
-                SALE
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     SEARCH PANEL
-===================================================== -->
-
-<section id="search-panel" class="search-panel">
-
-    <div class="search-panel-inner">
-
-        <div class="search-label">
-            SEARCH SLINEVISION
-        </div>
-
-        <div class="search-wrapper">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="7"></circle>
-                <path d="M16.5 16.5L21 21"></path>
-            </svg>
-
-            <input
-                type="text"
-                id="search"
-                class="search-box"
-                placeholder="Search products..."
-                oninput="searchProducts()"
-                autocomplete="off"
-            >
-
-            <button
-                onclick="clearSearch()"
-                class="clear-search"
-                id="clear-search"
-                aria-label="Clear search">
-                ×
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <div class="hero-background"></div>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <span class="hero-eyebrow">
-            SLINEVISION / 2026
-        </span>
-
-        <h1>
-            THE NEW<br>
-            STANDARD
-        </h1>
-
-        <p>
-            STYLE • QUALITY • CONFIDENCE
+    <section class="hero" id="new">
+      <div class="hero-content">
+        <p class="eyebrow">SLINEVISION / 001</p>
+        <h1>VISION<br><span>IN MOTION.</span></h1>
+        <p class="hero-text">
+          Modern streetwear made for those who move differently.
         </p>
-
-        <a href="#products" class="hero-button">
-            SHOP THE COLLECTION
-        </a>
-
-    </div>
-
-    <div class="hero-scroll">
-        SCROLL TO EXPLORE
-        <span></span>
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INTRO
-===================================================== -->
-
-<section class="brand-intro">
-
-    <span class="section-eyebrow">
-        SLINEVISION
-    </span>
-
-    <h2>
-        Built for those<br>
-        who move different.
-    </h2>
-
-    <p>
-        Premium streetwear designed around confidence,
-        movement and individuality.
-    </p>
-
-</section>
-
-
-<!-- =====================================================
-     COLLECTION BANNER
-===================================================== -->
-
-<section class="collection-banner">
-
-    <div class="collection-banner-image"></div>
-
-    <div class="collection-banner-overlay"></div>
-
-    <div class="collection-banner-content">
-
-        <span>
-            THE LATEST DROP
-        </span>
-
-        <h2>
-            NEW<br>
-            ARRIVALS
-        </h2>
-
-        <a href="#products">
-            DISCOVER NOW
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SHOP HEADER
-===================================================== -->
-
-<section class="shop-heading" id="products">
-
-    <div>
-
-        <span class="section-eyebrow">
-            SLINEVISION COLLECTION
-        </span>
-
-        <h2>
-            Shop All
-        </h2>
-
-    </div>
-
-    <div class="shop-heading-right">
-
-        <span id="product-count">
-            20 products
-        </span>
-
-        <button class="filter-button"
-                onclick="toggleFilters()">
-
-            FILTER & SORT
-
-            <svg viewBox="0 0 24 24">
-                <path d="M4 6h16M7 12h10M10 18h4"></path>
-            </svg>
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FILTER BAR
-===================================================== -->
-
-<div id="filter-bar" class="filter-bar">
-
-    <button class="filter-chip active"
-            onclick="filterProducts('all', this)">
-        ALL
-    </button>
-
-    <button class="filter-chip"
-            onclick="filterProducts('sets', this)">
-        SETS
-    </button>
-
-    <button class="filter-chip"
-            onclick="filterProducts('tops', this)">
-        TOPS
-    </button>
-
-    <button class="filter-chip"
-            onclick="filterProducts('bottoms', this)">
-        BOTTOMS
-    </button>
-
-    <button class="filter-chip"
-            onclick="filterProducts('accessories', this)">
-        ACCESSORIES
-    </button>
-
-</div>
-
-
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
-
-<main class="products" id="product-grid"></main>
-
-
-<!-- =====================================================
-     NO RESULTS
-===================================================== -->
-
-<div id="no-results" class="no-results">
-
-    <div class="no-results-number">
-        00
-    </div>
-
-    <h3>
-        Nothing found
-    </h3>
-
-    <p>
-        Try another search or browse the collection.
-    </p>
-
-    <button onclick="clearSearch()">
-        VIEW ALL PRODUCTS
-    </button>
-
-</div>
-
-
-<!-- =====================================================
-     PRODUCT MODAL
-===================================================== -->
-
-<div id="product-modal" class="modal">
-
-    <div class="modal-overlay"
-         onclick="closeProduct()"></div>
-
-    <div class="product-modal">
-
-        <button class="modal-close"
-                onclick="closeProduct()"
-                aria-label="Close">
-            ×
-        </button>
-
-        <div class="modal-image">
-
-            <img id="modal-image"
-                 src=""
-                 alt="Product">
-
+        <a href="#products" class="btn btn-white">SHOP COLLECTION</a>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+      <a href="#products" data-category-link="Men">MEN</a>
+      <a href="#products" data-category-link="Women">WOMEN</a>
+      <a href="#products" data-category-link="Accessories">ACCESSORIES</a>
+      <a href="#products" data-category-link="Sale">SALE</a>
+    </section>
+
+    <!-- Products -->
+    <section class="products-section" id="products">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2>SHOP SLINEVISION</h2>
         </div>
 
-        <div class="modal-details">
-
-            <span class="modal-brand">
-                SLINEVISION
-            </span>
-
-            <h2 id="modal-name">
-                Product
-            </h2>
-
-            <div class="modal-rating">
-                <span>★★★★★</span>
-                <small>5.0 / 5</small>
-            </div>
-
-            <div id="modal-price"
-                 class="modal-price">
-                R0.00
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="option-group">
-
-                <div class="option-heading">
-
-                    <strong>SELECT SIZE</strong>
-
-                    <span id="selected-size">
-                        Required
-                    </span>
-
-                </div>
-
-                <div class="size-options">
-
-                    <button onclick="selectSize(this, 'XS')">
-                        XS
-                    </button>
-
-                    <button onclick="selectSize(this, 'S')">
-                        S
-                    </button>
-
-                    <button onclick="selectSize(this, 'M')">
-                        M
-                    </button>
-
-                    <button onclick="selectSize(this, 'L')">
-                        L
-                    </button>
-
-                    <button onclick="selectSize(this, 'XL')">
-                        XL
-                    </button>
-
-                    <button onclick="selectSize(this, 'XXL')">
-                        XXL
-                    </button>
-
-                </div>
-
-            </div>
-
-            <button class="modal-add"
-                    onclick="addSelectedProduct()">
-
-                ADD TO BAG
-
-                <span>→</span>
-
-            </button>
-
-            <div class="product-benefits">
-
-                <div>
-                    <strong>FREE DELIVERY</strong>
-                    <span>Orders over R1000</span>
-                </div>
-
-                <div>
-                    <strong>SECURE ORDERING</strong>
-                    <span>Shop with confidence</span>
-                </div>
-
-                <div>
-                    <strong>WHATSAPP SUPPORT</strong>
-                    <span>Fast customer assistance</span>
-                </div>
-
-            </div>
-
+        <div class="filters">
+          <button class="filter active" data-filter="All">ALL</button>
+          <button class="filter" data-filter="T-Shirts">T-SHIRTS</button>
+          <button class="filter" data-filter="Hoodies">HOODIES</button>
+          <button class="filter" data-filter="Sets">SETS</button>
+          <button class="filter" data-filter="Accessories">ACCESSORIES</button>
         </div>
+      </div>
 
-    </div>
+      <div class="products-grid" id="productsGrid"></div>
 
-</div>
+      <p class="no-products" id="noProducts">
+        No products found.
+      </p>
 
+    </section>
 
-<!-- =====================================================
-     CART DRAWER
-===================================================== -->
+    <!-- Banner -->
+    <section class="statement">
+      <p>SLINEVISION</p>
+      <h2>CREATE YOUR<br>OWN VISION.</h2>
+    </section>
 
-<div id="cart-drawer" class="cart-drawer">
+    <!-- About -->
+    <section class="about">
+      <div>
+        <p class="eyebrow">ABOUT SLINEVISION</p>
+        <h2>NOT JUST<br>CLOTHING.</h2>
+      </div>
 
-    <div class="cart-overlay"
-         onclick="closeCart()"></div>
-
-    <aside class="cart-panel">
-
-        <div class="cart-header">
-
-            <div>
-
-                <span class="cart-label">
-                    SLINEVISION
-                </span>
-
-                <h2>
-                    Your Bag
-                </h2>
-
-            </div>
-
-            <button class="close-cart"
-                    onclick="closeCart()"
-                    aria-label="Close">
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="delivery-progress">
-
-            <div class="delivery-progress-top">
-
-                <span id="delivery-message">
-                    Add items to unlock free delivery.
-                </span>
-
-            </div>
-
-            <div class="progress-track">
-                <div id="delivery-progress-bar"></div>
-            </div>
-
-        </div>
-
-
-        <div id="cart-items"
-             class="cart-items">
-        </div>
-
-
-        <div class="cart-bottom">
-
-            <div class="cart-total">
-
-                <span>
-                    Subtotal
-                </span>
-
-                <strong id="cart-total">
-                    R0.00
-                </strong>
-
-            </div>
-
-            <p class="delivery-note">
-                Delivery calculated at checkout.
-            </p>
-
-            <button class="checkout-button"
-                    onclick="continueToCheckout()">
-
-                CHECKOUT
-                <span>→</span>
-
-            </button>
-
-            <button class="continue-button"
-                    onclick="closeCart()">
-
-                CONTINUE SHOPPING
-
-            </button>
-
-        </div>
-
-    </aside>
-
-</div>
-
-
-<!-- =====================================================
-     CHECKOUT
-===================================================== -->
-
-<section id="checkout-section"
-         class="checkout-section">
-
-    <div class="checkout-container">
-
-        <button class="checkout-close"
-                onclick="closeCheckout()">
-            ×
-        </button>
-
-        <div class="checkout-heading">
-
-            <span>
-                SLINEVISION
-            </span>
-
-            <h2>
-                Checkout
-            </h2>
-
-            <p>
-                Complete your order below.
-            </p>
-
-        </div>
-
-
-        <div class="checkout-layout">
-
-            <div class="checkout-main">
-
-                <div class="checkout-card">
-
-                    <h3>
-                        Delivery Details
-                    </h3>
-
-                    <div class="field">
-
-                        <label for="customer-name">
-                            FULL NAME
-                        </label>
-
-                        <input
-                            id="customer-name"
-                            class="input"
-                            type="text"
-                            placeholder="Your full name"
-                        >
-
-                    </div>
-
-                    <div class="field">
-
-                        <label for="customer-phone">
-                            PHONE NUMBER
-                        </label>
-
-                        <input
-                            id="customer-phone"
-                            class="input"
-                            type="tel"
-                            placeholder="Your phone number"
-                        >
-
-                    </div>
-
-                    <div class="field">
-
-                        <label for="customer-address">
-                            DELIVERY ADDRESS
-                        </label>
-
-                        <textarea
-                            id="customer-address"
-                            class="input address-input"
-                            placeholder="Street address, suburb, city..."
-                            rows="4"
-                        ></textarea>
-
-                    </div>
-
-                </div>
-
-
-                <div class="checkout-card">
-
-                    <h3>
-                        Payment Method
-                    </h3>
-
-                    <label class="payment-box">
-
-                        <input
-                            type="radio"
-                            name="payment"
-                            value="Visa / Mastercard"
-                            checked
-                        >
-
-                        <span class="payment-icon">
-                            CARD
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                Visa / Mastercard
-                            </strong>
-
-                            <small>
-                                Payment arranged with the store.
-                            </small>
-
-                        </div>
-
-                    </label>
-
-
-                    <label class="payment-box">
-
-                        <input
-                            type="radio"
-                            name="payment"
-                            value="PayPal"
-                        >
-
-                        <span class="payment-icon">
-                            PAY
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                PayPal
-                            </strong>
-
-                            <small>
-                                Payment arranged with the store.
-                            </small>
-
-                        </div>
-
-                    </label>
-
-
-                    <label class="payment-box">
-
-                        <input
-                            type="radio"
-                            name="payment"
-                            value="Cash on Delivery"
-                        >
-
-                        <span class="payment-icon">
-                            COD
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                Cash on Delivery
-                            </strong>
-
-                            <small>
-                                Pay when your order is delivered.
-                            </small>
-
-                        </div>
-
-                    </label>
-
-                </div>
-
-
-                <button class="whatsapp-button"
-                        onclick="placeOrderOnWhatsApp()">
-
-                    PLACE ORDER ON WHATSAPP
-
-                    <span>→</span>
-
-                </button>
-
-                <button class="back-button"
-                        onclick="backToCart()">
-
-                    ← BACK TO BAG
-
-                </button>
-
-            </div>
-
-
-            <aside class="checkout-summary">
-
-                <span class="summary-label">
-                    YOUR ORDER
-                </span>
-
-                <h3>
-                    Order Summary
-                </h3>
-
-                <div id="checkout-items"></div>
-
-                <div class="checkout-summary-line"></div>
-
-                <div class="checkout-total">
-
-                    <span>
-                        Total
-                    </span>
-
-                    <strong id="checkout-total">
-                        R0.00
-                    </strong>
-
-                </div>
-
-            </aside>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     NEWSLETTER
-===================================================== -->
-
-<section class="newsletter">
-
-    <div class="newsletter-inner">
-
-        <span class="section-eyebrow">
-            STAY IN THE LOOP
-        </span>
-
-        <h2>
-            Never miss the next drop.
-        </h2>
-
+      <div class="about-text">
         <p>
-            Follow SLINEVISION for new releases,
-            exclusive pieces and updates.
+          SLINEVISION is a streetwear vision built around individuality,
+          movement and self-expression.
         </p>
+        <p>
+          Every piece is designed to make a statement without saying too much.
+        </p>
+      </div>
+    </section>
 
-        <a href="#products">
-            EXPLORE COLLECTION →
-        </a>
+  </main>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <h2>SLINEVISION</h2>
+      <p>SEE DIFFERENT.</p>
     </div>
 
-</section>
+    <div class="footer-links">
+      <div>
+        <h4>SHOP</h4>
+        <a href="#products">All Products</a>
+        <a href="#products">New In</a>
+        <a href="#products">Sale</a>
+      </div>
 
+      <div>
+        <h4>HELP</h4>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+      </div>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="footer-main">
-
-        <div class="footer-brand">
-
-            <div class="footer-logo">
-                SLINEVISION
-            </div>
-
-            <p>
-                STYLE • QUALITY • CONFIDENCE
-            </p>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                SHOP
-            </h4>
-
-            <a href="#products">
-                New In
-            </a>
-
-            <a href="#products">
-                Men
-            </a>
-
-            <a href="#products">
-                Women
-            </a>
-
-            <a href="#products">
-                Collections
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                HELP
-            </h4>
-
-            <a href="#products">
-                Shipping
-            </a>
-
-            <a href="#products">
-                Returns
-            </a>
-
-            <a href="#products">
-                Size Guide
-            </a>
-
-            <a href="#products">
-                Contact
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                FOLLOW
-            </h4>
-
-            <a href="#">
-                Instagram
-            </a>
-
-            <a href="#">
-                TikTok
-            </a>
-
-            <a href="#">
-                WhatsApp
-            </a>
-
-        </div>
-
+      <div>
+        <h4>SOCIAL</h4>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">TikTok</a>
+      </div>
     </div>
 
+    <div class="copyright">
+      © 2026 SLINEVISION. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
 
-    <div class="footer-bottom">
+  <!-- Product Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-box">
 
-        <span>
-            © 2026 SLINEVISION
-        </span>
+      <button class="modal-close" id="modalClose">×</button>
 
-        <span>
-            ALL RIGHTS RESERVED
-        </span>
+      <div class="modal-image">
+        <img id="modalImage" src="" alt="">
+      </div>
+
+      <div class="modal-info">
+        <p class="eyebrow" id="modalCategory"></p>
+        <h2 id="modalName"></h2>
+        <p class="modal-price" id="modalPrice"></p>
+        <p id="modalDescription"></p>
+
+        <div class="size-title">SELECT SIZE</div>
+
+        <div class="sizes" id="sizes">
+          <button>S</button>
+          <button>M</button>
+          <button>L</button>
+          <button>XL</button>
+        </div>
+
+        <button class="btn btn-black" id="modalAdd">
+          ADD TO BAG
+        </button>
+      </div>
 
     </div>
+  </div>
 
-</footer>
+  <!-- Cart Drawer -->
+  <aside class="cart" id="cart">
 
+    <div class="cart-header">
+      <h2>YOUR BAG</h2>
+      <button id="cartClose">×</button>
+    </div>
 
-<script src="script.js"></script>
+    <div class="cart-items" id="cartItems"></div>
 
+    <div class="cart-empty" id="cartEmpty">
+      Your bag is empty.
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>TOTAL</span>
+        <strong id="cartTotal">R0</strong>
+      </div>
+
+      <button class="checkout-btn" id="checkoutBtn">
+        CHECKOUT
+      </button>
+
+      <button class="whatsapp-btn" id="whatsappBtn">
+        ORDER VIA WHATSAPP
+      </button>
+    </div>
+
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script src="script.js"></script>
 </body>
-</html>
+         </html>
