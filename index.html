@@ -34,9 +34,11 @@
 
     <div class="header-actions">
       <button id="searchBtn" aria-label="Search">⌕</button>
+
       <button id="cartBtn" aria-label="Shopping bag">
         BAG <span id="cartCount">0</span>
       </button>
+
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     </div>
   </header>
@@ -55,14 +57,38 @@
   <main>
 
     <section class="hero" id="new">
+
+      <!-- Animated Global Logo -->
+      <div class="hero-global-logo">
+        <div class="globe">
+          <div class="globe-lines"></div>
+          <div class="globe-inner">
+            <span>SV</span>
+          </div>
+          <div class="globe-ring ring-one"></div>
+          <div class="globe-ring ring-two"></div>
+        </div>
+
+        <div class="global-text">GLOBAL</div>
+      </div>
+
       <div class="hero-content">
         <p class="eyebrow">SLINEVISION / 001</p>
-        <h1>VISION<br><span>IN MOTION.</span></h1>
+
+        <h1>
+          VISION<br>
+          <span>IN MOTION.</span>
+        </h1>
+
         <p class="hero-text">
           Modern streetwear made for those who move differently.
         </p>
-        <a href="#products" class="btn btn-white">SHOP COLLECTION</a>
+
+        <a href="#products" class="btn btn-white">
+          SHOP COLLECTION
+        </a>
       </div>
+
     </section>
 
     <!-- Categories -->
@@ -99,17 +125,33 @@
 
     </section>
 
-    <!-- Banner -->
+    <!-- Statement -->
     <section class="statement">
+      <div class="statement-globe">
+        <div class="mini-globe">
+          <div class="mini-globe-lines"></div>
+          <span>SV</span>
+        </div>
+        <p>GLOBAL</p>
+      </div>
+
       <p>SLINEVISION</p>
-      <h2>CREATE YOUR<br>OWN VISION.</h2>
+
+      <h2>
+        CREATE YOUR<br>
+        OWN VISION.
+      </h2>
     </section>
 
     <!-- About -->
     <section class="about">
       <div>
         <p class="eyebrow">ABOUT SLINEVISION</p>
-        <h2>NOT JUST<br>CLOTHING.</h2>
+
+        <h2>
+          NOT JUST<br>
+          CLOTHING.
+        </h2>
       </div>
 
       <div class="about-text">
@@ -117,6 +159,7 @@
           SLINEVISION is a streetwear vision built around individuality,
           movement and self-expression.
         </p>
+
         <p>
           Every piece is designed to make a statement without saying too much.
         </p>
@@ -127,12 +170,14 @@
 
   <!-- Footer -->
   <footer class="footer">
+
     <div class="footer-brand">
       <h2>SLINEVISION</h2>
       <p>SEE DIFFERENT.</p>
     </div>
 
     <div class="footer-links">
+
       <div>
         <h4>SHOP</h4>
         <a href="#products">All Products</a>
@@ -152,30 +197,111 @@
         <a href="#" target="_blank">Instagram</a>
         <a href="#" target="_blank">TikTok</a>
       </div>
+
     </div>
 
     <div class="copyright">
       © 2026 SLINEVISION. ALL RIGHTS RESERVED.
     </div>
+
   </footer>
+
+  <!-- =====================================
+       DISCOUNT POPUP
+  ====================================== -->
+
+  <div class="discount-overlay" id="discountOverlay">
+
+    <div class="discount-popup">
+
+      <button
+        class="discount-close"
+        id="discountClose"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <div class="popup-logo">
+
+        <div class="popup-globe">
+
+          <div class="popup-globe-lines"></div>
+
+          <div class="popup-globe-center">
+            <strong>Y2K</strong>
+            <span>♥</span>
+          </div>
+
+          <div class="popup-ring popup-ring-one"></div>
+          <div class="popup-ring popup-ring-two"></div>
+
+        </div>
+
+        <div class="popup-global">
+          GLOBAL
+        </div>
+
+      </div>
+
+      <h2>
+        GET 10% OFF<br>
+        YOUR FIRST ORDER
+      </h2>
+
+      <p>
+        And be the first to hear about our new
+        product drops!
+      </p>
+
+      <form id="discountForm">
+
+        <input
+          type="email"
+          id="discountEmail"
+          placeholder="Enter your email"
+          required
+          autocomplete="email"
+        >
+
+        <button type="submit">
+          GET 10% OFF
+        </button>
+
+      </form>
+
+      <small id="discountMessage"></small>
+
+    </div>
+
+  </div>
 
   <!-- Product Modal -->
   <div class="modal" id="productModal">
+
     <div class="modal-box">
 
-      <button class="modal-close" id="modalClose">×</button>
+      <button class="modal-close" id="modalClose">
+        ×
+      </button>
 
       <div class="modal-image">
         <img id="modalImage" src="" alt="">
       </div>
 
       <div class="modal-info">
+
         <p class="eyebrow" id="modalCategory"></p>
+
         <h2 id="modalName"></h2>
+
         <p class="modal-price" id="modalPrice"></p>
+
         <p id="modalDescription"></p>
 
-        <div class="size-title">SELECT SIZE</div>
+        <div class="size-title">
+          SELECT SIZE
+        </div>
 
         <div class="sizes" id="sizes">
           <button>S</button>
@@ -187,9 +313,11 @@
         <button class="btn btn-black" id="modalAdd">
           ADD TO BAG
         </button>
+
       </div>
 
     </div>
+
   </div>
 
   <!-- Cart Drawer -->
@@ -207,6 +335,7 @@
     </div>
 
     <div class="cart-footer">
+
       <div class="cart-total">
         <span>TOTAL</span>
         <strong id="cartTotal">R0</strong>
@@ -219,6 +348,7 @@
       <button class="whatsapp-btn" id="whatsappBtn">
         ORDER VIA WHATSAPP
       </button>
+
     </div>
 
   </aside>
@@ -226,5 +356,6 @@
   <div class="overlay" id="overlay"></div>
 
   <script src="script.js"></script>
+
 </body>
-         </html>
+</html>
