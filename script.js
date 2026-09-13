@@ -2,11 +2,6 @@
    SLINEVISION STORE
 ========================================= */
 
-/*
-  Replace these demo products with your
-  actual SLINEVISION products.
-*/
-
 const products = [
   {
     id: 1,
@@ -94,7 +89,8 @@ const products = [
    STATE
 ========================================= */
 
-let cart = JSON.parse(localStorage.getItem("slinevisionCart")) || [];
+let cart =
+  JSON.parse(localStorage.getItem("slinevisionCart")) || [];
 
 let currentFilter = "All";
 let currentSearch = "";
@@ -106,27 +102,169 @@ let selectedSize = "M";
    ELEMENTS
 ========================================= */
 
-const productsGrid = document.getElementById("productsGrid");
-const noProducts = document.getElementById("noProducts");
+const productsGrid =
+  document.getElementById("productsGrid");
 
-const cartElement = document.getElementById("cart");
-const cartItems = document.getElementById("cartItems");
-const cartEmpty = document.getElementById("cartEmpty");
-const cartTotal = document.getElementById("cartTotal");
-const cartCount = document.getElementById("cartCount");
+const noProducts =
+  document.getElementById("noProducts");
 
-const overlay = document.getElementById("overlay");
+const cartElement =
+  document.getElementById("cart");
 
-const productModal = document.getElementById("productModal");
-const modalImage = document.getElementById("modalImage");
-const modalName = document.getElementById("modalName");
-const modalPrice = document.getElementById("modalPrice");
-const modalCategory = document.getElementById("modalCategory");
-const modalDescription = document.getElementById("modalDescription");
-const modalAdd = document.getElementById("modalAdd");
+const cartItems =
+  document.getElementById("cartItems");
 
-const searchPanel = document.getElementById("searchPanel");
-const searchInput = document.getElementById("searchInput");
+const cartEmpty =
+  document.getElementById("cartEmpty");
+
+const cartTotal =
+  document.getElementById("cartTotal");
+
+const cartCount =
+  document.getElementById("cartCount");
+
+const overlay =
+  document.getElementById("overlay");
+
+const productModal =
+  document.getElementById("productModal");
+
+const modalImage =
+  document.getElementById("modalImage");
+
+const modalName =
+  document.getElementById("modalName");
+
+const modalPrice =
+  document.getElementById("modalPrice");
+
+const modalCategory =
+  document.getElementById("modalCategory");
+
+const modalDescription =
+  document.getElementById("modalDescription");
+
+const modalAdd =
+  document.getElementById("modalAdd");
+
+const searchPanel =
+  document.getElementById("searchPanel");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+
+/* =========================================
+   DISCOUNT POPUP
+========================================= */
+
+const discountOverlay =
+  document.getElementById("discountOverlay");
+
+const discountClose =
+  document.getElementById("discountClose");
+
+const discountForm =
+  document.getElementById("discountForm");
+
+const discountEmail =
+  document.getElementById("discountEmail");
+
+const discountMessage =
+  document.getElementById("discountMessage");
+
+
+/*
+  Show popup after a short delay.
+
+  It will show again on every fresh browser session
+  unless the user submits their email.
+*/
+
+setTimeout(() => {
+
+  if (
+    !localStorage.getItem(
+      "slinevisionDiscountClaimed"
+    )
+  ) {
+    discountOverlay.classList.add("show");
+  }
+
+}, 1200);
+
+
+/* Close popup */
+
+discountClose.addEventListener("click", () => {
+  discountOverlay.classList.remove("show");
+});
+
+
+/* Close by clicking outside */
+
+discountOverlay.addEventListener("click", event => {
+
+  if (event.target === discountOverlay) {
+    discountOverlay.classList.remove("show");
+  }
+
+});
+
+
+/* Escape key */
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+    discountOverlay.classList.remove("show");
+  }
+
+});
+
+
+/* =========================================
+   DISCOUNT FORM
+========================================= */
+
+discountForm.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+  const email =
+    discountEmail.value.trim();
+
+  if (!email) return;
+
+  /*
+    This currently stores the email locally.
+
+    Connect this form to Mailchimp,
+    Klaviyo, Brevo, Formspree, etc.
+    when you're ready for real email collection.
+  */
+
+  localStorage.setItem(
+    "slinevisionDiscountEmail",
+    email
+  );
+
+  localStorage.setItem(
+    "slinevisionDiscountClaimed",
+    "true"
+  );
+
+  discountMessage.textContent =
+    "Your 10% discount is ready.";
+
+  discountForm.querySelector("button").textContent =
+    "DISCOUNT CLAIMED ✓";
+
+  setTimeout(() => {
+    discountOverlay.classList.remove("show");
+  }, 1600);
+
+});
 
 
 /* =========================================
@@ -134,7 +272,9 @@ const searchInput = document.getElementById("searchInput");
 ========================================= */
 
 function money(amount) {
+
   return `R${amount.toLocaleString("en-ZA")}`;
+
 }
 
 
@@ -144,27 +284,32 @@ function money(amount) {
 
 function renderProducts() {
 
-  const filtered = products.filter(product => {
+  const filtered =
+    products.filter(product => {
 
-    const matchesFilter =
-      currentFilter === "All" ||
-      product.category === currentFilter;
+      const matchesFilter =
+        currentFilter === "All" ||
+        product.category === currentFilter;
 
-    const matchesSearch =
-      product.name.toLowerCase().includes(
-        currentSearch.toLowerCase()
-      ) ||
-      product.category.toLowerCase().includes(
-        currentSearch.toLowerCase()
-      );
+      const matchesSearch =
+        product.name
+          .toLowerCase()
+          .includes(currentSearch.toLowerCase()) ||
 
-    return matchesFilter && matchesSearch;
-  });
+        product.category
+          .toLowerCase()
+          .includes(currentSearch.toLowerCase());
+
+      return matchesFilter && matchesSearch;
+
+    });
 
   productsGrid.innerHTML = "";
 
   if (!filtered.length) {
+
     noProducts.style.display = "block";
+
     return;
   }
 
@@ -172,11 +317,13 @@ function renderProducts() {
 
   filtered.forEach(product => {
 
-    const card = document.createElement("article");
+    const card =
+      document.createElement("article");
 
     card.className = "product-card";
 
     card.innerHTML = `
+
       <div class="product-image">
 
         <img
@@ -208,6 +355,7 @@ function renderProducts() {
         </div>
 
       </div>
+
     `;
 
     card.addEventListener("click", () => {
@@ -215,7 +363,9 @@ function renderProducts() {
     });
 
     productsGrid.appendChild(card);
+
   });
+
 }
 
 
@@ -228,29 +378,44 @@ function openProduct(product) {
   selectedProduct = product;
 
   modalImage.src = product.image;
+
   modalImage.alt = product.name;
 
-  modalName.textContent = product.name;
-  modalPrice.textContent = money(product.price);
-  modalCategory.textContent = product.category;
-  modalDescription.textContent = product.description;
+  modalName.textContent =
+    product.name;
+
+  modalPrice.textContent =
+    money(product.price);
+
+  modalCategory.textContent =
+    product.category;
+
+  modalDescription.textContent =
+    product.description;
 
   selectedSize = "M";
 
-  document.querySelectorAll(".sizes button").forEach(button => {
-    button.classList.remove("selected");
+  document
+    .querySelectorAll(".sizes button")
+    .forEach(button => {
 
-    if (button.textContent === "M") {
-      button.classList.add("selected");
-    }
-  });
+      button.classList.remove("selected");
+
+      if (button.textContent === "M") {
+        button.classList.add("selected");
+      }
+
+    });
 
   productModal.classList.add("show");
+
 }
 
 
 function closeProduct() {
+
   productModal.classList.remove("show");
+
 }
 
 
@@ -258,35 +423,49 @@ function closeProduct() {
    SIZE SELECTOR
 ========================================= */
 
-document.querySelectorAll(".sizes button").forEach(button => {
+document
+  .querySelectorAll(".sizes button")
+  .forEach(button => {
 
-  button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
-    document.querySelectorAll(".sizes button")
-      .forEach(btn => btn.classList.remove("selected"));
+      document
+        .querySelectorAll(".sizes button")
+        .forEach(btn =>
+          btn.classList.remove("selected")
+        );
 
-    button.classList.add("selected");
+      button.classList.add("selected");
 
-    selectedSize = button.textContent;
+      selectedSize =
+        button.textContent;
+
+    });
+
   });
-
-});
 
 
 /* =========================================
    ADD TO CART
 ========================================= */
 
-function addToCart(product, size = "M") {
+function addToCart(
+  product,
+  size = "M"
+) {
 
-  const existing = cart.find(item =>
-    item.id === product.id &&
-    item.size === size
-  );
+  const existing =
+    cart.find(item =>
+      item.id === product.id &&
+      item.size === size
+    );
 
   if (existing) {
+
     existing.quantity++;
+
   } else {
+
     cart.push({
       id: product.id,
       name: product.name,
@@ -295,6 +474,7 @@ function addToCart(product, size = "M") {
       size: size,
       quantity: 1
     });
+
   }
 
   saveCart();
@@ -302,6 +482,7 @@ function addToCart(product, size = "M") {
   closeProduct();
 
   openCart();
+
 }
 
 
@@ -317,6 +498,7 @@ function saveCart() {
   );
 
   renderCart();
+
 }
 
 
@@ -329,12 +511,16 @@ function renderCart() {
 
   cart.forEach((item, index) => {
 
-    total += item.price * item.quantity;
+    total +=
+      item.price * item.quantity;
+
     count += item.quantity;
 
-    const element = document.createElement("div");
+    const element =
+      document.createElement("div");
 
-    element.className = "cart-item";
+    element.className =
+      "cart-item";
 
     element.innerHTML = `
 
@@ -366,15 +552,20 @@ function renderCart() {
     `;
 
     cartItems.appendChild(element);
+
   });
 
-  cartTotal.textContent = money(total);
-  cartCount.textContent = count;
+  cartTotal.textContent =
+    money(total);
+
+  cartCount.textContent =
+    count;
 
   cartEmpty.style.display =
     cart.length ? "none" : "block";
 
-  document.querySelectorAll(".remove-item")
+  document
+    .querySelectorAll(".remove-item")
     .forEach(button => {
 
       button.addEventListener("click", () => {
@@ -385,23 +576,29 @@ function renderCart() {
         cart.splice(index, 1);
 
         saveCart();
+
       });
 
     });
+
 }
 
 
 function openCart() {
 
   cartElement.classList.add("open");
+
   overlay.classList.add("show");
+
 }
 
 
 function closeCart() {
 
   cartElement.classList.remove("open");
+
   overlay.classList.remove("show");
+
 }
 
 
@@ -409,21 +606,25 @@ function closeCart() {
    FILTERS
 ========================================= */
 
-document.querySelectorAll(".filter")
+document
+  .querySelectorAll(".filter")
   .forEach(button => {
 
     button.addEventListener("click", () => {
 
-      document.querySelectorAll(".filter")
+      document
+        .querySelectorAll(".filter")
         .forEach(btn =>
           btn.classList.remove("active")
         );
 
       button.classList.add("active");
 
-      currentFilter = button.dataset.filter;
+      currentFilter =
+        button.dataset.filter;
 
       renderProducts();
+
     });
 
   });
@@ -433,7 +634,8 @@ document.querySelectorAll(".filter")
    CATEGORY LINKS
 ========================================= */
 
-document.querySelectorAll("[data-category-link]")
+document
+  .querySelectorAll("[data-category-link]")
   .forEach(link => {
 
     link.addEventListener("click", () => {
@@ -442,9 +644,12 @@ document.querySelectorAll("[data-category-link]")
         link.dataset.categoryLink;
 
       if (
-        ["Men", "Women", "Sale"].includes(category)
+        ["Men", "Women", "Sale"]
+          .includes(category)
       ) {
+
         currentFilter = "All";
+
       }
 
     });
@@ -456,35 +661,46 @@ document.querySelectorAll("[data-category-link]")
    SEARCH
 ========================================= */
 
-document.getElementById("searchBtn")
+document
+  .getElementById("searchBtn")
   .addEventListener("click", () => {
 
     searchPanel.classList.toggle("show");
 
-    if (searchPanel.classList.contains("show")) {
+    if (
+      searchPanel.classList.contains("show")
+    ) {
+
       searchInput.focus();
+
     }
 
   });
 
 
-searchInput.addEventListener("input", event => {
+searchInput.addEventListener(
+  "input",
+  event => {
 
-  currentSearch = event.target.value;
+    currentSearch =
+      event.target.value;
 
-  renderProducts();
+    renderProducts();
 
-});
+  }
+);
 
 
 /* =========================================
    MENU
 ========================================= */
 
-document.getElementById("menuBtn")
+document
+  .getElementById("menuBtn")
   .addEventListener("click", () => {
 
-    document.getElementById("nav")
+    document
+      .getElementById("nav")
       .classList.toggle("open");
 
   });
@@ -494,110 +710,152 @@ document.getElementById("menuBtn")
    CART BUTTONS
 ========================================= */
 
-document.getElementById("cartBtn")
-  .addEventListener("click", openCart);
+document
+  .getElementById("cartBtn")
+  .addEventListener(
+    "click",
+    openCart
+  );
 
-document.getElementById("cartClose")
-  .addEventListener("click", closeCart);
 
-overlay.addEventListener("click", closeCart);
+document
+  .getElementById("cartClose")
+  .addEventListener(
+    "click",
+    closeCart
+  );
+
+
+overlay.addEventListener(
+  "click",
+  closeCart
+);
 
 
 /* =========================================
    MODAL BUTTONS
 ========================================= */
 
-document.getElementById("modalClose")
-  .addEventListener("click", closeProduct);
-
-productModal.addEventListener("click", event => {
-
-  if (event.target === productModal) {
-    closeProduct();
-  }
-
-});
-
-
-modalAdd.addEventListener("click", () => {
-
-  if (!selectedProduct) return;
-
-  addToCart(
-    selectedProduct,
-    selectedSize
+document
+  .getElementById("modalClose")
+  .addEventListener(
+    "click",
+    closeProduct
   );
 
-});
+
+productModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === productModal
+    ) {
+
+      closeProduct();
+
+    }
+
+  }
+);
+
+
+modalAdd.addEventListener(
+  "click",
+  () => {
+
+    if (!selectedProduct) return;
+
+    addToCart(
+      selectedProduct,
+      selectedSize
+    );
+
+  }
+);
 
 
 /* =========================================
    WHATSAPP ORDER
 ========================================= */
 
-document.getElementById("whatsappBtn")
-  .addEventListener("click", () => {
+document
+  .getElementById("whatsappBtn")
+  .addEventListener(
+    "click",
+    () => {
 
-    if (!cart.length) {
-      alert("Your bag is empty.");
-      return;
-    }
+      if (!cart.length) {
 
-    /*
-      CHANGE THIS NUMBER TO YOUR
-      SLINEVISION WHATSAPP NUMBER.
+        alert("Your bag is empty.");
 
-      Use international format without +.
-      Example South Africa:
-      27821234567
-    */
+        return;
+      }
 
-    const phone = "27821234567";
+      /*
+        CHANGE THIS NUMBER TO YOUR
+        SLINEVISION WHATSAPP NUMBER.
 
-    let message =
-      "Hi SLINEVISION! I would like to order:%0A%0A";
+        International format without +.
+      */
 
-    cart.forEach(item => {
+      const phone =
+        "27821234567";
+
+      let message =
+        "Hi SLINEVISION! I would like to order:%0A%0A";
+
+      cart.forEach(item => {
+
+        message +=
+          `• ${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}%0A`;
+
+      });
+
+      const total =
+        cart.reduce(
+          (sum, item) =>
+            sum +
+            item.price *
+            item.quantity,
+          0
+        );
 
       message +=
-        `• ${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}%0A`;
+        `%0ATotal: ${money(total)}`;
 
-    });
+      window.open(
+        `https://wa.me/${phone}?text=${message}`,
+        "_blank"
+      );
 
-    const total = cart.reduce(
-      (sum, item) =>
-        sum + item.price * item.quantity,
-      0
-    );
-
-    message +=
-      `%0ATotal: ${money(total)}`;
-
-    window.open(
-      `https://wa.me/${phone}?text=${message}`,
-      "_blank"
-    );
-
-  });
+    }
+  );
 
 
 /* =========================================
    CHECKOUT
 ========================================= */
 
-document.getElementById("checkoutBtn")
-  .addEventListener("click", () => {
+document
+  .getElementById("checkoutBtn")
+  .addEventListener(
+    "click",
+    () => {
 
-    if (!cart.length) {
-      alert("Your bag is empty.");
-      return;
+      if (!cart.length) {
+
+        alert("Your bag is empty.");
+
+        return;
+      }
+
+      alert(
+        "Checkout is ready to connect to your payment provider."
+      );
+
     }
-
-    alert(
-      "Checkout is ready to connect to your payment provider."
-    );
-
-  });
+  );
 
 
 /* =========================================
@@ -605,4 +863,5 @@ document.getElementById("checkoutBtn")
 ========================================= */
 
 renderProducts();
+
 renderCart();
