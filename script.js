@@ -1,4 +1,8 @@
-/* SLINEVISION storefront — static GitHub Pages version */
+/* =========================================
+   SLINEVISION — MAIN JAVASCRIPT
+========================================= */
+
+/* PRODUCT DATA */
 
 const products = [
   {
@@ -8,9 +12,9 @@ const products = [
     gender: "Men",
     price: 450,
     oldPrice: null,
-    tag: "NEW",
+    tag: "BEST SELLER",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
-    description: "A clean everyday streetwear essential with the SLINEVISION identity."
+    description: "A clean everyday essential with a relaxed streetwear fit."
   },
   {
     id: 2,
@@ -19,9 +23,9 @@ const products = [
     gender: "Unisex",
     price: 480,
     oldPrice: null,
-    tag: "BESTSELLER",
+    tag: "NEW",
     image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85",
-    description: "An oversized silhouette designed for a relaxed streetwear fit."
+    description: "An oversized streetwear tee designed for everyday comfort."
   },
   {
     id: 3,
@@ -30,158 +34,177 @@ const products = [
     gender: "Unisex",
     price: 850,
     oldPrice: null,
-    tag: "",
+    tag: "POPULAR",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
-    description: "A heavyweight hoodie with a minimal SLINEVISION aesthetic."
+    description: "A premium-feel hoodie with a relaxed everyday silhouette."
   },
   {
     id: 4,
-    name: "LEGACY HOODIE",
+    name: "CORE ESSENTIAL HOODIE",
     category: "Hoodies",
     gender: "Men",
-    price: 900,
-    oldPrice: null,
-    tag: "NEW",
+    price: 790,
+    oldPrice: 950,
+    tag: "SALE",
     image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",
-    description: "A premium streetwear hoodie built for everyday wear."
+    description: "A versatile hoodie made for effortless everyday styling."
   },
   {
     id: 5,
-    name: "SHADOW SET",
-    category: "Sets",
+    name: "SHADOW TRACK SUIT",
+    category: "Track Suits",
     gender: "Women",
     price: 990,
     oldPrice: 1100,
     tag: "SALE",
-    image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=85",
-    description: "A matching streetwear set with a bold monochrome aesthetic."
+    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85",
+    description: "A coordinated track suit with a relaxed streetwear fit."
   },
   {
     id: 6,
-    name: "ICON SET",
-    category: "Sets",
+    name: "VISION TRACK SUIT",
+    category: "Track Suits",
     gender: "Unisex",
     price: 1200,
     oldPrice: null,
-    tag: "",
-    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85",
-    description: "A complete look designed around the SLINEVISION identity."
+    tag: "NEW",
+    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85",
+    description: "A full track suit made for movement and everyday comfort."
   },
   {
     id: 7,
-    name: "VISION CAP",
-    category: "Accessories",
+    name: "CORE SWEAT PANTS",
+    category: "Sweat Pants",
     gender: "Unisex",
-    price: 350,
+    price: 550,
     oldPrice: null,
     tag: "",
-    image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=85",
-    description: "A minimal everyday cap finished with a clean streetwear look."
+    image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=900&q=85",
+    description: "Relaxed sweat pants designed for everyday streetwear comfort."
   },
   {
     id: 8,
-    name: "SIGNATURE BAG",
-    category: "Accessories",
-    gender: "Unisex",
-    price: 500,
+    name: "SHADOW SWEAT PANTS",
+    category: "Sweat Pants",
+    gender: "Men",
+    price: 600,
     oldPrice: null,
-    tag: "",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
-    description: "A compact everyday bag for the SLINEVISION lifestyle."
+    tag: "NEW",
+    image: "https://images.unsplash.com/photo-1506629905607-d9b1c7e7f2e8?auto=format&fit=crop&w=900&q=85",
+    description: "A clean sweat pant with a comfortable relaxed fit."
   }
 ];
 
-const $ = (selector, root = document) =>
-  root.querySelector(selector);
 
-const $$ = (selector, root = document) =>
-  [...root.querySelectorAll(selector)];
+/* ELEMENTS */
 
-const money = amount =>
-  new Intl.NumberFormat("en-ZA", {
-    style: "currency",
-    currency: "ZAR",
-    maximumFractionDigits: 0
-  }).format(amount).replace(/\s/g, "");
+const productsGrid = document.getElementById("productsGrid");
+const noProducts = document.getElementById("noProducts");
 
-let cart = [];
+const searchBtn = document.getElementById("searchBtn");
+const searchPanel = document.getElementById("searchPanel");
+const searchInput = document.getElementById("searchInput");
 
-try {
-  cart = JSON.parse(localStorage.getItem("slinevisionCart") || "[]");
-} catch {
-  cart = [];
-}
+const cartBtn = document.getElementById("cartBtn");
+const cart = document.getElementById("cart");
+const cartClose = document.getElementById("cartClose");
+const cartOverlay = document.getElementById("overlay");
 
-let currentFilter = "All";
-let currentGender = "All";
-let currentSearch = "";
+const cartItems = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+const cartCountHeading = document.getElementById("cartCountHeading");
+const cartTotal = document.getElementById("cartTotal");
+const cartEmpty = document.getElementById("cartEmpty");
+
+const productModal = document.getElementById("productModal");
+const modalClose = document.getElementById("modalClose");
+const modalImage = document.getElementById("modalImage");
+const modalName = document.getElementById("modalName");
+const modalCategory = document.getElementById("modalCategory");
+const modalPrice = document.getElementById("modalPrice");
+const modalDescription = document.getElementById("modalDescription");
+const modalAdd = document.getElementById("modalAdd");
+
+const checkoutBtn = document.getElementById("checkoutBtn");
+const whatsappBtn = document.getElementById("whatsappBtn");
+
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+const discountOverlay = document.getElementById("discountOverlay");
+const discountClose = document.getElementById("discountClose");
+const discountForm = document.getElementById("discountForm");
+const discountEmail = document.getElementById("discountEmail");
+const discountMessage = document.getElementById("discountMessage");
+
+
+/* STATE */
+
+let activeFilter = "All";
+let activeGender = "All";
+let searchTerm = "";
+
+let cartData = JSON.parse(localStorage.getItem("slinevision-cart")) || [];
+
 let selectedProduct = null;
 let selectedSize = "M";
 
-const productsGrid = $("#productsGrid");
-const noProducts = $("#noProducts");
 
-const cartElement = $("#cart");
-const cartItems = $("#cartItems");
-const cartEmpty = $("#cartEmpty");
+/* CURRENCY */
 
-const cartTotal = $("#cartTotal");
-const cartCount = $("#cartCount");
-
-const overlay = $("#overlay");
-const productModal = $("#productModal");
-
-const modalImage = $("#modalImage");
-const modalName = $("#modalName");
-const modalPrice = $("#modalPrice");
-const modalCategory = $("#modalCategory");
-const modalDescription = $("#modalDescription");
+function formatPrice(price) {
+  return "R" + Number(price).toLocaleString("en-ZA");
+}
 
 
-/* DISPLAY PRODUCTS */
+/* SAVE CART */
+
+function saveCart() {
+  localStorage.setItem("slinevision-cart", JSON.stringify(cartData));
+}
+
+
+/* RENDER PRODUCTS */
 
 function renderProducts() {
-  const query = currentSearch.trim().toLowerCase();
 
-  const filtered = products.filter(product => {
+  if (!productsGrid) return;
 
-    const categoryMatch =
-      currentFilter === "All" ||
-      (
-        currentFilter === "Sale"
-          ? product.oldPrice
-          : product.category === currentFilter
-      );
+  const filteredProducts = products.filter(product => {
 
-    const genderMatch =
-      currentGender === "All" ||
-      product.gender === currentGender ||
+    const matchesCategory =
+      activeFilter === "All" ||
+      product.category === activeFilter ||
+      (activeFilter === "Sale" && product.oldPrice);
+
+    const matchesGender =
+      activeGender === "All" ||
+      product.gender === activeGender ||
       product.gender === "Unisex";
 
-    const searchMatch = [
-      product.name,
-      product.category,
-      product.gender
-    ].join(" ").toLowerCase().includes(query);
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm);
 
-    return categoryMatch && genderMatch && searchMatch;
+    return matchesCategory && matchesGender && matchesSearch;
+
   });
 
   productsGrid.innerHTML = "";
 
-  noProducts.style.display =
-    filtered.length ? "none" : "block";
+  if (noProducts) {
+    noProducts.style.display =
+      filteredProducts.length === 0 ? "block" : "none";
+  }
 
-  filtered.forEach(product => {
+  filteredProducts.forEach(product => {
 
     const card = document.createElement("article");
+
     card.className = "product-card";
 
-    const tag =
-      product.tag || (product.oldPrice ? "SALE" : "");
-
     card.innerHTML = `
-      <div class="product-image">
+      <div class="product-image-wrap">
 
         <img
           src="${product.image}"
@@ -189,254 +212,84 @@ function renderProducts() {
           loading="lazy"
         >
 
-        ${tag ? `<span class="product-tag">${tag}</span>` : ""}
+        ${product.tag ? `
+          <span class="product-tag">${product.tag}</span>
+        ` : ""}
 
-        <button class="quick-add" type="button">
-          QUICK ADD ＋
+        <button
+          class="quick-add"
+          data-product-id="${product.id}"
+          type="button"
+        >
+          QUICK ADD +
         </button>
 
       </div>
 
       <div class="product-info">
 
-        <div class="product-name">
-          ${product.name}
+        <div class="product-info-top">
+          <h3>${product.name}</h3>
+          <span>${product.gender}</span>
         </div>
 
-        <div class="product-category">
-          ${product.category} · ${product.gender}
-        </div>
+        <p class="product-category">${product.category}</p>
 
         <div class="product-price">
-          ${
-            product.oldPrice
-              ? `<del>${money(product.oldPrice)}</del>
-                 <span class="sale-price">${money(product.price)}</span>`
-              : money(product.price)
-          }
+
+          <strong>${formatPrice(product.price)}</strong>
+
+          ${product.oldPrice ? `
+            <del>${formatPrice(product.oldPrice)}</del>
+          ` : ""}
+
         </div>
 
       </div>
     `;
 
-    card.addEventListener("click", () => {
-      openProduct(product);
+    card.addEventListener("click", event => {
+
+      if (event.target.closest(".quick-add")) return;
+
+      openProduct(product.id);
+
     });
 
-    $(".quick-add", card).addEventListener("click", event => {
+    const quickAdd = card.querySelector(".quick-add");
+
+    quickAdd.addEventListener("click", event => {
+
       event.stopPropagation();
-      openProduct(product);
+
+      addToCart(product.id);
+
     });
 
     productsGrid.appendChild(card);
-  });
-}
-
-
-/* PRODUCT FILTERS */
-
-function setActiveFilter(value) {
-
-  currentFilter = value;
-
-  $$(".filter").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.filter === value
-    );
-  });
-
-  renderProducts();
-}
-
-
-/* PRODUCT DETAILS */
-
-function openProduct(product) {
-
-  selectedProduct = product;
-  selectedSize = "M";
-
-  modalImage.src = product.image;
-  modalImage.alt = product.name;
-
-  modalName.textContent = product.name;
-  modalPrice.textContent = money(product.price);
-
-  modalCategory.textContent =
-    `${product.category} / ${product.gender}`;
-
-  modalDescription.textContent =
-    product.description;
-
-  $$(".sizes button").forEach(button => {
-    button.classList.toggle(
-      "selected",
-      button.textContent.trim() === "M"
-    );
-  });
-
-  productModal.classList.add("show");
-
-  productModal.setAttribute("aria-hidden", "false");
-}
-
-
-function closeProduct() {
-
-  productModal.classList.remove("show");
-
-  productModal.setAttribute("aria-hidden", "true");
-}
-
-
-/* SHOPPING CART */
-
-function saveCart() {
-
-  localStorage.setItem(
-    "slinevisionCart",
-    JSON.stringify(cart)
-  );
-
-  renderCart();
-}
-
-
-function addToCart(product, size = "M") {
-
-  const existing = cart.find(item =>
-    item.id === product.id &&
-    item.size === size
-  );
-
-  if (existing) {
-
-    existing.quantity += 1;
-
-  } else {
-
-    cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      size,
-      quantity: 1
-    });
-
-  }
-
-  saveCart();
-
-  closeProduct();
-
-  openCart();
-}
-
-
-function renderCart() {
-
-  cartItems.innerHTML = "";
-
-  let total = 0;
-  let count = 0;
-
-  cart.forEach((item, index) => {
-
-    total += item.price * item.quantity;
-    count += item.quantity;
-
-    const row = document.createElement("div");
-
-    row.className = "cart-item";
-
-    row.innerHTML = `
-      <img
-        src="${item.image}"
-        alt="${item.name}"
-      >
-
-      <div>
-
-        <div class="cart-item-name">
-          ${item.name}
-        </div>
-
-        <div class="cart-item-price">
-          SIZE: ${item.size}<br>
-          ${money(item.price)} × ${item.quantity}
-        </div>
-
-      </div>
-
-      <button
-        class="remove-item"
-        type="button"
-        data-index="${index}"
-      >
-        REMOVE
-      </button>
-    `;
-
-    $(".remove-item", row).addEventListener("click", () => {
-
-      cart.splice(index, 1);
-
-      saveCart();
-
-    });
-
-    cartItems.appendChild(row);
 
   });
-
-  cartTotal.textContent = money(total);
-  cartCount.textContent = count;
-
-  $("#cartCountHeading").textContent = count;
-
-  cartEmpty.style.display =
-    cart.length ? "none" : "block";
-}
-
-
-function openCart() {
-
-  cartElement.classList.add("open");
-
-  overlay.classList.add("show");
-
-}
-
-
-function closeCart() {
-
-  cartElement.classList.remove("open");
-
-  overlay.classList.remove("show");
-
-}
-
-
-function closeAll() {
-
-  closeProduct();
-
-  closeCart();
-
-  $("#discountOverlay").classList.remove("show");
 
 }
 
 
 /* FILTER BUTTONS */
 
-$$(".filter").forEach(button => {
+document.querySelectorAll(".filter").forEach(button => {
 
   button.addEventListener("click", () => {
 
-    setActiveFilter(button.dataset.filter);
+    document.querySelectorAll(".filter").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    activeFilter = button.dataset.filter || "All";
+
+    activeGender = "All";
+
+    renderProducts();
 
   });
 
@@ -445,36 +298,48 @@ $$(".filter").forEach(button => {
 
 /* CATEGORY LINKS */
 
-$$("[data-category-link]").forEach(link => {
+document.querySelectorAll("[data-category-link]").forEach(link => {
 
   link.addEventListener("click", () => {
 
-    const category = link.dataset.categoryLink;
+    activeFilter = link.dataset.categoryLink;
+    activeGender = "All";
 
-    currentGender = "All";
+    document.querySelectorAll(".filter").forEach(button => {
 
-    setActiveFilter(
-      category === "Sale" ? "Sale" : category
-    );
+      button.classList.toggle(
+        "active",
+        button.dataset.filter === activeFilter
+      );
 
-    $("#nav").classList.remove("open");
+    });
+
+    renderProducts();
 
   });
 
 });
 
 
-/* MEN AND WOMEN FILTERS */
+/* GENDER LINKS */
 
-$$("[data-gender-link]").forEach(link => {
+document.querySelectorAll("[data-gender-link]").forEach(link => {
 
   link.addEventListener("click", () => {
 
-    currentGender = link.dataset.genderLink;
+    activeGender = link.dataset.genderLink;
+    activeFilter = "All";
 
-    setActiveFilter("All");
+    document.querySelectorAll(".filter").forEach(button => {
 
-    $("#nav").classList.remove("open");
+      button.classList.toggle(
+        "active",
+        button.dataset.filter === "All"
+      );
+
+    });
+
+    renderProducts();
 
   });
 
@@ -483,69 +348,100 @@ $$("[data-gender-link]").forEach(link => {
 
 /* SEARCH */
 
-$("#searchBtn").addEventListener("click", () => {
+if (searchBtn && searchPanel) {
 
-  $("#searchPanel").classList.toggle("show");
+  searchBtn.addEventListener("click", () => {
 
-  if ($("#searchPanel").classList.contains("show")) {
+    searchPanel.classList.toggle("active");
 
-    $("#searchInput").focus();
+    if (searchPanel.classList.contains("active")) {
+      searchInput.focus();
+    }
 
-  }
+  });
 
-});
+}
 
+if (searchInput) {
 
-$("#searchInput").addEventListener("input", event => {
+  searchInput.addEventListener("input", () => {
 
-  currentSearch = event.target.value;
+    searchTerm = searchInput.value.toLowerCase().trim();
 
-  renderProducts();
+    renderProducts();
 
-});
+  });
 
-
-/* MOBILE MENU */
-
-$("#menuBtn").addEventListener("click", () => {
-
-  $("#nav").classList.toggle("open");
-
-});
+}
 
 
-/* CART BUTTONS */
+/* OPEN PRODUCT MODAL */
 
-$("#cartBtn").addEventListener("click", openCart);
+function openProduct(id) {
 
-$("#cartClose").addEventListener("click", closeCart);
+  selectedProduct = products.find(product => product.id === id);
 
-overlay.addEventListener("click", closeCart);
+  if (!selectedProduct) return;
+
+  modalImage.src = selectedProduct.image;
+  modalImage.alt = selectedProduct.name;
+
+  modalName.textContent = selectedProduct.name;
+  modalCategory.textContent = selectedProduct.category;
+  modalPrice.textContent = formatPrice(selectedProduct.price);
+  modalDescription.textContent = selectedProduct.description;
+
+  productModal.classList.add("active");
+  productModal.setAttribute("aria-hidden", "false");
+
+  selectedSize = "M";
+
+  document.querySelectorAll(".sizes button").forEach(button => {
+
+    button.classList.toggle(
+      "selected",
+      button.textContent.trim() === selectedSize
+    );
+
+  });
+
+}
 
 
-/* PRODUCT MODAL BUTTONS */
+/* CLOSE PRODUCT MODAL */
 
-$("#modalClose").addEventListener("click", closeProduct);
+function closeProductModal() {
 
-productModal.addEventListener("click", event => {
+  productModal.classList.remove("active");
+  productModal.setAttribute("aria-hidden", "true");
 
-  if (event.target === productModal) {
+}
 
-    closeProduct();
+if (modalClose) {
+  modalClose.addEventListener("click", closeProductModal);
+}
 
-  }
+if (productModal) {
 
-});
+  productModal.addEventListener("click", event => {
+
+    if (event.target === productModal) {
+      closeProductModal();
+    }
+
+  });
+
+}
 
 
-/* SIZE SELECTION */
+/* SELECT SIZE */
 
-$$(".sizes button").forEach(button => {
+document.querySelectorAll(".sizes button").forEach(button => {
 
   button.addEventListener("click", () => {
 
-    $$(".sizes button").forEach(item => {
-      item.classList.remove("selected");
+    document.querySelectorAll(".sizes button").forEach(btn => {
+      btn.classList.remove("selected");
     });
 
     button.classList.add("selected");
@@ -557,13 +453,389 @@ $$(".sizes button").forEach(button => {
 });
 
 
-/* ADD TO BAG */
+/* ADD TO CART */
 
-$("#modalAdd").addEventListener("click", () => {
+function addToCart(id, size = "M") {
 
-  if (selectedProduct) {
+  const product = products.find(item => item.id === id);
 
-    addToCart(selectedProduct, selectedSize);
+  if (!product) return;
+
+  const existingItem = cartData.find(item =>
+    item.id === id && item.size === size
+  );
+
+  if (existingItem) {
+
+    existingItem.quantity += 1;
+
+  } else {
+
+    cartData.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: size,
+      quantity: 1
+    });
+
+  }
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+/* ADD FROM PRODUCT MODAL */
+
+if (modalAdd) {
+
+  modalAdd.addEventListener("click", () => {
+
+    if (!selectedProduct) return;
+
+    addToCart(selectedProduct.id, selectedSize);
+
+    closeProductModal();
+
+    openCart();
+
+  });
+
+}
+
+
+/* REMOVE CART ITEM */
+
+function removeFromCart(id, size) {
+
+  cartData = cartData.filter(item =>
+    !(item.id === id && item.size === size)
+  );
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQuantity(id, size, amount) {
+
+  const item = cartData.find(item =>
+    item.id === id && item.size === size
+  );
+
+  if (!item) return;
+
+  item.quantity += amount;
+
+  if (item.quantity <= 0) {
+
+    removeFromCart(id, size);
+
+    return;
+
+  }
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+/* RENDER CART */
+
+function renderCart() {
+
+  if (!cartItems) return;
+
+  cartItems.innerHTML = "";
+
+  const totalItems = cartData.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  const totalPrice = cartData.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  cartCount.textContent = totalItems;
+
+  if (cartCountHeading) {
+    cartCountHeading.textContent = totalItems;
+  }
+
+  cartTotal.textContent = formatPrice(totalPrice);
+
+  cartEmpty.style.display =
+    cartData.length === 0 ? "block" : "none";
+
+  cartData.forEach(item => {
+
+    const row = document.createElement("div");
+
+    row.className = "cart-item";
+
+    row.innerHTML = `
+
+      <img src="${item.image}" alt="${item.name}">
+
+      <div class="cart-item-info">
+
+        <h3>${item.name}</h3>
+
+        <p>SIZE: ${item.size}</p>
+
+        <strong>${formatPrice(item.price)}</strong>
+
+        <div class="quantity-controls">
+
+          <button
+            type="button"
+            data-action="minus"
+          >−</button>
+
+          <span>${item.quantity}</span>
+
+          <button
+            type="button"
+            data-action="plus"
+          >+</button>
+
+        </div>
+
+        <button
+          class="remove-item"
+          type="button"
+          data-action="remove"
+        >
+          REMOVE
+        </button>
+
+      </div>
+
+    `;
+
+    row.querySelector('[data-action="minus"]').addEventListener("click", () => {
+      changeQuantity(item.id, item.size, -1);
+    });
+
+    row.querySelector('[data-action="plus"]').addEventListener("click", () => {
+      changeQuantity(item.id, item.size, 1);
+    });
+
+    row.querySelector('[data-action="remove"]').addEventListener("click", () => {
+      removeFromCart(item.id, item.size);
+    });
+
+    cartItems.appendChild(row);
+
+  });
+
+}
+
+
+/* OPEN CART */
+
+function openCart() {
+
+  cart.classList.add("open");
+  cartOverlay.classList.add("active");
+
+  document.body.classList.add("no-scroll");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart() {
+
+  cart.classList.remove("open");
+  cartOverlay.classList.remove("active");
+
+  document.body.classList.remove("no-scroll");
+
+}
+
+if (cartBtn) {
+  cartBtn.addEventListener("click", openCart);
+}
+
+if (cartClose) {
+  cartClose.addEventListener("click", closeCart);
+}
+
+if (cartOverlay) {
+  cartOverlay.addEventListener("click", closeCart);
+}
+
+
+/* WHATSAPP ORDERING */
+
+if (whatsappBtn) {
+
+  whatsappBtn.addEventListener("click", () => {
+
+    if (cartData.length === 0) {
+
+      alert("Your shopping bag is empty.");
+
+      return;
+
+    }
+
+    const phoneNumber = "27821234567";
+
+    let message = "Hello SLINEVISION! I would like to place an order:\n\n";
+
+    cartData.forEach(item => {
+
+      message +=
+        `${item.name} | Size: ${item.size} | Quantity: ${item.quantity} | ${formatPrice(item.price * item.quantity)}\n`;
+
+    });
+
+    const total = cartData.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+
+    message += `\nTOTAL: ${formatPrice(total)}`;
+
+    const whatsappURL =
+      "https://wa.me/" + phoneNumber +
+      "?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+
+  });
+
+}
+
+
+/* CHECKOUT */
+
+if (checkoutBtn) {
+
+  checkoutBtn.addEventListener("click", () => {
+
+    if (cartData.length === 0) {
+
+      alert("Your shopping bag is empty.");
+
+      return;
+
+    }
+
+    alert(
+      "Online checkout is not connected yet. Please use the WhatsApp order option."
+    );
+
+  });
+
+}
+
+
+/* MOBILE MENU */
+
+if (menuBtn && nav) {
+
+  menuBtn.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+    menuBtn.classList.toggle("active");
+
+  });
+
+  nav.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      nav.classList.remove("active");
+
+      menuBtn.classList.remove("active");
+
+    });
+
+  });
+
+}
+
+
+/* DISCOUNT POPUP */
+
+function closeDiscount() {
+
+  discountOverlay.classList.remove("active");
+
+  localStorage.setItem("slinevision-popup-seen", "true");
+
+}
+
+if (discountClose) {
+
+  discountClose.addEventListener("click", closeDiscount);
+
+}
+
+if (discountOverlay) {
+
+  discountOverlay.addEventListener("click", event => {
+
+    if (event.target === discountOverlay) {
+      closeDiscount();
+    }
+
+  });
+
+}
+
+
+/* DISCOUNT FORM */
+
+if (discountForm) {
+
+  discountForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const email = discountEmail.value.trim();
+
+    if (!email) return;
+
+    discountMessage.textContent =
+      "Thanks for joining SLINEVISION! Connect an email service to save subscriptions.";
+
+  });
+
+}
+
+
+/* SHOW POPUP ON FIRST VISIT */
+
+window.addEventListener("load", () => {
+
+  if (
+    discountOverlay &&
+    !localStorage.getItem("slinevision-popup-seen")
+  ) {
+
+    setTimeout(() => {
+
+      discountOverlay.classList.add("active");
+
+    }, 2500);
 
   }
 
@@ -576,142 +848,21 @@ document.addEventListener("keydown", event => {
 
   if (event.key === "Escape") {
 
-    closeAll();
+    closeProductModal();
+
+    closeCart();
+
+    if (discountOverlay) {
+      discountOverlay.classList.remove("active");
+    }
 
   }
 
 });
 
 
-/* WHATSAPP ORDERING */
-
-$("#whatsappBtn").addEventListener("click", () => {
-
-  if (!cart.length) {
-
-    alert("Your bag is empty.");
-
-    return;
-
-  }
-
-  // REPLACE THIS WITH YOUR OWN WHATSAPP NUMBER.
-  const phone = "27691603308";
-
-  const lines = cart.map(item =>
-    `${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}`
-  );
-
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-
-  const message = encodeURIComponent(
-    `Hi SLINEVISION! I would like to order:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`
-  );
-
-  window.open(
-    `https://wa.me/${phone}?text=${message}`,
-    "_blank",
-    "noopener"
-  );
-
-});
-
-
-/* CHECKOUT */
-
-$("#checkoutBtn").addEventListener("click", () => {
-
-  alert(
-    "Your bag is ready. Connect a payment provider to enable secure online checkout."
-  );
-
-});
-
-
-/* WELCOME DISCOUNT POPUP */
-
-const discountOverlay = $("#discountOverlay");
-
-
-$("#discountClose").addEventListener("click", () => {
-
-  discountOverlay.classList.remove("show");
-
-});
-
-
-discountOverlay.addEventListener("click", event => {
-
-  if (event.target === discountOverlay) {
-
-    discountOverlay.classList.remove("show");
-
-  }
-
-});
-
-
-$("#discountForm").addEventListener("submit", event => {
-
-  event.preventDefault();
-
-  const email = $("#discountEmail").value.trim();
-
-  if (!email) return;
-
-  // DEMO ONLY: This saves the email in this browser.
-  // It does not send it to an email marketing service.
-
-  localStorage.setItem(
-    "slinevisionDiscountEmail",
-    email
-  );
-
-  localStorage.setItem(
-    "slinevisionDiscountClaimed",
-    "true"
-  );
-
-  $("#discountMessage").textContent =
-    "Your 10% offer is ready. Thanks for joining!";
-
-  $("#discountForm button").textContent =
-    "OFFER CLAIMED ✓";
-
-  setTimeout(() => {
-
-    discountOverlay.classList.remove("show");
-
-  }, 1800);
-
-});
-
-
-/* START WEBSITE */
+/* INITIALIZE WEBSITE */
 
 renderProducts();
 
 renderCart();
-
-
-// Show welcome offer once per browser session.
-if (
-  !localStorage.getItem("slinevisionDiscountClaimed") &&
-  !sessionStorage.getItem("slinevisionPopupSeen")
-) {
-
-  sessionStorage.setItem(
-    "slinevisionPopupSeen",
-    "true"
-  );
-
-  setTimeout(() => {
-
-    discountOverlay.classList.add("show");
-
-  }, 7000);
-
-}
