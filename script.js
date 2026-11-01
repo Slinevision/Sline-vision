@@ -596,7 +596,7 @@ $("#whatsappBtn").addEventListener("click", () => {
   }
 
   // REPLACE THIS WITH YOUR OWN WHATSAPP NUMBER.
-  const phone = "27821234567";
+  const phone = "27691603308";
 
   const lines = cart.map(item =>
     `${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}`
