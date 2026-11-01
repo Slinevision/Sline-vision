@@ -59,13 +59,13 @@ const products = [
   },
   {
     id: 6,
-    name: "VISION TRACK SUIT",
-    category: "Track Suits",
-    gender: "Unisex",
-    price: 1200,
+    name: "DUAL STAMPEDE TUBE",
+    category: "SWEATSUIT",
+    gender: "Girl",
+    price: 990,
     oldPrice: null,
     tag: "NEW",
-    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260727-WA0111.jpg",
     description: "A full track suit made for movement and everyday comfort."
   },
   {
