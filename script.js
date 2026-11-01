@@ -15,13 +15,13 @@ const products = [
   },
   {
     id: 2,
-    name: "SHADOW OVERSIZED TEE",
+    name: "GHOST PHASE",
     category: "T-Shirts",
-    gender: "Unisex",
+    gender: "Men",
     price: 480,
     oldPrice: null,
     tag: "BESTSELLER",
-    image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260725-WA0073.jpg",
     description: "An oversized silhouette designed for a relaxed streetwear fit."
   },
   {
