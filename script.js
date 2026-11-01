@@ -26,13 +26,13 @@ const products = [
   },
   {
     id: 3,
-    name: "VISION HOODIE",
+    name: "PLAID GHOST",
     category: "Hoodies",
     gender: "Unisex",
     price: 850,
     oldPrice: null,
     tag: "POPULAR",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260727-WA0105.jpg",
     description: "A heavyweight hoodie with a minimal SLINEVISION aesthetic."
   },
   {
