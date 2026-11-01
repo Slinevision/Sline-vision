@@ -4,13 +4,13 @@
 const products = [
   {
     id: 1,
-    name: "VISION CORE TEE",
+    name: "VOID CIRCLE",
     category: "T-Shirts",
     gender: "Men",
     price: 450,
     oldPrice: null,
     tag: "NEW",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260725-WA0068.jpg",
     description: "A clean everyday streetwear essential with the SLINEVISION identity."
   },
   {
