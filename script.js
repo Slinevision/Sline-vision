@@ -38,9 +38,9 @@ const products = [
   {
     id: 4,
     name: "LEGACY HOODIE",
-    category: "Hoodies",
+    category: "T-Shirts",
     gender: "Men",
-    price: 900,
+    price: 450,
     oldPrice: null,
     tag: "NEW",
     image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",
