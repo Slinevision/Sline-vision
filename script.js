@@ -61,7 +61,7 @@ const products = [
     id: 6,
     name: "DUAL STAMPEDE TUBE",
     category: "SWEATSUIT",
-    gender: "Girl",
+    gender: "Women",
     price: 990,
     oldPrice: null,
     tag: "NEW",
