@@ -37,13 +37,13 @@ const products = [
   },
   {
     id: 4,
-    name: "LEGACY HOODIE",
+    name: "NOVA STAMPEDE",
     category: "T-Shirts",
     gender: "Men",
     price: 450,
     oldPrice: null,
     tag: "NEW",
-    image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260727-WA0104.jpg",
     description: "A premium streetwear hoodie built for everyday wear."
   },
   {
