@@ -48,13 +48,13 @@ const products = [
   },
   {
     id: 5,
-    name: "SHADOW TRACK SUIT",
-    category: "Track Suits",
+    name: "VE. SWEAT SET",
+    category: "SWEATSUIT",
     gender: "Women",
     price: 990,
     oldPrice: 1100,
     tag: "SALE",
-    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260814-WA0026.jpg",
     description: "A coordinated track suit with a relaxed streetwear fit."
   },
   {
