@@ -5,18 +5,18 @@ const products = [
   {
     id: 1,
     name: "VOID CIRCLE",
-    category: "T-Shirts",
+    category: "T-Shirt",
     gender: "Men",
     price: 450,
     oldPrice: null,
     tag: "NEW",
     image: "IMG-20260725-WA0068.jpg",
-    description: "A clean everyday streetwear essential with the SLINEVISION identity."
+    description: "A clean everyday streetwear T-Shirt with the SLINEVISION identity."
   },
   {
     id: 2,
     name: "GHOST PHASE",
-    category: "T-Shirts",
+    category: "T-Shirt",
     gender: "Men",
     price: 480,
     oldPrice: null,
@@ -27,7 +27,7 @@ const products = [
   {
     id: 3,
     name: "PLAID GHOST",
-    category: "Hoodies",
+    category: "Hoodie",
     gender: "Unisex",
     price: 850,
     oldPrice: null,
@@ -38,13 +38,13 @@ const products = [
   {
     id: 4,
     name: "NOVA STAMPEDE",
-    category: "T-Shirts",
+    category: "T-Shirt",
     gender: "Men",
     price: 450,
     oldPrice: null,
     tag: "NEW",
     image: "IMG-20260727-WA0104.jpg",
-    description: "A premium streetwear hoodie built for everyday wear."
+    description: "A premium streetwear T-Shirt built for everyday wear."
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const products = [
     oldPrice: 1100,
     tag: "SALE",
     image: "IMG-20260814-WA0026.jpg",
-    description: "A coordinated track suit with a relaxed streetwear fit."
+    description: "A coordinated Sweatsuit with a relaxed streetwear fit."
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ const products = [
     oldPrice: null,
     tag: "NEW",
     image: "IMG-20260727-WA0111.jpg",
-    description: "A full track suit made for movement and everyday comfort."
+    description: "A full Sweatsuit made for movement and everyday comfort."
   },
   {
     id: 7,
@@ -77,18 +77,18 @@ const products = [
     oldPrice: null,
     tag: "",
     image: "IMG-20260725-WA0066.jpg",
-    description: "Relaxed sweat pants designed for everyday streetwear comfort."
+    description: "Relaxed Tracksuit designed for everyday streetwear comfort."
   },
   {
     id: 8,
-    name: "SHADOW SWEAT PANTS",
-    category: "Sweat Pants",
-    gender: "Men",
+    name: "Crimson Rider Set",
+    category: "Tracksuit",
+    gender: "Unisex",
     price: 600,
     oldPrice: null,
     tag: "NEW",
-    image: "https://images.unsplash.com/photo-1506629905607-d9b1c7e7f2e8?auto=format&fit=crop&w=900&q=85",
-    description: "A clean tapered sweat pant with a comfortable relaxed fit."
+    image: "IMG-20261109-WA0072.jpg",
+    description: "A clean tapered Tracksuit with a comfortable relaxed fit."
   }
 ];
 
