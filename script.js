@@ -70,13 +70,13 @@ const products = [
   },
   {
     id: 7,
-    name: "CORE SWEAT PANTS",
-    category: "Sweat Pants",
+    name: "Leopard Rush Set",
+    category: "Tracksuit",
     gender: "Unisex",
     price: 550,
     oldPrice: null,
     tag: "",
-    image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=900&q=85",
+    image: "IMG-20260725-WA0066.jpg",
     description: "Relaxed sweat pants designed for everyday streetwear comfort."
   },
   {
