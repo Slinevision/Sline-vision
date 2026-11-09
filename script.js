@@ -430,7 +430,7 @@ $("#whatsappBtn").addEventListener("click", () => {
 
   // REPLACE THIS WITH YOUR OWN WHATSAPP NUMBER.
   // Include the country code, without the plus sign.
-  const phone = "27691603308";
+  const phone = "27633021620";
 
   const lines = cart.map(item =>
     `${item.name} — Size ${item.size} — ${item.quantity}x — ${money(item.price * item.quantity)}`
