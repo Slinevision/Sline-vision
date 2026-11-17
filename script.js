@@ -26,7 +26,7 @@ const products = [
   },
   {
     id: 3,
-    name: "NEW VISION",
+    name: "Stampede Tee",
     category: "T-Shirt",
     gender: "Men",
     price: 450,
