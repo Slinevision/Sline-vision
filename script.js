@@ -32,7 +32,7 @@ const products = [
     price: 450,
     oldPrice: null,
     tag: "NEW",
-    image: "YOUR-T-SHIRT-IMAGE.jpg",
+    image: "IMG-20261117-WA0013.jpg",
     description: "A premium oversized SLINEVISION T-Shirt designed for everyday streetwear."
   },
   {
