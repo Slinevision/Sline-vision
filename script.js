@@ -26,14 +26,14 @@ const products = [
   },
   {
     id: 3,
-    name: "PLAID GHOST",
-    category: "Hoodie",
-    gender: "Unisex",
-    price: 850,
+    name: "NEW VISION",
+    category: "T-Shirt",
+    gender: "Men",
+    price: 450,
     oldPrice: null,
-    tag: "POPULAR",
-    image: "IMG-20260727-WA0105.jpg",
-    description: "A heavyweight hoodie with a minimal SLINEVISION aesthetic."
+    tag: "NEW",
+    image: "YOUR-T-SHIRT-IMAGE.jpg",
+    description: "A premium oversized SLINEVISION T-Shirt designed for everyday streetwear."
   },
   {
     id: 4,
@@ -48,6 +48,17 @@ const products = [
   },
   {
     id: 5,
+    name: "PLAID GHOST",
+    category: "Hoodie",
+    gender: "Unisex",
+    price: 850,
+    oldPrice: null,
+    tag: "POPULAR",
+    image: "IMG-20260727-WA0105.jpg",
+    description: "A heavyweight hoodie with a minimal SLINEVISION aesthetic."
+  },
+  {
+    id: 6,
     name: "VE. SWEAT SET",
     category: "SWEATSUIT",
     gender: "Women",
@@ -58,7 +69,7 @@ const products = [
     description: "A coordinated Sweatsuit with a relaxed streetwear fit."
   },
   {
-    id: 6,
+    id: 7,
     name: "DUAL STAMPEDE TUBE",
     category: "SWEATSUIT",
     gender: "Women",
@@ -69,7 +80,7 @@ const products = [
     description: "A full Sweatsuit made for movement and everyday comfort."
   },
   {
-    id: 7,
+    id: 8,
     name: "Leopard Rush Set",
     category: "Tracksuit",
     gender: "Unisex",
@@ -80,7 +91,7 @@ const products = [
     description: "Relaxed Tracksuit designed for everyday streetwear comfort."
   },
   {
-    id: 8,
+    id: 9,
     name: "Crimson Rider Set",
     category: "Tracksuit",
     gender: "Unisex",
@@ -167,21 +178,15 @@ function renderProducts() {
     card.innerHTML = `
       <div class="product-image">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
-
         ${tag ? `<span class="product-tag">${tag}</span>` : ""}
-
-        <button class="quick-add" type="button">
-          QUICK ADD ＋
-        </button>
+        <button class="quick-add" type="button">QUICK ADD ＋</button>
       </div>
 
       <div class="product-info">
         <div class="product-name">${product.name}</div>
-
         <div class="product-category">
           ${product.category} · ${product.gender}
         </div>
-
         <div class="product-price">
           ${
             product.oldPrice
@@ -368,19 +373,14 @@ function renderCart() {
 
     row.innerHTML = `
       <img src="${item.image}" alt="${item.name}">
-
       <div>
         <div class="cart-item-name">${item.name}</div>
-
         <div class="cart-item-price">
           SIZE: ${item.size}<br>
           ${money(item.price)} × ${item.quantity}
         </div>
       </div>
-
-      <button class="remove-item" type="button">
-        REMOVE
-      </button>
+      <button class="remove-item" type="button">REMOVE</button>
     `;
 
     $(".remove-item", row).addEventListener("click", () => {
@@ -428,8 +428,6 @@ $("#whatsappBtn").addEventListener("click", () => {
     return;
   }
 
-  // REPLACE THIS WITH YOUR OWN WHATSAPP NUMBER.
-  // Include the country code, without the plus sign.
   const phone = "27633021620";
 
   const lines = cart.map(item =>
