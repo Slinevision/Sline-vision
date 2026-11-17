@@ -26,6 +26,17 @@ const products = [
   },
   {
     id: 3,
+    name: "Vote Sketch Tee",
+    category: "T-Shirt",
+    gender: "Men",
+    price: 250,
+    oldPrice: null,
+    tag: "BESTSELLER",
+    image: "IMG-20261117-WA0027.jpg",
+    description: "An oversized silhouette designed for a relaxed streetwear fit."
+  },
+  {
+    id: 4,
     name: "Stampede Tee",
     category: "T-Shirt",
     gender: "Men",
