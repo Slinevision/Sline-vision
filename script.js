@@ -1,5 +1,5 @@
 
-/* SLINEVISION — Website functionality */
+/* SLINEVISION — Store functionality */
 
 const products = [
   {
@@ -68,7 +68,6 @@ try {
 }
 
 let currentFilter = "All";
-let currentGender = "All";
 let currentSearch = "";
 let selectedProduct = null;
 let selectedSize = "M";
@@ -84,7 +83,7 @@ const overlay = $("#overlay");
 const productModal = $("#productModal");
 const discountOverlay = $("#discountOverlay");
 
-/* DISPLAY PRODUCTS */
+/* PRODUCTS */
 
 function renderProducts() {
   const query = currentSearch.trim().toLowerCase();
@@ -96,22 +95,17 @@ function renderProducts() {
         ? Boolean(product.oldPrice)
         : product.category === currentFilter);
 
-    const genderMatch =
-      currentGender === "All" ||
-      product.gender === currentGender ||
-      product.gender === "Unisex";
-
     const searchMatch = [
       product.name,
       product.category,
-      product.gender
+      product.gender,
+      product.description
     ].join(" ").toLowerCase().includes(query);
 
-    return categoryMatch && genderMatch && searchMatch;
+    return categoryMatch && searchMatch;
   });
 
   productsGrid.innerHTML = "";
-
   noProducts.style.display = filtered.length ? "none" : "block";
 
   filtered.forEach(product => {
@@ -129,9 +123,7 @@ function renderProducts() {
 
       <div class="product-info">
         <div class="product-name">${product.name}</div>
-        <div class="product-category">
-          ${product.category} · ${product.gender}
-        </div>
+        <div class="product-category">${product.category} · ${product.gender}</div>
         <div class="product-price">
           ${
             product.oldPrice
@@ -154,11 +146,10 @@ function renderProducts() {
   });
 }
 
-/* CATEGORY FILTERS */
+/* FILTERS */
 
 function setActiveFilter(value) {
   currentFilter = value;
-  currentGender = "All";
 
   $$(".filter").forEach(button => {
     button.classList.toggle("active", button.dataset.filter === value);
@@ -175,8 +166,7 @@ $$(".filter").forEach(button => {
 
 $$("[data-category-link]").forEach(link => {
   link.addEventListener("click", () => {
-    const category = link.dataset.categoryLink;
-    setActiveFilter(category || "All");
+    setActiveFilter(link.dataset.categoryLink || "All");
     $("#nav").classList.remove("open");
   });
 });
@@ -194,6 +184,7 @@ $$("[data-search]").forEach(button => {
 
 $("#searchBtn").addEventListener("click", () => {
   $("#searchInput").focus();
+
   $(".search-area").scrollIntoView({
     behavior: "smooth",
     block: "center"
@@ -201,13 +192,20 @@ $("#searchBtn").addEventListener("click", () => {
 });
 
 $("#searchSubmit").addEventListener("click", () => {
-  $("#products").scrollIntoView({ behavior: "smooth" });
+  currentSearch = $("#searchInput").value;
   renderProducts();
+  $("#products").scrollIntoView({ behavior: "smooth" });
 });
 
 $("#searchInput").addEventListener("input", event => {
   currentSearch = event.target.value;
   renderProducts();
+});
+
+$("#searchInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    $("#products").scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 /* MOBILE MENU */
@@ -247,11 +245,13 @@ function openProduct(product) {
 
   productModal.classList.add("show");
   productModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("no-scroll");
 }
 
 function closeProduct() {
   productModal.classList.remove("show");
   productModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("no-scroll");
 }
 
 $("#modalClose").addEventListener("click", closeProduct);
@@ -398,12 +398,17 @@ $("#whatsappBtn").addEventListener("click", () => {
 /* CHECKOUT */
 
 $("#checkoutBtn").addEventListener("click", () => {
+  if (!cart.length) {
+    alert("Your bag is empty.");
+    return;
+  }
+
   alert(
-    "Online payment checkout is not connected yet. Please use the WhatsApp order option."
+    "Online card payments are not connected yet. Please use the WhatsApp ordering option."
   );
 });
 
-/* CUSTOMER ACCOUNT */
+/* ACCOUNT */
 
 $("#accountBtn").addEventListener("click", () => {
   alert(
@@ -411,7 +416,7 @@ $("#accountBtn").addEventListener("click", () => {
   );
 });
 
-/* DISCOUNT POPUP */
+/* WELCOME POPUP */
 
 $("#discountClose").addEventListener("click", () => {
   discountOverlay.classList.remove("show");
@@ -430,6 +435,7 @@ $("#discountForm").addEventListener("submit", event => {
 
   if (!email) return;
 
+  // This is a local demo only; it does not send the email to a mailing list.
   localStorage.setItem("slinevisionDiscountEmail", email);
   localStorage.setItem("slinevisionDiscountClaimed", "true");
 
@@ -443,7 +449,7 @@ $("#discountForm").addEventListener("submit", event => {
   }, 1600);
 });
 
-/* CLOSE POPUPS WITH ESCAPE */
+/* CLOSE WITH ESCAPE */
 
 function closeAll() {
   closeProduct();
@@ -462,7 +468,7 @@ document.addEventListener("keydown", event => {
 renderProducts();
 renderCart();
 
-/* SHOW WELCOME POPUP */
+/* SHOW POPUP ONCE PER SESSION */
 
 if (
   !localStorage.getItem("slinevisionDiscountClaimed") &&
