@@ -4,25 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="theme-color" content="#ffffff">
 
-  <!-- GOOGLE SEARCH CONSOLE VERIFICATION -->
   <meta name="google-site-verification" content="jQ67amWXGhZLq5fxQBV2enFIKuqt7GnGAcQfBvrKpVg">
-
-  <!-- SEO -->
-  <meta name="description" content="Discover the latest SLINEVISION streetwear T-shirts. Shop modern streetwear essentials from SLINEVISION in South Africa.">
+  <meta name="description" content="Discover SLINEVISION streetwear. Explore premium everyday T-shirts and the latest streetwear collections in South Africa.">
   <meta name="robots" content="index, follow">
 
   <title>SLINEVISION | Official Streetwear Store</title>
 
-  <!-- SLINEVISION FAVICON -->
-  <link rel="icon" type="image/jpeg" href="/IMG-20261109-WA0059.jpg">
-  <link rel="shortcut icon" type="image/jpeg" href="/IMG-20261109-WA0059.jpg">
+  <link rel="icon" type="/IMG-20261109-WA0059.jpg" href="/IMG-20261109-WA0059.jpg">
   <link rel="apple-touch-icon" href="/IMG-20261109-WA0059.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
@@ -31,7 +25,7 @@
 <body>
 
   <div class="top-strip">
-    <span>SLINEVISION — STREETWEAR FOR A DIFFERENT PERSPECTIVE</span>
+    <span>SLINEVISION® — SEE DIFFERENT. MOVE DIFFERENT.</span>
     <span>FREE SHIPPING ON ORDERS OVER R2500</span>
   </div>
 
@@ -41,23 +35,19 @@
       <span></span><span></span><span></span>
     </button>
 
-    <a class="brand" href="#top">
-      SLINE<span>VISION</span><sup>®</sup>
-    </a>
+    <a class="brand" href="#top">SLINE<span>VISION</span><sup>®</sup></a>
 
     <nav class="nav" id="nav" aria-label="Main navigation">
-      <a href="#products" data-category-link="All">Discover</a>
-      <a href="#categories">Categories</a>
-      <a href="#products" data-category-link="T-Shirt">T-Shirts</a>
-      <a href="#products" data-category-link="Sale">Offers</a>
+      <a href="#products" data-category-link="All">DISCOVER</a>
+      <a href="#categories">CATEGORIES</a>
+      <a href="#products" data-category-link="T-Shirt">T-SHIRTS</a>
+      <a href="#products" data-category-link="Sale">OFFERS</a>
     </nav>
 
     <div class="header-tools">
       <button class="search-icon" id="searchBtn" aria-label="Focus search">⌕</button>
-      <button class="account-link" type="button" id="accountBtn">MY ACCOUNT</button>
-      <button class="bag-link" id="cartBtn" aria-label="Open shopping bag">
-        BAG <span id="cartCount">0</span>
-      </button>
+      <button class="account-link" type="button" id="accountBtn">ACCOUNT</button>
+      <button class="bag-link" id="cartBtn">BAG <span id="cartCount">0</span></button>
     </div>
 
   </header>
@@ -65,181 +55,116 @@
   <main>
 
     <!-- SEARCH -->
-    <section class="search-area" aria-label="Product search">
-
+    <section class="search-area">
       <div class="search-box">
         <span class="search-symbol">⌕</span>
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search SLINEVISION T-shirts..."
-          autocomplete="off"
-        >
-
+        <input id="searchInput" type="search" placeholder="Search the collection..." autocomplete="off">
         <button id="searchSubmit" type="button">SEARCH</button>
       </div>
 
       <p>
-        Popular:
-        <button type="button" class="search-suggestion" data-search="tee">T-shirts</button>
-        <button type="button" class="search-suggestion" data-search="t-shirt">Streetwear tees</button>
+        TRENDING:
+        <button class="search-suggestion" data-search="tee" type="button">T-SHIRTS</button>
+        <button class="search-suggestion" data-search="oversized" type="button">OVERSIZED</button>
+        <button class="search-suggestion" data-search="streetwear" type="button">STREETWEAR</button>
       </p>
-
     </section>
 
     <!-- HERO -->
-    <section class="hero-market">
+    <section class="hero">
 
-      <div class="hero-copy">
+      <video class="hero-video" autoplay muted loop playsinline
+        poster="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
 
-        <span class="pill-label">THE SLINEVISION EDIT</span>
+      <div class="hero-shade"></div>
 
-        <p class="hero-kicker">FIND YOUR NEXT EVERYDAY UNIFORM</p>
+      <div class="hero-content">
+        <span class="hero-label">THE NEW SLINEVISION ERA</span>
 
         <h1>
-          DISCOVER<br>
-          <em>YOUR VISION.</em>
+          SEE<br>
+          <span>DIFFERENT.</span>
         </h1>
 
-        <p class="hero-description">
-          Streetwear essentials, statement pieces and everyday fits.
-          Explore the latest SLINEVISION collection.
+        <p>
+          Not made to blend in. Discover everyday streetwear
+          built around individuality and expression.
         </p>
 
-        <a class="primary-button" href="#products">
-          EXPLORE THE COLLECTION <span>↗</span>
+        <a href="#products" class="hero-button">
+          SHOP THE COLLECTION <span>↗</span>
         </a>
-
-        <div class="hero-trust">
-          <span>✦ New drops</span>
-          <span>✦ Easy browsing</span>
-          <span>✦ Local brand</span>
-        </div>
-
       </div>
 
-      <div class="hero-visual">
-
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
-        >
-          <source src="assets/hero-video.mp4" type="video/mp4">
-        </video>
-
-        <div class="visual-overlay"></div>
-
-        <div class="visual-sticker">
-          <span>SV</span>
-          <small>SEE<br>DIFFERENT</small>
-        </div>
-
-        <div class="visual-caption">
-          <span>SLINEVISION / DROP 001</span>
-          <span>MADE TO MOVE ↗</span>
-        </div>
-
+      <div class="hero-bottom">
+        <span>SLINEVISION® / SOUTH AFRICA</span>
+        <span>DROP 001 — THE EVERYDAY COLLECTION</span>
       </div>
+
+      <div class="hero-side-mark">SV®</div>
 
     </section>
 
     <!-- BENEFITS -->
-    <section class="benefit-row" aria-label="Store benefits">
-
+    <section class="benefit-row">
       <div>
-        <span class="benefit-icon">✦</span>
-        <p>
-          <strong>CURATED STREETWEAR</strong>
-          <small>Everyday pieces, selected for you</small>
-        </p>
+        <span>01</span>
+        <p><strong>THE COLLECTION</strong><small>Explore our latest pieces</small></p>
       </div>
 
       <div>
-        <span class="benefit-icon">↗</span>
-        <p>
-          <strong>FRESH FINDS</strong>
-          <small>Explore the latest drop</small>
-        </p>
+        <span>02</span>
+        <p><strong>YOUR STYLE</strong><small>Wear your own perspective</small></p>
       </div>
 
       <div>
-        <span class="benefit-icon">◎</span>
-        <p>
-          <strong>SHOP WITH EASE</strong>
-          <small>Browse and order simply</small>
-        </p>
+        <span>03</span>
+        <p><strong>SHOP WITH EASE</strong><small>Simple WhatsApp ordering</small></p>
       </div>
-
     </section>
 
-    <!-- CATEGORIES: T-SHIRTS ONLY -->
+    <!-- CATEGORY -->
     <section class="categories-section" id="categories">
-
-      <div class="section-title-row">
-
+      <div class="section-heading">
         <div>
-          <span class="section-kicker">START EXPLORING</span>
-          <h2>SHOP BY CATEGORY</h2>
+          <span class="eyebrow">EXPLORE SLINEVISION</span>
+          <h2>THE CATEGORY.</h2>
         </div>
-
-        <a href="#products" data-category-link="T-Shirt" class="subtle-link">
-          VIEW T-SHIRTS ↗
-        </a>
-
+        <span class="heading-index">01 — 01</span>
       </div>
 
-      <div class="category-grid">
-
-        <a href="#products"
-           class="category-card category-tees"
-           data-category-link="T-Shirt">
-
-          <span class="category-number">01 / TOPS</span>
-          <strong>T-SHIRTS</strong>
-          <span class="category-cta">EXPLORE ↗</span>
-
-        </a>
-
-      </div>
-
+      <a href="#products" class="category-card" data-category-link="T-Shirt">
+        <div class="category-image"></div>
+        <div class="category-shade"></div>
+        <span class="category-index">01 / COLLECTION</span>
+        <div class="category-bottom">
+          <h3>T-SHIRTS</h3>
+          <span>EXPLORE COLLECTION ↗</span>
+        </div>
+      </a>
     </section>
 
     <!-- PRODUCTS -->
     <section class="products-section" id="products">
 
-      <div class="section-title-row product-title-row">
-
+      <div class="section-heading">
         <div>
-          <span class="section-kicker">THE LATEST SELECTION</span>
-          <h2>POPULAR RIGHT NOW</h2>
-          <p class="section-subtitle">
-            Discover the latest SLINEVISION T-shirts.
-          </p>
+          <span class="eyebrow">CURATED FOR YOU</span>
+          <h2>THE COLLECTION.</h2>
+          <p class="section-subtitle">The latest SLINEVISION pieces.</p>
         </div>
-
-        <span class="result-note">SLINEVISION / PRODUCTS</span>
-
+        <span class="heading-index">SLV / 001</span>
       </div>
 
       <div class="filter-toolbar">
-
-        <div class="filter-list" role="group" aria-label="Filter products">
-
-          <button class="filter active" data-filter="All">All pieces</button>
-
-          <button class="filter" data-filter="T-Shirt">T-shirts</button>
-
-          <button class="filter" data-filter="Sale">On offer</button>
-
+        <div class="filter-list">
+          <button class="filter active" data-filter="All">ALL PIECES</button>
+          <button class="filter" data-filter="T-Shirt">T-SHIRTS</button>
+          <button class="filter" data-filter="Sale">ON OFFER</button>
         </div>
-
         <span class="sort-note">LATEST DROP ↓</span>
-
       </div>
 
       <div class="products-grid" id="productsGrid"></div>
@@ -249,7 +174,7 @@
       </p>
 
       <div class="products-bottom">
-        <span>YOU'VE REACHED THE END OF THIS DROP</span>
+        <span>END OF COLLECTION</span>
         <a href="#top">BACK TO TOP ↑</a>
       </div>
 
@@ -257,81 +182,60 @@
 
     <!-- FEATURE -->
     <section class="feature-banner">
-
       <div class="feature-image"></div>
 
       <div class="feature-content">
-
-        <span class="section-kicker">THE SLINEVISION STANDARD</span>
-
-        <h2>
-          GOOD FIT.<br>
-          <em>NEW ENERGY.</em>
-        </h2>
-
+        <span class="eyebrow">THE SLINEVISION STANDARD</span>
+        <h2>MOVE<br><span>YOUR WAY.</span></h2>
         <p>
-          Build your rotation with versatile streetwear
-          made for everyday movement.
+          Your style. Your perspective. Build your everyday
+          rotation with SLINEVISION.
         </p>
-
-        <a class="primary-button" href="#products">
-          FIND YOUR FIT <span>↗</span>
-        </a>
-
+        <a href="#products" class="dark-button">DISCOVER THE DROP ↗</a>
       </div>
-
     </section>
 
     <!-- HOW TO ORDER -->
     <section class="how-section">
-
-      <div class="section-title-row">
+      <div class="section-heading">
         <div>
-          <span class="section-kicker">A SIMPLE WAY TO SHOP</span>
-          <h2>HOW TO ORDER</h2>
+          <span class="eyebrow">SIMPLE. STRAIGHTFORWARD.</span>
+          <h2>HOW TO ORDER.</h2>
         </div>
       </div>
 
       <div class="steps-grid">
-
         <article>
           <span>01</span>
           <h3>DISCOVER</h3>
-          <p>Browse the collection and find a piece that fits your style.</p>
+          <p>Explore the collection and choose your favourite piece.</p>
         </article>
 
         <article>
           <span>02</span>
           <h3>SELECT YOUR SIZE</h3>
-          <p>Open a product, choose your size and add it to your bag.</p>
+          <p>Choose your preferred size and add the product to your bag.</p>
         </article>
 
         <article>
           <span>03</span>
           <h3>PLACE YOUR ORDER</h3>
-          <p>Send your bag through WhatsApp to confirm your order details.</p>
+          <p>Send your order through WhatsApp to confirm the details.</p>
         </article>
-
       </div>
-
     </section>
 
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-
     <div class="footer-main">
-
       <div>
-        <a class="brand footer-brand" href="#top">
-          SLINE<span>VISION</span><sup>®</sup>
-        </a>
+        <a class="brand footer-brand" href="#top">SLINE<span>VISION</span><sup>®</sup></a>
         <p>SEE DIFFERENT. MOVE DIFFERENT.</p>
       </div>
 
       <div class="footer-links">
-
         <div>
           <strong>EXPLORE</strong>
           <a href="#products">All products</a>
@@ -351,23 +255,18 @@
           <a href="#" target="_blank" rel="noopener">Instagram ↗</a>
           <a href="#" target="_blank" rel="noopener">TikTok ↗</a>
         </div>
-
       </div>
-
     </div>
 
     <div class="footer-bottom">
       <span>© 2026 SLINEVISION. ALL RIGHTS RESERVED.</span>
       <span>SOUTH AFRICA / GLOBAL VISION</span>
     </div>
-
   </footer>
 
   <!-- PRODUCT MODAL -->
   <div class="modal-backdrop" id="productModal" aria-hidden="true">
-
     <div class="product-modal" role="dialog" aria-modal="true" aria-label="Product details">
-
       <button class="close-button" id="modalClose" aria-label="Close">×</button>
 
       <div class="modal-image-wrap">
@@ -375,13 +274,9 @@
       </div>
 
       <div class="modal-details">
-
-        <span class="section-kicker" id="modalCategory">SLINEVISION</span>
-
+        <span class="eyebrow" id="modalCategory">SLINEVISION</span>
         <h2 id="modalName">PRODUCT NAME</h2>
-
         <p class="modal-price" id="modalPrice">R0</p>
-
         <p class="modal-description" id="modalDescription"></p>
 
         <p class="size-heading">SELECT SIZE</p>
@@ -393,113 +288,59 @@
           <button type="button">XL</button>
         </div>
 
-        <button class="primary-button modal-add" id="modalAdd">
-          ADD TO BAG <span>＋</span>
-        </button>
+        <button class="dark-button modal-add" id="modalAdd">ADD TO BAG ＋</button>
 
-        <p class="modal-footnote">
-          Order details and availability are confirmed when you contact us.
-        </p>
-
+        <p class="modal-footnote">Availability is confirmed when you place your order.</p>
       </div>
-
     </div>
-
   </div>
 
-  <!-- SHOPPING BAG OVERLAY -->
+  <!-- CART OVERLAY -->
   <div class="drawer-overlay" id="overlay"></div>
 
-  <!-- SHOPPING BAG -->
+  <!-- CART -->
   <aside class="cart-drawer" id="cart" aria-label="Shopping bag">
-
     <div class="cart-heading">
-
       <div>
-        <span class="section-kicker">YOUR SELECTION</span>
+        <span class="eyebrow">YOUR SELECTION</span>
         <h2>YOUR BAG <span id="cartCountHeading">0</span></h2>
       </div>
-
       <button class="close-button" id="cartClose" aria-label="Close bag">×</button>
-
     </div>
 
     <div class="cart-items" id="cartItems"></div>
-
-    <p class="cart-empty" id="cartEmpty">
-      Your bag is waiting for something good.
-    </p>
+    <p class="cart-empty" id="cartEmpty">Your bag is waiting for something good.</p>
 
     <div class="cart-summary">
-
-      <div>
-        <span>SUBTOTAL</span>
-        <strong id="cartTotal">R0</strong>
-      </div>
-
-      <p>
-        Shipping and final order details will be confirmed with you.
-      </p>
-
-      <button class="primary-button checkout-button" id="checkoutBtn">
-        CONTINUE TO ORDER ↗
-      </button>
-
-      <button class="whatsapp-button" id="whatsappBtn">
-        SEND ORDER VIA WHATSAPP
-      </button>
-
+      <div><span>SUBTOTAL</span><strong id="cartTotal">R0</strong></div>
+      <p>Shipping and final order details will be confirmed with you.</p>
+      <button class="dark-button checkout-button" id="checkoutBtn">CONTINUE TO ORDER ↗</button>
+      <button class="whatsapp-button" id="whatsappBtn">SEND ORDER VIA WHATSAPP</button>
       <small>Online card payments are not connected yet.</small>
-
     </div>
-
   </aside>
 
-  <!-- DISCOUNT POPUP -->
+  <!-- WELCOME POPUP -->
   <div class="discount-overlay" id="discountOverlay">
-
     <div class="discount-card">
-
       <button class="close-button" id="discountClose" aria-label="Close offer">×</button>
 
-      <div class="discount-mark">SV</div>
+      <div class="discount-mark">SV®</div>
+      <span class="eyebrow">WELCOME TO THE VISION</span>
+      <h2>SEE<br><span>DIFFERENT.</span></h2>
 
-      <span class="section-kicker">WELCOME TO THE VISION</span>
-
-      <h2>
-        GOOD THINGS<br>
-        <em>ARE COMING.</em>
-      </h2>
-
-      <p>
-        Join the SLINEVISION community for updates on new drops and offers.
-      </p>
+      <p>Stay updated on new SLINEVISION drops and announcements.</p>
 
       <form id="discountForm">
-
-        <input
-          id="discountEmail"
-          type="email"
-          placeholder="YOUR EMAIL ADDRESS"
-          required
-        >
-
+        <input id="discountEmail" type="email" placeholder="YOUR EMAIL ADDRESS" required>
         <button type="submit">JOIN ↗</button>
-
       </form>
 
       <p class="discount-message" id="discountMessage" aria-live="polite"></p>
-
-      <small>
-        Demo form — connect an email service to collect subscriptions.
-      </small>
-
+      <small>Demo form — email collection is not connected yet.</small>
     </div>
-
   </div>
 
-  <!-- WEBSITE FUNCTIONALITY -->
   <script src="script.js"></script>
-
 </body>
 </html>
