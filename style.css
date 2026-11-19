@@ -78,102 +78,60 @@ input:focus-visible {
   color: #c6c6c6;
 }
 
-/* HEADER */
 
-.header {
-  height: 76px;
-  padding: 0 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid var(--line);
-}
+/* HERO — SLINEVISION TIGER CAMPAIGN */
 
-.brand {
-  font-family: var(--heading);
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: -1.8px;
-  white-space: nowrap;
-}
-
-.brand span {
-  font-weight: 400;
-}
-
-.brand sup {
-  font: 700 8px var(--font);
-  vertical-align: top;
-  margin-left: 3px;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.nav a {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .7px;
-  transition: opacity .2s;
-}
-
-.nav a:hover {
-  opacity: .5;
-}
-
-.header-tools {
-  display: flex;
-  align-items: center;
-  gap: 19px;
-}
-
-.search-icon {
-  background: none;
-  font-size: 26px;
-  color: var(--black);
-}
-
-.account-link,
-.bag-link {
-  background: none;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .6px;
-  white-space: nowrap;
-}
-
-.bag-link span {
-  display: inline-grid;
-  place-items: center;
-  width: 21px;
-  height: 21px;
-  border-radius: 50%;
-  background: var(--black);
-  color: #fff;
-  margin-left: 5px;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  width: 30px;
-}
-
-.menu-toggle span {
+.hero {
+  position: relative;
   display: block;
-  height: 2px;
-  width: 22px;
-  background: var(--black);
-  margin: 5px 0;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #080808;
+  isolation: isolate;
 }
+
+.hero-video {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  z-index: 0;
+}
+
+/* Hide the previous model campaign content */
+
+.hero-shade,
+.hero-content,
+.hero-bottom,
+.hero-side-mark {
+  display: none !important;
+}
+
+/* MOBILE CAMPAIGN */
+
+@media (max-width: 680px) {
+  .hero {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
 
 /* SEARCH */
 
