@@ -15,6 +15,17 @@ const products = [
   },
   {
     id: 2,
+    name: "RED VISION",
+    category: "T-Shirt",
+    gender: "Men",
+    price: 300,
+    oldPrice: null,
+    tag: "NEW",
+    image: "IMG-20260725-WA0068.jpg",
+    description: "A clean everyday streetwear T-Shirt with the SLINEVISION identity."
+  },
+  {
+    id: 3,
     name: "GHOST PHASE",
     category: "T-Shirt",
     gender: "Men",
@@ -25,7 +36,7 @@ const products = [
     description: "An oversized silhouette designed for a relaxed streetwear fit."
   },
   {
-    id: 3,
+    id: 4,
     name: "Vote Sketch Tee",
     category: "T-Shirt",
     gender: "Men",
@@ -36,7 +47,7 @@ const products = [
     description: "An oversized silhouette designed for a relaxed streetwear fit."
   },
   {
-    id: 4,
+    id: 5,
     name: "Stampede Tee",
     category: "T-Shirt",
     gender: "Men",
