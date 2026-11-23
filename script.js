@@ -45,17 +45,6 @@ const products = [
     tag: "BESTSELLER",
     image: "IMG-20261117-WA0027.jpg",
     description: "An oversized silhouette designed for a relaxed streetwear fit."
-  },
-  {
-    id: 5,
-    name: "Stampede Tee",
-    category: "T-Shirt",
-    gender: "Men",
-    price: 200,
-    oldPrice: null,
-    tag: "NEW",
-    image: "IMG-20261117-WA0013.jpg",
-    description: "A premium oversized SLINEVISION T-Shirt designed for everyday streetwear."
   }
 ];
 
