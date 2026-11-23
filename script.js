@@ -21,7 +21,7 @@ const products = [
     price: 300,
     oldPrice: null,
     tag: "NEW",
-    image: "IMG-20260725-WA0068.jpg",
+    image: "IMG-20261123-WA0030.jpg",
     description: "A clean everyday streetwear T-Shirt with the SLINEVISION identity."
   },
   {
